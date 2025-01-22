@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
 
 class EditProfileScreen extends StatefulWidget {
-  static const routeName = '/edit-profile';
   final String currentUsername;
   final String currentFullName;
-  final String currentBio;
-  final String currentWebsite;
   final String currentEmail;
-  final String currentPhone;
+  final String currentPhoneNumber;
+  static const String routeName = '/edit-profile';
 
   const EditProfileScreen({
-    super.key,
+    Key? key,
     required this.currentUsername,
     required this.currentFullName,
-    required this.currentBio,
-    required this.currentWebsite,
     required this.currentEmail,
-    required this.currentPhone,
-  });
+    required this.currentPhoneNumber,
+  }) : super(key: key);
 
   @override
-  State<EditProfileScreen> createState() => _EditProfileScreenState();
+  _EditProfileScreenState createState() => _EditProfileScreenState();
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   late TextEditingController _usernameController;
   late TextEditingController _fullNameController;
   late TextEditingController _emailController;
-  late TextEditingController _phoneController;
-  late TextEditingController _bioController;
-  late TextEditingController _websiteController;
+  late TextEditingController _phoneNumberController;
 
   @override
   void initState() {
@@ -37,9 +31,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _usernameController = TextEditingController(text: widget.currentUsername);
     _fullNameController = TextEditingController(text: widget.currentFullName);
     _emailController = TextEditingController(text: widget.currentEmail);
-    _phoneController = TextEditingController(text: widget.currentPhone);
-    _bioController = TextEditingController(text: widget.currentBio);
-    _websiteController = TextEditingController(text: widget.currentWebsite);
+    _phoneNumberController = TextEditingController(text: widget.currentPhoneNumber);
   }
 
   @override
@@ -47,183 +39,138 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     _usernameController.dispose();
     _fullNameController.dispose();
     _emailController.dispose();
-    _phoneController.dispose();
-    _bioController.dispose();
-    _websiteController.dispose();
+    _phoneNumberController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+        backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.close, color: Theme.of(context).iconTheme.color),
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () => Navigator.of(context).pop(),
         ),
-        title: Text(
-          'Edit Profile',
+        title: const Text(
+          'Fill your Profile',
           style: TextStyle(
-            color: Theme.of(context).textTheme.titleLarge?.color,
+            color: Colors.black,
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
         ),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.check, color: Theme.of(context).primaryColor),
-            onPressed: () {
-              // Save changes and return updated data
-              Navigator.pop(context, {
-                'username': _usernameController.text,
-                'fullName': _fullNameController.text,
-                'email': _emailController.text,
-                'phone': _phoneController.text,
-                'bio': _bioController.text,
-                'website': _websiteController.text,
-              });
-            },
-          ),
-        ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Center(
-              child: Stack(
-                children: [
-                  const CircleAvatar(
-                    radius: 50,
-                    backgroundImage: AssetImage('assets/images/profile_pic.png'),
-                  ),
-                  Positioned(
-                    bottom: 0,
-                    right: 0,
-                    child: Container(
-                      padding: const EdgeInsets.all(4),
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.camera_alt,
-                        color: Colors.white,
-                        size: 20,
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Center(
+                child: Stack(
+                  children: [
+                    const CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('assets/images/profile_pic.png'),
+                    ),
+                    Positioned(
+                      bottom: 0,
+                      right: 0,
+                      child: Container(
+                        padding: const EdgeInsets.all(4),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF246BFD),
+                          shape: BoxShape.circle,
+                        ),
+                        child: const Icon(
+                          Icons.camera_alt,
+                          color: Colors.white,
+                          size: 20,
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(height: 32),
-            _buildTextField(
-              label: 'Username',
-              controller: _usernameController,
-              context: context,
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              label: 'Full Name',
-              controller: _fullNameController,
-              context: context,
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              label: 'Email Address',
-              controller: _emailController,
-              context: context,
-              keyboardType: TextInputType.emailAddress,
-              isRequired: true,
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              label: 'Phone Number',
-              controller: _phoneController,
-              context: context,
-              keyboardType: TextInputType.phone,
-              isRequired: true,
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              label: 'Bio',
-              controller: _bioController,
-              context: context,
-              maxLines: 3,
-            ),
-            const SizedBox(height: 16),
-            _buildTextField(
-              label: 'Website',
-              controller: _websiteController,
-              context: context,
-              keyboardType: TextInputType.url,
-            ),
-          ],
+              const SizedBox(height: 32),
+              _buildTextField('Username', _usernameController),
+              const SizedBox(height: 16),
+              _buildTextField('Full Name', _fullNameController),
+              const SizedBox(height: 16),
+              _buildTextField('Email Address', _emailController, isEmail: true),
+              const SizedBox(height: 16),
+              _buildTextField('Phone Number', _phoneNumberController, isPhone: true),
+              const SizedBox(height: 32),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () {
+                    // TODO: Implement save logic
+                    Navigator.pop(context);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF246BFD),
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Next',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildTextField({
-    required String label,
-    required TextEditingController controller,
-    required BuildContext context,
-    TextInputType? keyboardType,
-    int maxLines = 1,
-    bool isRequired = false,
-  }) {
+  Widget _buildTextField(String label, TextEditingController controller, {bool isEmail = false, bool isPhone = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        RichText(
-          text: TextSpan(
-            text: label,
-            style: TextStyle(
-              fontSize: 14,
-              fontWeight: FontWeight.w500,
-              color: Theme.of(context).textTheme.bodyMedium?.color,
-            ),
-            children: isRequired
-                ? [
-                    const TextSpan(
-                      text: '*',
-                      style: TextStyle(
-                        color: Colors.red,
-                      ),
-                    ),
-                  ]
-                : null,
+        Text(
+          label,
+          style: const TextStyle(
+            fontSize: 14,
+            fontWeight: FontWeight.w500,
+            color: Color(0xFF1E1E1E),
           ),
         ),
         const SizedBox(height: 8),
-        TextFormField(
+        TextField(
           controller: controller,
-          keyboardType: keyboardType,
-          maxLines: maxLines,
+          keyboardType: isEmail ? TextInputType.emailAddress : (isPhone ? TextInputType.phone : TextInputType.text),
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Theme.of(context).cardColor,
+            hintText: isEmail ? 'example@youremail.com' : (isPhone ? '+62-8421-4512-2531' : ''),
+            hintStyle: const TextStyle(
+              color: Color(0xFFAAAAAA),
+              fontSize: 14,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Theme.of(context).dividerColor),
+              borderSide: const BorderSide(color: Color(0xFFEEEEEE)),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Theme.of(context).dividerColor),
+              borderSide: const BorderSide(color: Color(0xFFEEEEEE)),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderSide: const BorderSide(color: Color(0xFF246BFD)),
             ),
-            contentPadding: const EdgeInsets.symmetric(
-              horizontal: 16,
-              vertical: 12,
-            ),
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
       ],

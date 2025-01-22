@@ -66,7 +66,7 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(24.0),
+            padding: const EdgeInsets.all(16.0),
             child: TextField(
               controller: _searchController,
               onChanged: (value) {
@@ -101,12 +101,12 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
           ),
           Expanded(
             child: GridView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
-                childAspectRatio: 0.6,
-                crossAxisSpacing: 16,
-                mainAxisSpacing: 24,
+                childAspectRatio: 0.85,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 16,
               ),
               itemCount: _filteredSources.length,
               itemBuilder: (context, index) {
@@ -119,7 +119,7 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
                       aspectRatio: 1,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Theme.of(context).cardColor,
+                          color: Colors.grey[100],
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Image.asset(
@@ -128,18 +128,22 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 4),
                     Text(
                       source.name,
-                      style: TextStyle(
-                        fontSize: 12,
+                      style: const TextStyle(
+                        fontSize: 11,
                         fontWeight: FontWeight.w500,
-                        color: Theme.of(context).textTheme.bodyMedium?.color,
                       ),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    const SizedBox(height: 8),
-                    SizedBox(
+                    const SizedBox(height: 4),
+                    Container(
+                      height: 24,
                       width: double.infinity,
+                      margin: const EdgeInsets.symmetric(horizontal: 4),
                       child: ElevatedButton(
                         onPressed: () {
                           setState(() {
@@ -153,28 +157,33 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
                         style: ElevatedButton.styleFrom(
                           backgroundColor: isFollowing
                               ? const Color(0xFF246BFD)
-                              : Theme.of(context).cardColor,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 6,
-                          ),
+                              : Colors.white,
+                          padding: EdgeInsets.zero,
+                          minimumSize: Size.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(4),
                             side: BorderSide(
                               color: isFollowing
                                   ? const Color(0xFF246BFD)
-                                  : Theme.of(context).dividerColor,
+                                  : const Color(0xFFEEEEEE),
                             ),
                           ),
                           elevation: 0,
                         ),
-                        child: Text(
-                          isFollowing ? 'Following' : 'Follow',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: isFollowing
-                                ? Colors.white
-                                : Theme.of(context).textTheme.bodyMedium?.color,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 4),
+                            child: Text(
+                              isFollowing ? 'Following' : 'Follow',
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: isFollowing
+                                    ? Colors.white
+                                    : const Color(0xFF1E1E1E),
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -184,32 +193,30 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  if (_followedSources.isNotEmpty) {
-                    Navigator.pushReplacementNamed(
-                        context, ProfileScreen.routeName);
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF246BFD),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  elevation: 0,
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.all(16.0),
+            child: ElevatedButton(
+              onPressed: () {
+                if (_followedSources.isNotEmpty) {
+                  Navigator.pushReplacementNamed(
+                      context, ProfileScreen.routeName);
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF246BFD),
+                padding: const EdgeInsets.symmetric(vertical: 16),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: const Text(
-                  'Next',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
+                elevation: 0,
+              ),
+              child: const Text(
+                'Next',
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
                 ),
               ),
             ),

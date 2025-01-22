@@ -41,10 +41,8 @@ class _ProfileScreenState extends State<ProfileScreen>
         builder: (context) => EditProfileScreen(
           currentUsername: _username,
           currentFullName: _fullName,
-          currentBio: _bio,
-          currentWebsite: _website,
           currentEmail: _email,
-          currentPhone: _phone,
+          currentPhoneNumber: _phone,
         ),
       ),
     );

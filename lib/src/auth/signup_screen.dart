@@ -17,6 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
   bool _rememberMe = false;
   bool _isPasswordVisible = false;
   bool _hasConfirmedPassword = false;
+  bool _isLoading = false;
   final _usernameController = TextEditingController();
   final _passwordController = TextEditingController();
   String? _usernameError;
@@ -82,13 +83,20 @@ class _SignupScreenState extends State<SignupScreen> {
         return;
       }
 
+      setState(() {
+        _isLoading = true;
+      });
+
       try {
         await _authService.signUp(
           _usernameController.text,
           _passwordController.text,
         );
         if (mounted) {
-          Navigator.pushReplacementNamed(context, '/country-select');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const CountrySelectScreen()),
+          );
         }
       } on FirebaseAuthException catch (e) {
         setState(() {
@@ -100,6 +108,12 @@ class _SignupScreenState extends State<SignupScreen> {
             backgroundColor: Colors.red,
           ),
         );
+      } finally {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
       }
     }
   }
@@ -299,7 +313,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _handleSignup,
+                    onPressed: _isLoading ? null : _handleSignup,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF246BFD),
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -308,14 +322,23 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                       elevation: 0,
                     ),
-                    child: Text(
-                      _hasConfirmedPassword ? 'Confirm Sign Up' : 'Sign Up',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: _isLoading
+                        ? const SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : Text(
+                            _hasConfirmedPassword ? 'Confirm Sign Up' : 'Sign Up',
+                            style: const TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(height: 24),
