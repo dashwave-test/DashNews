@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'topics_screen.dart';
 
 class CountrySelectScreen extends StatefulWidget {
@@ -13,6 +15,7 @@ class CountrySelectScreen extends StatefulWidget {
 class _CountrySelectScreenState extends State<CountrySelectScreen> {
   final TextEditingController _searchController = TextEditingController();
   String _searchQuery = '';
+  bool _isLoading = false;
   final List<Country> _countries = [
     Country(name: 'Afghanistan', flag: '🇦🇫'),
     Country(name: 'Albania', flag: '🇦🇱'),
@@ -38,6 +41,29 @@ class _CountrySelectScreenState extends State<CountrySelectScreen> {
       .where((country) =>
           country.name.toLowerCase().contains(_searchQuery.toLowerCase()))
       .toList();
+
+  Future<void> _updateUserCountry(String country) async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+          'country': country,
+        });
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, TopicsScreen.routeName);
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error updating country: ${e.toString()}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -149,11 +175,17 @@ class _CountrySelectScreenState extends State<CountrySelectScreen> {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  if (_searchQuery.isNotEmpty) {
-                    Navigator.pushReplacementNamed(context, TopicsScreen.routeName);
-                  }
-                },
+                onPressed: _isLoading || _searchQuery.isEmpty
+                    ? null
+                    : () async {
+                        setState(() {
+                          _isLoading = true;
+                        });
+                        await _updateUserCountry(_searchQuery);
+                        setState(() {
+                          _isLoading = false;
+                        });
+                      },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF246BFD),
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -162,14 +194,23 @@ class _CountrySelectScreenState extends State<CountrySelectScreen> {
                   ),
                   elevation: 0,
                 ),
-                child: const Text(
-                  'Next',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
+                child: _isLoading
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : const Text(
+                        'Next',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
               ),
             ),
           ),

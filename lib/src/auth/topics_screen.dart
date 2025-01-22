@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'news_sources_screen.dart';
 
 class TopicsScreen extends StatefulWidget {
@@ -14,6 +16,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
   final TextEditingController _searchController = TextEditingController();
   final Set<String> _selectedTopics = {};
   String _searchQuery = '';
+  bool _isLoading = false;
   final List<String> _topics = [
     'National',
     'International',
@@ -32,6 +35,29 @@ class _TopicsScreenState extends State<TopicsScreen> {
       .where((topic) =>
           topic.toLowerCase().contains(_searchQuery.toLowerCase()))
       .toList();
+
+  Future<void> _updateUserTopics() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      try {
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+          'topics': _selectedTopics.toList(),
+        });
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, NewsSourcesScreen.routeName);
+        }
+      } catch (e) {
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text('Error updating topics: ${e.toString()}'),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
+      }
+    }
+  }
 
   @override
   void dispose() {
@@ -147,12 +173,17 @@ class _TopicsScreenState extends State<TopicsScreen> {
             child: SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  if (_selectedTopics.isNotEmpty) {
-                    Navigator.pushReplacementNamed(
-                        context, NewsSourcesScreen.routeName);
-                  }
-                },
+                onPressed: _isLoading || _selectedTopics.isEmpty
+                    ? null
+                    : () async {
+                        setState(() {
+                          _isLoading = true;
+                        });
+                        await _updateUserTopics();
+                        setState(() {
+                          _isLoading = false;
+                        });
+                      },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF246BFD),
                   padding: const EdgeInsets.symmetric(vertical: 16),
@@ -161,14 +192,23 @@ class _TopicsScreenState extends State<TopicsScreen> {
                   ),
                   elevation: 0,
                 ),
-                child: const Text(
-                  'Next',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.white,
-                  ),
-                ),
+                child: _isLoading
+                    ? const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2,
+                        ),
+                      )
+                    : const Text(
+                        'Next',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white,
+                        ),
+                      ),
               ),
             ),
           ),

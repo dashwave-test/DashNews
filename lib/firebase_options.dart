@@ -34,20 +34,20 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'YOUR-ANDROID-API-KEY',
-    appId: 'YOUR-ANDROID-APP-ID',
-    messagingSenderId: 'YOUR-SENDER-ID',
-    projectId: 'YOUR-PROJECT-ID',
-    storageBucket: 'YOUR-STORAGE-BUCKET',
+    apiKey: 'AIzaSyBQWxvVUFVNDfFHPqWqDLvWBbziaXCZoro',
+    appId: '1:1051521729842:android:c3a1a0b2b9e7c2a4e9c5b0',
+    messagingSenderId: '1051521729842',
+    projectId: 'dashwave-news-app',
+    storageBucket: 'dashwave-news-app.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'YOUR-IOS-API-KEY',
-    appId: 'YOUR-IOS-APP-ID',
-    messagingSenderId: 'YOUR-SENDER-ID',
-    projectId: 'YOUR-PROJECT-ID',
-    storageBucket: 'YOUR-STORAGE-BUCKET',
-    iosClientId: 'YOUR-IOS-CLIENT-ID',
-    iosBundleId: 'YOUR-IOS-BUNDLE-ID',
+    apiKey: 'AIzaSyAWCQMvWQNGJnUJzQxWBNXdwVjLkNxGU0k',
+    appId: '1:1051521729842:ios:3a1a0b2b9e7c2a4e9c5b0',
+    messagingSenderId: '1051521729842',
+    projectId: 'dashwave-news-app',
+    storageBucket: 'dashwave-news-app.appspot.com',
+    iosClientId: '1051521729842-abc123def456.apps.googleusercontent.com',
+    iosBundleId: 'com.example.dashwaveNews',
   );
 }

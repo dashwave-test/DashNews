@@ -28,6 +28,7 @@ class AuthService {
         'savedArticles': [],
         'followedTopics': [],
         'followedSources': [],
+        'country': '',
         'createdAt': FieldValue.serverTimestamp(),
         'lastLoginAt': FieldValue.serverTimestamp(),
       });
@@ -35,6 +36,32 @@ class AuthService {
       return userCredential;
     } on FirebaseAuthException catch (e) {
       throw e;
+    }
+  }
+
+  // Get the next screen to show based on user's completion status
+  Future<String> getNextScreen(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      if (userDoc.exists) {
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+        if (userData['country'] == null || userData['country'].toString().isEmpty) {
+          return 'country';
+        }
+        if (userData['followedTopics'] == null || (userData['followedTopics'] as List).isEmpty) {
+          return 'topics';
+        }
+        if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
+          return 'news_sources';
+        }
+        if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
+          return 'profile_details';
+        }
+        return 'home';
+      }
+      return 'country';
+    } catch (e) {
+      return 'country';
     }
   }
 
