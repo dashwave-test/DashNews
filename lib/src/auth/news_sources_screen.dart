@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'edit_profile_screen.dart';
 
 class NewsSourcesScreen extends StatefulWidget {
@@ -52,16 +54,69 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
         _isLoading = true;
       });
 
-      // Simulate an async operation (e.g., saving to a database)
-      await Future.delayed(const Duration(seconds: 2));
+      try {
+        // Get the current user
+        User? user = FirebaseAuth.instance.currentUser;
+        if (user != null) {
+          // Add the followed sources to Firestore
+          await FirebaseFirestore.instance
+              .collection('users')
+              .doc(user.uid)
+              .set({
+            'followedSources': _followedSources.toList(),
+          }, SetOptions(merge: true));
 
-      setState(() {
-        _isLoading = false;
-      });
-
-      if (mounted) {
-        Navigator.pushReplacementNamed(context, EditProfileScreen.routeName);
+          if (mounted) {
+            Navigator.pushReplacementNamed(context, EditProfileScreen.routeName);
+          }
+        } else {
+          throw Exception('No user logged in');
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error: ${e.toString()}'),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+          ),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false;
+        });
       }
+    }
+  }
+
+  Future<void> _toggleFollowSource(String sourceName) async {
+    setState(() {
+      if (_followedSources.contains(sourceName)) {
+        _followedSources.remove(sourceName);
+      } else {
+        _followedSources.add(sourceName);
+      }
+    });
+
+    try {
+      User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseFirestore.instance
+            .collection('users')
+            .doc(user.uid)
+            .set({
+          'followedSources': _followedSources.toList(),
+        }, SetOptions(merge: true));
+      } else {
+        throw Exception('No user logged in');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error updating sources: ${e.toString()}'),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        ),
+      );
     }
   }
 
@@ -173,15 +228,7 @@ class _NewsSourcesScreenState extends State<NewsSourcesScreen> {
                         width: double.infinity,
                         height: 28,
                         child: ElevatedButton(
-                          onPressed: () {
-                            setState(() {
-                              if (isFollowing) {
-                                _followedSources.remove(source.name);
-                              } else {
-                                _followedSources.add(source.name);
-                              }
-                            });
-                          },
+                          onPressed: () => _toggleFollowSource(source.name),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: isFollowing
                                 ? Colors.white

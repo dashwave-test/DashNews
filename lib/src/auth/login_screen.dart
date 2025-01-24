@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../home/home_screen.dart';
 import 'signup_screen.dart';
+import '../providers/auth_provider.dart' as app_provider;
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -15,17 +18,20 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _rememberMe = false;
   bool _isPasswordVisible = false;
-  final _usernameController = TextEditingController();
+  final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  String? _usernameError;
+  String? _emailError;
   String? _passwordError;
+  bool _isLoading = false;
 
-  void _validateUsername(String value) {
+  void _validateEmail(String value) {
     setState(() {
       if (value.isEmpty) {
-        _usernameError = 'Username is required';
+        _emailError = 'Email is required';
+      } else if (!RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(value)) {
+        _emailError = 'Enter a valid email address';
       } else {
-        _usernameError = null;
+        _emailError = null;
       }
     });
   }
@@ -34,16 +40,8 @@ class _LoginScreenState extends State<LoginScreen> {
     setState(() {
       if (value.isEmpty) {
         _passwordError = 'Password is required';
-      } else if (value.length < 8) {
-        _passwordError = 'Password must be at least 8 characters';
-      } else if (!RegExp(r'^(?=.*?[A-Z])').hasMatch(value)) {
-        _passwordError = 'Password must contain at least one uppercase letter';
-      } else if (!RegExp(r'^(?=.*?[a-z])').hasMatch(value)) {
-        _passwordError = 'Password must contain at least one lowercase letter';
-      } else if (!RegExp(r'^(?=.*?[0-9])').hasMatch(value)) {
-        _passwordError = 'Password must contain at least one number';
-      } else if (!RegExp(r'^(?=.*?[!@#\$&*~])').hasMatch(value)) {
-        _passwordError = 'Password must contain at least one special character';
+      } else if (value.length < 6) {
+        _passwordError = 'Password must be at least 6 characters';
       } else {
         _passwordError = null;
       }
@@ -56,20 +54,52 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void _handleLogin() {
-    _validateUsername(_usernameController.text);
+  Future<void> _handleLogin() async {
+    _validateEmail(_emailController.text);
     _validatePassword(_passwordController.text);
 
     if (_formKey.currentState!.validate() && 
-        _usernameError == null && 
+        _emailError == null && 
         _passwordError == null) {
-      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      setState(() {
+        _isLoading = true;
+      });
+
+      try {
+        await context.read<app_provider.AuthProvider>().signIn(
+          _emailController.text.trim(),
+          _passwordController.text.trim(),
+        );
+        if (mounted) {
+          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+        }
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          if (e.code == 'user-not-found') {
+            _emailError = 'No user found for that email.';
+          } else if (e.code == 'wrong-password') {
+            _passwordError = 'Wrong password provided.';
+          } else {
+            _emailError = e.message;
+          }
+        });
+      } catch (e) {
+        setState(() {
+          _emailError = 'An error occurred. Please try again.';
+        });
+      } finally {
+        if (mounted) {
+          setState(() {
+            _isLoading = false;
+          });
+        }
+      }
     }
   }
 
   @override
   void dispose() {
-    _usernameController.dispose();
+    _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -117,7 +147,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     RichText(
                       text: TextSpan(
-                        text: 'Username',
+                        text: 'Email',
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w500,
@@ -135,9 +165,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 8),
                     TextFormField(
-                      controller: _usernameController,
+                      controller: _emailController,
+                      keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        hintText: 'Username or Email',
+                        hintText: 'Enter your email',
                         filled: true,
                         fillColor: Theme.of(context).cardColor,
                         border: OutlineInputBorder(
@@ -160,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           color: Colors.red,
                           fontSize: 12,
                         ),
-                        suffixIcon: _usernameError != null
+                        suffixIcon: _emailError != null
                             ? const Icon(Icons.error, color: Colors.red)
                             : null,
                         contentPadding: const EdgeInsets.symmetric(
@@ -168,8 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           vertical: 12,
                         ),
                       ),
-                      onChanged: _validateUsername,
-                      validator: (_) => _usernameError,
+                      onChanged: _validateEmail,
+                      validator: (_) => _emailError,
                     ),
                   ],
                 ),
@@ -200,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       controller: _passwordController,
                       obscureText: !_isPasswordVisible,
                       decoration: InputDecoration(
-                        hintText: 'Password',
+                        hintText: 'Enter your password',
                         filled: true,
                         fillColor: Theme.of(context).cardColor,
                         border: OutlineInputBorder(
@@ -290,7 +321,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        // TODO: Implement forgot password functionality
+                      },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,
                         minimumSize: Size.zero,
@@ -311,7 +344,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                    onPressed: _handleLogin,
+                    onPressed: _isLoading ? null : _handleLogin,
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor,
                       padding: const EdgeInsets.symmetric(vertical: 16),
@@ -320,14 +353,23 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                       elevation: 0,
                     ),
-                    child: const Text(
-                      'Login',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
-                    ),
+                    child: _isLoading
+                        ? const SizedBox(
+                            width: 24,
+                            height: 24,
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                              strokeWidth: 2,
+                            ),
+                          )
+                        : const Text(
+                            'Login',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white,
+                            ),
+                          ),
                   ),
                 ),
                 const SizedBox(height: 24),
@@ -362,7 +404,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Expanded(
                       child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          // TODO: Implement Facebook login
+                        },
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           side: BorderSide(color: Theme.of(context).dividerColor),
@@ -383,7 +427,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(width: 16),
                     Expanded(
                       child: OutlinedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          // TODO: Implement Google login
+                        },
                         style: OutlinedButton.styleFrom(
                           padding: const EdgeInsets.symmetric(vertical: 12),
                           side: BorderSide(color: Theme.of(context).dividerColor),
@@ -414,13 +460,13 @@ class _LoginScreenState extends State<LoginScreen> {
                     Text(
                       "don't have an account ? ",
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize:14,
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                       ),
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, '/signup');
+                        Navigator.pushNamed(context, SignupScreen.routeName);
                       },
                       style: TextButton.styleFrom(
                         padding: EdgeInsets.zero,

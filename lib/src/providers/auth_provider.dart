@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/firebase_service.dart';
 
 class AuthProvider with ChangeNotifier {
@@ -51,5 +52,37 @@ class AuthProvider with ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     }
+  }
+
+  Future<String> getNextScreen() async {
+    if (_user == null) {
+      return '/login';
+    }
+
+    final userDoc = await FirebaseFirestore.instance.collection('users').doc(_user!.uid).get();
+    
+    if (!userDoc.exists) {
+      return '/edit-profile';
+    }
+
+    final userData = userDoc.data() as Map<String, dynamic>;
+
+    if (userData['country'] == null) {
+      return '/country-select';
+    }
+
+    if (userData['topics'] == null || (userData['topics'] as List).isEmpty) {
+      return '/topics';
+    }
+
+    if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
+      return '/news-sources';
+    }
+
+    if (userData['fullName'] == null || userData['fullName'].isEmpty) {
+      return '/edit-profile';
+    }
+
+    return '/home';
   }
 }

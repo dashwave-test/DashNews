@@ -55,7 +55,7 @@ class AuthService {
           return 'news_sources';
         }
         if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
-          return 'profile_details';
+          return 'edit-profile';
         }
         return 'home';
       }

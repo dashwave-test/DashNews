@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
             
             if (authProvider.isAuthenticated) {
               return FutureBuilder<String?>(
-                future: UserPreferencesService.getNextScreen(),
+                future: authProvider.getNextScreen(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const Scaffold(
@@ -67,10 +67,8 @@ class MyApp extends StatelessWidget {
                         return const TopicsScreen();
                       case '/news-sources':
                         return const NewsSourcesScreen();
-                      case ProfileScreen.routeName:
-                        return const ProfileScreen();
                       case '/edit-profile':
-                        return const EditProfileScreen(
+                        return EditProfileScreen(
                           currentUsername: '',
                           currentFullName: '',
                           currentEmail: '',
@@ -97,7 +95,7 @@ class MyApp extends StatelessWidget {
           '/topics': (context) => const TopicsScreen(),
           '/news-sources': (context) => const NewsSourcesScreen(),
           ProfileScreen.routeName: (context) => const ProfileScreen(),
-          '/edit-profile': (context) => const EditProfileScreen(
+          '/edit-profile': (context) => EditProfileScreen(
             currentUsername: '',
             currentFullName: '',
             currentEmail: '',

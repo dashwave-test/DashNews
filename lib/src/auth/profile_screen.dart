@@ -51,8 +51,6 @@ class _ProfileScreenState extends State<ProfileScreen>
       setState(() {
         _username = result['username'];
         _fullName = result['fullName'];
-        _bio = result['bio'];
-        _website = result['website'];
         _email = result['email'];
         _phone = result['phone'];
       });
@@ -238,8 +236,7 @@ class _ProfileScreenState extends State<ProfileScreen>
     return ListView.builder(
       padding: const EdgeInsets.all(16),
       itemCount: 4,
-      itemBuilder: (context, index) {
-        return _buildNewsItem(
+      itemBuilder: (context, index) {return _buildNewsItem(
           'NFTs',
           "Minting Your First NFT: A Beginner's Guide to Creating...",
           'Wilson Franci',

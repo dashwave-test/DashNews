@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class EditProfileScreen extends StatefulWidget {
+  static const String routeName = '/edit-profile';
+
   final String currentUsername;
   final String currentFullName;
   final String currentEmail;
   final String currentPhoneNumber;
-  static const String routeName = '/edit-profile';
 
   const EditProfileScreen({
     Key? key,
@@ -20,18 +23,58 @@ class EditProfileScreen extends StatefulWidget {
 }
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
-  late TextEditingController _usernameController;
-  late TextEditingController _fullNameController;
-  late TextEditingController _emailController;
-  late TextEditingController _phoneNumberController;
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
+  bool _isLoading = false;
+  String _errorMessage = '';
 
   @override
   void initState() {
     super.initState();
-    _usernameController = TextEditingController(text: widget.currentUsername);
-    _fullNameController = TextEditingController(text: widget.currentFullName);
-    _emailController = TextEditingController(text: widget.currentEmail);
-    _phoneNumberController = TextEditingController(text: widget.currentPhoneNumber);
+    _usernameController.text = widget.currentUsername;
+    _fullNameController.text = widget.currentFullName;
+    _emailController.text = widget.currentEmail;
+    _phoneNumberController.text = widget.currentPhoneNumber;
+  }
+
+  Future<void> _saveProfile() async {
+    setState(() {
+      _isLoading = true;
+      _errorMessage = '';
+    });
+
+    try {
+      final User? user = FirebaseAuth.instance.currentUser;
+      if (user != null) {
+        await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
+          'username': _usernameController.text.trim(),
+          'fullName': _fullNameController.text.trim(),
+          'email': _emailController.text.trim(),
+          'phoneNumber': _phoneNumberController.text.trim(),
+        });
+
+        if (mounted) {
+          Navigator.pop(context, {
+            'username': _usernameController.text.trim(),
+            'fullName': _fullNameController.text.trim(),
+            'email': _emailController.text.trim(),
+            'phone': _phoneNumberController.text.trim(),
+          });
+        }
+      }
+    } catch (e) {
+      setState(() {
+        _errorMessage = 'Error saving profile: $e';
+      });
+    } finally {
+      if (mounted) {
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
   }
 
   @override
@@ -70,12 +113,21 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              if (_errorMessage.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 16.0),
+                  child: Text(
+                    _errorMessage,
+                    style: const TextStyle(color: Colors.red),
+                  ),
+                ),
               Center(
                 child: Stack(
                   children: [
                     const CircleAvatar(
                       radius: 50,
-                      backgroundImage: AssetImage('assets/images/profile_pic.png'),
+                      backgroundImage:
+                          AssetImage('assets/images/profile_pic.png'),
                     ),
                     Positioned(
                       bottom: 0,
@@ -101,17 +153,16 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               const SizedBox(height: 16),
               _buildTextField('Full Name', _fullNameController),
               const SizedBox(height: 16),
-              _buildTextField('Email Address', _emailController, isEmail: true),
+              _buildTextField('Email Address', _emailController,
+                  isEmail: true),
               const SizedBox(height: 16),
-              _buildTextField('Phone Number', _phoneNumberController, isPhone: true),
+              _buildTextField('Phone Number', _phoneNumberController,
+                  isPhone: true),
               const SizedBox(height: 32),
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // TODO: Implement save logic
-                    Navigator.pop(context);
-                  },
+                  onPressed: _isLoading ? null : _saveProfile,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF246BFD),
                     padding: const EdgeInsets.symmetric(vertical: 16),
@@ -119,14 +170,24 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                   ),
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                    ),
-                  ),
+                  child: _isLoading
+                      ? const SizedBox(
+                          width: 20,
+                          height: 20,
+                          child: CircularProgressIndicator(
+                            strokeWidth: 2,
+                            valueColor:
+                                AlwaysStoppedAnimation<Color>(Colors.white),
+                          ),
+                        )
+                      : const Text(
+                          'Save',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white,
+                          ),
+                        ),
                 ),
               ),
             ],
@@ -136,7 +197,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     );
   }
 
-  Widget _buildTextField(String label, TextEditingController controller, {bool isEmail = false, bool isPhone = false}) {
+  Widget _buildTextField(String label, TextEditingController controller,
+      {bool isEmail = false, bool isPhone = false}) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -151,9 +213,13 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
         const SizedBox(height: 8),
         TextField(
           controller: controller,
-          keyboardType: isEmail ? TextInputType.emailAddress : (isPhone ? TextInputType.phone : TextInputType.text),
+          keyboardType: isEmail
+              ? TextInputType.emailAddress
+              : (isPhone ? TextInputType.phone : TextInputType.text),
           decoration: InputDecoration(
-            hintText: isEmail ? 'example@youremail.com' : (isPhone ? '+62-8421-4512-2531' : ''),
+            hintText: isEmail
+                ? 'example@youremail.com'
+                : (isPhone ? '+62-8421-4512-2531' : ''),
             hintStyle: const TextStyle(
               color: Color(0xFFAAAAAA),
               fontSize: 14,
@@ -170,7 +236,8 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(color: Color(0xFF246BFD)),
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
           ),
         ),
       ],
