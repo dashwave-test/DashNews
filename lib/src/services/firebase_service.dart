@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 
 class FirebaseService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -16,7 +17,8 @@ class FirebaseService {
         password: password,
       );
       return userCredential.user;
-    } catch (e) {
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign up');
       print('Error during sign up: $e');
       rethrow;
     }
@@ -29,7 +31,8 @@ class FirebaseService {
         password: password,
       );
       return userCredential.user;
-    } catch (e) {
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign in');
       print('Error during sign in: $e');
       rethrow;
     }
@@ -38,7 +41,8 @@ class FirebaseService {
   static Future<void> signOut() async {
     try {
       await _auth.signOut();
-    } catch (e) {
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign out');
       print('Error during sign out: $e');
       rethrow;
     }
@@ -51,9 +55,19 @@ class FirebaseService {
         'username': username,
         'createdAt': FieldValue.serverTimestamp(),
       });
-    } catch (e) {
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error creating user document');
       print('Error creating user document: $e');
       rethrow;
     }
+  }
+
+  static Future<void> logCustomError(String message, {Map<String, dynamic>? parameters}) async {
+    await FirebaseCrashlytics.instance.recordError(
+      Exception(message),
+      StackTrace.current,
+      reason: 'Custom error',
+      information: parameters != null ? [parameters.toString()] : [],
+    );
   }
 }
