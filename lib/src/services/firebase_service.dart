@@ -10,6 +10,61 @@ class FirebaseService {
 
   static User? get currentUser => _auth.currentUser;
 
+  /// Fetches all Google News categories from Firestore
+  ///
+  /// Returns a Stream of QuerySnapshot that contains the category documents
+  /// Each document has:
+  /// * id (String) - The unique identifier for the category
+  /// * name (String) - The display name of the category
+  /// * icon (String?) - Optional URL for the category icon
+  static Stream<QuerySnapshot> getGNewsCategories() {
+    try {
+      return _firestore
+          .collection('gnews_categories')
+          .orderBy('name')
+          .snapshots();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(
+        e,
+        stack,
+        reason: 'Error fetching GNews categories',
+      );
+      rethrow;
+    }
+  }
+
+  /// Fetches all Google News categories from Firestore as a Future
+  ///
+  /// Returns a Future<List<Map<String, dynamic>>> containing the category data
+  /// Each map has:
+  /// * id (String) - The unique identifier for the category
+  /// * name (String) - The display name of the category
+  /// * icon (String?) - Optional URL for the category icon
+  static Future<List<Map<String, dynamic>>> getGNewsCategoriesFuture() async {
+    try {
+      final snapshot = await _firestore
+          .collection('gnews_categories')
+          .orderBy('name')
+          .get();
+
+      return snapshot.docs.map((doc) {
+        final data = doc.data();
+        return {
+          'id': doc.id,
+          'name': data['name'] as String,
+          'icon': data['icon'] as String?,
+        };
+      }).toList();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(
+        e,
+        stack,
+        reason: 'Error fetching GNews categories',
+      );
+      rethrow;
+    }
+  }
+
   static Future<User?> signUp(String email, String password) async {
     try {
       UserCredential userCredential = await _auth.createUserWithEmailAndPassword(

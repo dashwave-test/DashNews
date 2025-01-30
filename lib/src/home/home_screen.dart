@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../trending/trending_screen.dart';
 import '../notifications/notification_screen.dart';
 import '../search/search_screen.dart';
@@ -6,6 +7,7 @@ import '../explore/explore_screen.dart';
 import '../bookmark/bookmark_screen.dart';
 import '../article/article_details_screen.dart';
 import '../auth/profile_screen.dart';
+import '../services/firebase_service.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -72,8 +74,149 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class _HomeTab extends StatelessWidget {
+class _HomeTab extends StatefulWidget {
   const _HomeTab({Key? key}) : super(key: key);
+
+  @override
+  State<_HomeTab> createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State<_HomeTab> {
+  String _selectedCategoryId = '';
+  List<Map<String, dynamic>> _categories = [];
+  bool _isLoading = true;
+  String? _error;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadCategories();
+  }
+
+  Future<void> _loadCategories() async {
+    try {
+      setState(() {
+        _isLoading = true;
+        _error = null;
+      });
+      
+      final categories = await FirebaseService.getGNewsCategoriesFuture();
+      setState(() {
+        _categories = categories;
+        if (categories.isNotEmpty) {
+          _selectedCategoryId = categories[0]['id'];
+        }
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+        _error = e.toString();
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Row(
+              children: [
+                const Icon(Icons.error_outline, color: Colors.white),
+                const SizedBox(width: 8),
+                const Expanded(
+                  child: Text(
+                    'Failed to load categories. Please try again later.',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+            backgroundColor: Theme.of(context).colorScheme.error,
+            behavior: SnackBarBehavior.floating,
+            action: SnackBarAction(
+              label: 'Retry',
+              textColor: Colors.white,
+              onPressed: _loadCategories,
+            ),
+          ),
+        );
+      }
+    }
+  }
+
+  Widget _buildCategoriesSection() {
+    if (_isLoading) {
+      return const Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16.0),
+        child: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    if (_error != null) {
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.error.withOpacity(0.3),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Failed to load categories',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton.icon(
+                onPressed: _loadCategories,
+                icon: const Icon(Icons.refresh),
+                label: const Text('Retry'),
+                style: TextButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        children: _categories.map((category) {
+          return _CategoryChip(
+            label: category['name'],
+            isSelected: category['id'] == _selectedCategoryId,
+            context: context,
+            onSelected: (selected) {
+              setState(() {
+                _selectedCategoryId = category['id'];
+              });
+            },
+          );
+        }).toList(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -216,21 +359,7 @@ class _HomeTab extends StatelessWidget {
                 ],
               ),
             ),
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: [
-                  _CategoryChip(label: 'All', isSelected: true, context: context),
-                  _CategoryChip(label: 'Sports', context: context),
-                  _CategoryChip(label: 'Politics', context: context),
-                  _CategoryChip(label: 'Business', context: context),
-                  _CategoryChip(label: 'Health', context: context),
-                  _CategoryChip(label: 'Travel', context: context),
-                  _CategoryChip(label: 'Science', context: context),
-                ],
-              ),
-            ),
+            _buildCategoriesSection(),
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -369,8 +498,7 @@ class _HomeTab extends StatelessWidget {
                       ),
                       onPressed: () {},
                     ),
-                  ],
-                ),
+                  ],),
               ],
             ),
           ),
@@ -456,13 +584,18 @@ class _HomeTab extends StatelessWidget {
   }
 }
 
-Widget _CategoryChip({required String label, bool isSelected = false, required BuildContext context}) {
+Widget _CategoryChip({
+  required String label,
+  bool isSelected = false,
+  required BuildContext context,
+  required Function(bool) onSelected,
+}) {
   return Container(
     margin: const EdgeInsets.only(right: 8),
     child: FilterChip(
       label: Text(label),
       selected: isSelected,
-      onSelected: (_) {},
+      onSelected: onSelected,
       backgroundColor: Theme.of(context).cardColor,
       selectedColor: Theme.of(context).primaryColor,
       labelStyle: TextStyle(
