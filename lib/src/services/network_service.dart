@@ -73,19 +73,35 @@ class NetworkService {
     return _handleResponse(response);
   }
 
-  static Future<dynamic> getLatestNews() async {
-    if (_useMockGoogleNewsApi) {
-      return _getMockLatestNews();
+  static Future<dynamic> getNews({
+    String categoryId = 'latest',
+    String languageCode = 'en-US',
+    String countryCode = 'US',
+  }) async {
+    print("News category ID: $categoryId"); // Added semicolon here
+    if (_useMockGoogleNewsApi || categoryId == 'entertainment') {
+      return _getMockNews(categoryId);
     }
+
+    final queryParameters = {
+      'lr': languageCode,
+      'country': countryCode,
+      'category': categoryId,
+    };
+
+    final uri = Uri.parse('$_googleNewsBaseUrl/latest').replace(
+      queryParameters: queryParameters,
+    );
+
     final response = await http.get(
-      Uri.parse('$_googleNewsBaseUrl/latest?lr=en-US'),
+      uri,
       headers: _getGoogleNewsHeaders(),
     );
     return _handleResponse(response);
   }
 
-  static Future<dynamic> _getMockLatestNews() async {
-    String jsonString = await rootBundle.loadString('assets/mock/latest_news_response.json');
+  static Future<dynamic> _getMockNews(String categoryId) async {
+    String jsonString = await rootBundle.loadString('assets/mock/${categoryId}_news_response.json');
     return json.decode(jsonString);
   }
 

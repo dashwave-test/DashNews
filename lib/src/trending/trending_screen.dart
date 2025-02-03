@@ -70,7 +70,7 @@ class _TrendingScreenState extends State<TrendingScreen> {
         _error = null;
       });
 
-      final response = await NetworkService.getLatestNews();
+      final response = await NetworkService.getNews();
       if (response['status'] == 'success') {
         setState(() {
           _newsItems = response['items'];

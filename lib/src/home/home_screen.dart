@@ -6,8 +6,11 @@ import '../search/search_screen.dart';
 import '../explore/explore_screen.dart';
 import '../bookmark/bookmark_screen.dart';
 import '../article/article_details_screen.dart';
+import '../article/article_webview_screen.dart';
 import '../auth/profile_screen.dart';
 import '../services/firebase_service.dart';
+import '../models/news_category.dart';
+import '../services/network_service.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -83,35 +86,62 @@ class _HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<_HomeTab> {
   String _selectedCategoryId = '';
-  List<Map<String, dynamic>> _categories = [];
-  bool _isLoading = true;
-  String? _error;
+  List<NewsCategory> _categories = [];
+  bool _isLoadingCategories = true;
+  bool _isLoadingLatestNews = false;
+  bool _isLoadingTrendingNews = false;
+  String? _categoriesError;
+  String? _latestNewsError;
+  String? _trendingNewsError;
+  List<dynamic> _latestNewsItems = [];
+  List<dynamic> _trendingNewsItems = [];
 
   @override
   void initState() {
     super.initState();
     _loadCategories();
+    _loadTrendingNews();
+  }
+
+  String _formatTimestamp(String timestamp) {
+    try {
+      final DateTime date = DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp));
+      final Duration difference = DateTime.now().difference(date);
+      
+      if (difference.inDays > 0) {
+        return '${difference.inDays}d ago';
+      } else if (difference.inHours > 0) {
+        return '${difference.inHours}h ago';
+      } else if (difference.inMinutes > 0) {
+        return '${difference.inMinutes}m ago';
+      } else {
+        return 'Just now';
+      }
+    } catch (e) {
+      return timestamp;
+    }
   }
 
   Future<void> _loadCategories() async {
     try {
       setState(() {
-        _isLoading = true;
-        _error = null;
+        _isLoadingCategories = true;
+        _categoriesError = null;
       });
       
       final categories = await FirebaseService.getGNewsCategoriesFuture();
       setState(() {
         _categories = categories;
         if (categories.isNotEmpty) {
-          _selectedCategoryId = categories[0]['id'];
+          _selectedCategoryId = categories[0].id ?? '';
+          _loadLatestNews(_selectedCategoryId);
         }
-        _isLoading = false;
+        _isLoadingCategories = false;
       });
     } catch (e) {
       setState(() {
-        _isLoading = false;
-        _error = e.toString();
+        _isLoadingCategories = false;
+        _categoriesError = e.toString();
       });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -141,15 +171,79 @@ class _HomeTabState extends State<_HomeTab> {
     }
   }
 
+  Future<void> _loadTrendingNews() async {
+    try {
+      setState(() {
+        _isLoadingTrendingNews = true;
+        _trendingNewsError = null;
+      });
+
+      final response = await NetworkService.getNews();
+      if (response['status'] == 'success') {
+        setState(() {
+          _trendingNewsItems = response['items'];
+          _isLoadingTrendingNews = false;
+        });
+      } else {
+        throw Exception('Failed to load trending news');
+      }
+    } catch (e) {
+      setState(() {
+        _isLoadingTrendingNews = false;
+        _trendingNewsError = e.toString();
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to load trending news. Please try again later.'),
+            backgroundColor: Theme.of(context).colorScheme.error,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _loadLatestNews(String categoryId) async {
+    try {
+      setState(() {
+        _isLoadingLatestNews = true;
+        _latestNewsError = null;
+      });
+
+      final response = await NetworkService.getNews(categoryId: categoryId);
+      if (response['status'] == 'success') {
+        setState(() {
+          _latestNewsItems = response['items'];
+          _isLoadingLatestNews = false;
+        });
+      } else {
+        throw Exception('Failed to load latest news');
+      }
+    } catch (e) {
+      setState(() {
+        _isLoadingLatestNews = false;
+        _latestNewsError = e.toString();
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to load latest news. Please try again later.'),
+            backgroundColor: Theme.of(context).colorScheme.error,
+          ),
+        );
+      }
+    }
+  }
+
   Widget _buildCategoriesSection() {
-    if (_isLoading) {
+    if (_isLoadingCategories) {
       return const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: Center(child: CircularProgressIndicator()),
       );
     }
 
-    if (_error != null) {
+    if (_categoriesError != null) {
       return Container(
         margin: const EdgeInsets.symmetric(horizontal: 16.0),
         padding: const EdgeInsets.all(16.0),
@@ -204,17 +298,99 @@ class _HomeTabState extends State<_HomeTab> {
       child: Row(
         children: _categories.map((category) {
           return _CategoryChip(
-            label: category['name'],
-            isSelected: category['id'] == _selectedCategoryId,
+            label: category.alias ?? category.name ?? '',
+            isSelected: category.id == _selectedCategoryId,
             context: context,
             onSelected: (selected) {
               setState(() {
-                _selectedCategoryId = category['id'];
+                _selectedCategoryId = category.id ?? '';
+                _loadLatestNews(_selectedCategoryId);
               });
             },
           );
         }).toList(),
       ),
+    );
+  }
+
+  Widget _buildLatestNewsSection() {
+    if (_isLoadingLatestNews) {
+      return const Center(child: CircularProgressIndicator());
+    }
+
+    if (_latestNewsError != null) {
+      return Container(
+        margin: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.all(16.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.errorContainer.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.error.withOpacity(0.3),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Row(
+              children: [
+                Icon(
+                  Icons.error_outline,
+                  color: Theme.of(context).colorScheme.error,
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: Text(
+                    'Failed to load latest news',
+                    style: TextStyle(
+                      color: Theme.of(context).colorScheme.error,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
+            SizedBox(
+              width: double.infinity,
+              child: TextButton.icon(
+                onPressed: () => _loadLatestNews(_selectedCategoryId),
+                icon: const Icon(Icons.refresh),
+                label: const Text('Retry'),
+                style: TextButton.styleFrom(
+                  foregroundColor: Theme.of(context).colorScheme.error,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+
+    return Column(
+      children: _latestNewsItems.skip(1).take(4).map((newsItem) {
+        return GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ArticleWebViewScreen(
+                  url: newsItem['url'] ?? '',
+                  title: newsItem['title'] ?? '',
+                ),
+              ),
+            );
+          },
+          child: _buildLatestNewsItem(
+            context,
+            newsItem['category'] ?? '',
+            newsItem['title'] ?? '',
+            newsItem['publisher'] ?? '',
+            newsItem['timestamp'] ?? '',
+            newsItem['images']?['thumbnailProxied'] ?? newsItem['images']?['thumbnail'] ?? 'assets/images/news1.jpg',
+          ),
+        );
+      }).toList(),
     );
   }
 
@@ -317,22 +493,31 @@ class _HomeTabState extends State<_HomeTab> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                },
-                child: _buildNewsCard(
-                  context,
-                  'Europe',
-                  'Russian warship: Moskva sinks in Black Sea',
-                  'BBC News',
-                  '4h ago',
-                  'assets/images/news1.jpg',
+            if (_trendingNewsItems.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ArticleWebViewScreen(
+                          url: _trendingNewsItems[0]['url'] ?? '',
+                          title: _trendingNewsItems[0]['title'] ?? '',
+                        ),
+                      ),
+                    );
+                  },
+                  child: _buildNewsCard(
+                    context,
+                    _trendingNewsItems[0]['category'] ?? '',
+                    _trendingNewsItems[0]['title'] ?? '',
+                    _trendingNewsItems[0]['publisher'] ?? '',
+                    _trendingNewsItems[0]['timestamp'] ?? '',
+                    _trendingNewsItems[0]['images']?['thumbnailProxied'] ?? _trendingNewsItems[0]['images']?['thumbnail'] ?? 'assets/images/news1.jpg',
+                  ),
                 ),
               ),
-            ),
             const SizedBox(height: 24),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -363,62 +548,7 @@ class _HomeTabState extends State<_HomeTab> {
             const SizedBox(height: 16),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Column(
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildLatestNewsItem(
-                      context,
-                      'Europe',
-                      'Ukraine\'s President Zelensky to BBC: Blood money being paid for Russian...',
-                      'BBC News',
-                      '14m ago',
-                      'assets/images/news2.jpg',
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildLatestNewsItem(
-                      context,
-                      'Travel',
-                      'Her train broke down. Her phone died. And then she met her future husband',
-                      'CNN',
-                      '1h ago',
-                      'assets/images/news3.jpg',
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildLatestNewsItem(
-                      context,
-                      'Money',
-                      'Wind power produced more electricity than coal and nuclear combined',
-                      'USA Today',
-                      '4h ago',
-                      'assets/images/news4.jpg',
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildLatestNewsItem(
-                      context,
-                      'Life',
-                      'We keep rising to new challenges: For churches hit by disasters, rebuilding is an act of faith',
-                      'USA Today',
-                      '4h ago',
-                      'assets/images/news5.jpg',
-                    ),
-                  ),
-                ],
-              ),
+              child: _buildLatestNewsSection(),
             ),
             const SizedBox(height: 16),
           ],
@@ -439,11 +569,19 @@ class _HomeTabState extends State<_HomeTab> {
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: Image.asset(
+            child: Image.network(
               imageUrl,
               width: double.infinity,
               height: 200,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  'assets/images/news1.jpg',
+                  width: double.infinity,
+                  height: 200,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           Padding(
@@ -485,7 +623,7 @@ class _HomeTabState extends State<_HomeTab> {
                     ),
                     const SizedBox(width: 16),
                     Text(
-                      time,
+                      _formatTimestamp(time),
                       style: TextStyle(
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                       ),
@@ -498,7 +636,8 @@ class _HomeTabState extends State<_HomeTab> {
                       ),
                       onPressed: () {},
                     ),
-                  ],),
+                  ],
+                ),
               ],
             ),
           ),
@@ -511,14 +650,23 @@ class _HomeTabState extends State<_HomeTab> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           ClipRRect(
             borderRadius: BorderRadius.circular(12),
-            child: Image.asset(
+            child: Image.network(
               imageUrl,
               width: 96,
               height: 96,
               fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) {
+                return Image.asset(
+                  'assets/images/news1.jpg',
+                  width: 96,
+                  height: 96,
+                  fit: BoxFit.cover,
+                );
+              },
             ),
           ),
           const SizedBox(width: 16),
@@ -547,23 +695,32 @@ class _HomeTabState extends State<_HomeTab> {
                 const SizedBox(height: 4),
                 Row(
                   children: [
-                    CircleAvatar(
-                      radius: 10,
-                      backgroundColor: Theme.of(context).cardColor,
-                      child: Icon(Icons.person, size: 12, color: Theme.of(context).iconTheme.color),
-                    ),
-                    const SizedBox(width: 4),
-                    Text(
-                      source,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).textTheme.bodyMedium?.color,
+                    Expanded(
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 10,
+                            backgroundColor: Theme.of(context).cardColor,
+                            child: Icon(Icons.person, size: 12, color: Theme.of(context).iconTheme.color),
+                          ),
+                          const SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              source,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                color: Theme.of(context).textTheme.bodyMedium?.color,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                     const SizedBox(width: 8),
                     Text(
-                      time,
+                      _formatTimestamp(time),
                       style: TextStyle(
                         fontSize: 12,
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
@@ -596,6 +753,8 @@ Widget _CategoryChip({
       label: Text(label),
       selected: isSelected,
       onSelected: onSelected,
+      showCheckmark: true,
+      checkmarkColor: Colors.white,
       backgroundColor: Theme.of(context).cardColor,
       selectedColor: Theme.of(context).primaryColor,
       labelStyle: TextStyle(

@@ -1,0 +1,913 @@
+{
+    "status": "success",
+    "items": [
+        {
+            "title": "8 Ways To Balance Your Hormones Naturally",
+            "snippet": "Hormones affect your mental, physical and emotional health in more ways than one. Your hormones also play a role in controlling your appetite, weight, mood,...",
+            "publisher": "NDTV Doctor",
+            "timestamp": "1738584931000",
+            "newsUrl": "https://doctor.ndtv.com/living-healthy/8-ways-to-balance-your-hormones-naturally-7624700",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTVNbUl6YlhOM1FVUjZUQzE2VFJDM0FSaVRBaWdCTWdhVkY0aEtFZ28=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTVNbUl6YlhOM1FVUjZUQzE2VFJDM0FSaVRBaWdCTWdhVkY0aEtFZ28"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "World Cancer Day 2025: 1 In 5 Men And 1 In 8 Women In India At Risk Of Cancer, Says Oncologist Dr. Anil",
+            "snippet": "One in five men and one in eight women in India are at risk of developing cancer, said oncologist Dr. Anil D'Cruz at a seminar organised under 'Jagega...",
+            "publisher": "Free Press Journal",
+            "timestamp": "1738589811000",
+            "newsUrl": "https://www.freepressjournal.in/mumbai/world-cancer-day-2025-1-in-5-men-and-1-in-8-women-in-india-at-risk-of-cancer-says-oncologist-dr-anil-dcruz",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNUVaVUpDZHpaNFIzVjJlR0p0VFJDb0FSaXNBaWdCTWdrUkJaTE9sU3FxS3dJ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNUVaVUpDZHpaNFIzVjJlR0p0VFJDb0FSaXNBaWdCTWdrUkJaTE9sU3FxS3dJ"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "World Cancer Day 2025: 5 Lifestyle Changes To Reduce Your Risk",
+                    "snippet": "World Cancer Day unites individuals, communities, and organizations from across the globe to highlight the challenges posed by cancer.",
+                    "publisher": "NDTV",
+                    "timestamp": "1738564289000",
+                    "newsUrl": "https://www.ndtv.com/health/world-cancer-day-2025-theme-5-lifestyle-changes-to-reduce-your-risk-7622115",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNDNjbEZsYURaZlVGZ3hkMEp2VFJDeUF4akNCU2dLTWdZSk00S25tZ28=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNDNjbEZsYURaZlVGZ3hkMEp2VFJDeUF4akNCU2dLTWdZSk00S25tZ28"
+                    }
+                },
+                {
+                    "title": "World Cancer Day 2025: Expert debunks common myths about cancer",
+                    "snippet": "WHO said that the South-East Asia region is expected to witness an 85 per cent increase in the number of new cancer cases and deaths.",
+                    "publisher": "India TV News",
+                    "timestamp": "1738583003000",
+                    "newsUrl": "https://www.indiatvnews.com/health/world-cancer-day-2025-expert-debunks-common-myths-about-cancer-2025-02-03-974448",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdNbFF0VVZZdFJtNXpWSFJhVFJDZkF4ampCU2dLTWdhQktKTEVHZ2c=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdNbFF0VVZZdFJtNXpWSFJhVFJDZkF4ampCU2dLTWdhQktKTEVHZ2c"
+                    }
+                },
+                {
+                    "title": "World Cancer Day 2025: Why awareness, prevention, early detection are strongest weapons against cancer",
+                    "snippet": "World Cancer Day 2025: Cancer is preventable. With the right strategies, prevention, vaccination, regular screenings, and healthy lifestyle choices,...",
+                    "publisher": "Moneycontrol",
+                    "timestamp": "1738577168000",
+                    "newsUrl": "https://www.moneycontrol.com/health-and-fitness/world-cancer-day-2025-why-awareness-prevention-early-detection-are-strongest-weapons-against-cancer-article-12928823.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXVVVnBGY0U5TlowWlFTWFpqVFJDZkF4ampCU2dLTWdZbEpZd05JZ2c=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXVVVnBGY0U5TlowWlFTWFpqVFJDZkF4ampCU2dLTWdZbEpZd05JZ2c"
+                    }
+                },
+                {
+                    "title": "World Cancer Day 2025: 6 facts you probably didn't know about cancer",
+                    "snippet": "Unlike infectious diseases, cancer does not spread from one person to another. It develops due to genetic mutations and other risk factors,...",
+                    "publisher": "The Economic Times",
+                    "timestamp": "1738586608000",
+                    "newsUrl": "https://m.economictimes.com/industry/healthcare/biotech/healthcare/world-cancer-day-2025-6-facts-you-probably-didnt-know-about-cancer/cancer-is-not-contagious/slideshow/117888128.cms",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVdkVFpyWVRGQmFtcEhkM1o1VFJEZ0F4aUFCU2dLTWdZZFE0eHRKUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVdkVFpyWVRGQmFtcEhkM1o1VFJEZ0F4aUFCU2dLTWdZZFE0eHRKUWM"
+                    }
+                },
+                {
+                    "title": "How much are genes responsible for causing cancer? Few steps to cut the risk",
+                    "snippet": "Genetics significantly impact cancer risk, particularly in inherited mutations like BRCA1/BRCA2, which increase susceptibility to breast and ovarian c.",
+                    "publisher": "The Times of India",
+                    "timestamp": "1738578600000",
+                    "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/how-much-are-genes-responsible-for-causing-cancer-few-steps-to-cut-the-risk/articleshow/117883493.cms",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNXdhSEV4WWxoemN6aHJaV0pJVFJDZkF4ampCU2dLTWdNeEF3Zw=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNXdhSEV4WWxoemN6aHJaV0pJVFJDZkF4ampCU2dLTWdNeEF3Zw"
+                    }
+                },
+                {
+                    "title": "World Cancer Day 2025: Know all about themes significance, history and signs and symptoms",
+                    "snippet": "World Cancer Day 2025: Non-communicable diseases (NCDs) continues to be a major public health challenge across the world. According to the World Health...",
+                    "publisher": "The Financial Express",
+                    "timestamp": "1738584447000",
+                    "newsUrl": "https://www.financialexpress.com/life/world-cancer-day-2025-know-all-about-themes-significance-history-and-signs-and-symptoms-3736561/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNDJTVUpoY2xKaGNsa3hia2N6VFJEM0FSaTRBeWdLTWdNQmtCWQ=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNDJTVUpoY2xKaGNsa3hia2N6VFJEM0FSaTRBeWdLTWdNQmtCWQ"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "India’s cancer crisis demands people-centric care and ethical reforms",
+            "snippet": "World Cancer Day highlights the urgent need for people-centred cancer care in India, addressing policy, technology and ethical challenges.",
+            "publisher": "The Hindu",
+            "timestamp": "1738587900000",
+            "newsUrl": "https://www.thehindu.com/news/cities/Hyderabad/indias-cancer-crisis-demands-people-centric-care-and-ethical-reforms/article69175727.ece",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUlWVk01V205b1dqbGFkbU0wVFJDZkF4ampCU2dLTWdZbEZJeXRxUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUlWVk01V205b1dqbGFkbU0wVFJDZkF4ampCU2dLTWdZbEZJeXRxUVU"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "10 warning signs of cancer you shouldn’t ignore",
+                    "snippet": "India logs over 700000 cancer cases every year. On World Cancer Day, how spotting the early signs of onset can not only save lives but ensure better...",
+                    "publisher": "India Today",
+                    "timestamp": "1738583134000",
+                    "newsUrl": "https://www.indiatoday.in/india-today-insight/story/10-warning-signs-of-cancer-you-shouldnt-ignore-2673940-2025-02-03",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXpaWEF0U0MxbWExbGFPVWxxVFJDRUF4aXlCU2dLTWdZWklZN0t1UVU=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXpaWEF0U0MxbWExbGFPVWxxVFJDRUF4aXlCU2dLTWdZWklZN0t1UVU"
+                    }
+                },
+                {
+                    "title": "Rising Cancer Rates in India: The Surge of Oral cavity (Mouth) and Breast Cancer Cases",
+                    "snippet": "India faces a serious increase in cancer cases as Oral (Mouth) and Breast cancers stand out as primary sources of this health challenge.",
+                    "publisher": "News18",
+                    "timestamp": "1738557578000",
+                    "newsUrl": "https://www.news18.com/lifestyle/health-and-fitness/rising-cancer-rates-in-india-the-surge-of-oral-cavity-mouth-and-breast-cancer-cases-9212373.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVFOMUJEWDB4blRsQTROVGRxVFJDZkF4ampCU2dLTWdhQlVKQ3FOUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVFOMUJEWDB4blRsQTROVGRxVFJDZkF4ampCU2dLTWdhQlVKQ3FOUVk"
+                    }
+                },
+                {
+                    "title": "Why the latest research dubbed India as the cancer capital of the world",
+                    "snippet": "Recent trends reveal a sharp rise in cancer cases in India, with younger patients and a lack of effective screening programs contributing to late-stag.",
+                    "publisher": "The Times of India",
+                    "timestamp": "1738078860000",
+                    "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/why-the-latest-research-dubbed-india-as-the-cancer-capital-of-the-world/articleshow/117644793.cms",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTNUbXBwTjFWMmVHVjFPRk5MVFJDZkF4ampCU2dLTWdZRkU0d21sUW8=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTNUbXBwTjFWMmVHVjFPRk5MVFJDZkF4ampCU2dLTWdZRkU0d21sUW8"
+                    }
+                },
+                {
+                    "title": "India tops Commonwealth nations in cancer cases: Lancet",
+                    "snippet": "In India, one in nine people are likely to develop cancer in their lifetime, with lung and breast cancers being the most common.",
+                    "publisher": "The New Indian Express",
+                    "timestamp": "1737878400000",
+                    "newsUrl": "https://www.newindianexpress.com/thesundaystandard/2025/Jan/26/india-tops-commonwealth-nations-in-cancer-cases-lancet",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHRiR3hGZUZONlIwbDRObmRTVFJERUF4aW1CU2dLTWdhNUFZN3ltQVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHRiR3hGZUZONlIwbDRObmRTVFJERUF4aW1CU2dLTWdhNUFZN3ltQVk"
+                    }
+                },
+                {
+                    "title": "Cancer Cases Have Doubled in India in Three Decades",
+                    "snippet": "Cancers associated with tobacco use, including lung, oral, and throat cancers, account for 40% of all cancer cases in the country BENGALURU / February 3,...",
+                    "publisher": "NewsPatrolling",
+                    "timestamp": "1738580640000",
+                    "newsUrl": "https://newspatrolling.com/cancer-cases-have-doubled-in-india-in-three-decades/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTBkRU5yT0ZoQ1FucGtiWFYxVFJDb0FSaXNBaWdLTWdhaEk0NVFxUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTBkRU5yT0ZoQ1FucGtiWFYxVFJDb0FSaXNBaWdLTWdhaEk0NVFxUVk"
+                    }
+                },
+                {
+                    "title": "Exclusive: World Cancer Day 2025 - India Will See Rise Of 12% To 18% In Cancer Cases, Why Are People More at Risk In Recent Times",
+                    "snippet": "World Cancer Day 2025: Cancer is treated with multiple modalities simultaneously, such as surgery, chemotherapy, and radiation therapy.",
+                    "publisher": "Zee News",
+                    "timestamp": "1738292400000",
+                    "newsUrl": "https://zeenews.india.com/health/exclusive-world-cancer-day-2025-india-will-see-rise-of-12-to-18-in-cancer-cases-why-are-people-more-at-risk-in-recent-times-2851073",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUJhVkpDVEMxb1VsZGZVSGh4VFJDZkF4ampCU2dLTWdhcEFvNXZKUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUJhVkpDVEMxb1VsZGZVSGh4VFJDZkF4ampCU2dLTWdhcEFvNXZKUWM"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "These 8 Foods Are As Close As You'll Get To Botox On A Plate",
+            "snippet": "The quest to find the proverbial fountain of youth can be an expensive journey. Retinol serums, collagen-infused face masks, red light facials,...",
+            "publisher": "Yahoo Life",
+            "timestamp": "1738569606000",
+            "newsUrl": "https://www.yahoo.com/lifestyle/8-foods-close-youll-botox-080006072.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iMkNnNDVaWFV0YXpGM1VGaHBhRWxZVFJDa0F4ajJCQ2dLTWdzQkFvcUZDZVhZYmtuWG9B=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iMkNnNDVaWFV0YXpGM1VGaHBhRWxZVFJDa0F4ajJCQ2dLTWdzQkFvcUZDZVhZYmtuWG9B"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "High blood pressure: Surgeon recommends 3 non-medical interventions to make rapid improvements to your reading",
+            "snippet": "High blood pressure is a silent yet deadly condition that can severely impact a person's quality of life if poorly managed.",
+            "publisher": "GB News",
+            "timestamp": "1738584389000",
+            "newsUrl": "https://www.gbnews.com/health/high-blood-pressure-non-medical-intervention",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNXhTMUI0UldVNVNrRmxVekpJVFJDSEF4aVBCaWdLTWdrTk1ZNkdybVUxUndJ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNXhTMUI0UldVNVNrRmxVekpJVFJDSEF4aVBCaWdLTWdrTk1ZNkdybVUxUndJ"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "9 home remedies for high blood pressure",
+                    "snippet": "Managing high blood pressure naturally is possible with simple lifestyle changes and home remedies. From heart-friendly foods to relaxation techniques,...",
+                    "publisher": "The Times of India",
+                    "timestamp": "1738485000000",
+                    "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/web-stories/9-home-remedies-for-high-blood-pressure/photostory/117852492.cms",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVpWRzl4VDI5ZlEwaHRTR0p2VFJDQUJSamdBeWdLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVpWRzl4VDI5ZlEwaHRTR0p2VFJDQUJSamdBeWdLTWdB"
+                    }
+                },
+                {
+                    "title": "7 home remedies for high blood pressure",
+                    "snippet": "Do you have blood pressure? Try these home remedies right away.",
+                    "publisher": "India.com",
+                    "timestamp": "1738515579000",
+                    "newsUrl": "https://www.india.com/webstories/health/7-home-remedies-for-high-blood-pressure-7585604/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTZWRzV0YVZwdk1WQkpkVTFFVFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTZWRzV0YVZwdk1WQkpkVTFFVFJEakJSaWZBeWdLTWdB"
+                    }
+                },
+                {
+                    "title": "The DASH diet: A less-restrictive approach to lowering blood pressure",
+                    "snippet": "High blood pressure, or hypertension, is a leading risk factor for heart disease and stroke. While medication is often necessary for managing severe cases,...",
+                    "publisher": "Loma Linda University",
+                    "timestamp": "1738570687000",
+                    "newsUrl": "https://news.llu.edu/health-wellness/dash-diet-less-restrictive-approach-lowering-blood-pressure",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iMkNnNHpZVnBhVG05dlJXeFlVMkUwVFJDb0FSaXJBaWdCTWd1QkFZUzBMS2VCWlJwd1BB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iMkNnNHpZVnBhVG05dlJXeFlVMkUwVFJDb0FSaXJBaWdCTWd1QkFZUzBMS2VCWlJwd1BB"
+                    }
+                },
+                {
+                    "title": "Lifestyle and your blood pressure",
+                    "snippet": "For many people, medications may be needed to treat high blood pressure, but for everyone making lifestyle changes can make a big difference....",
+                    "publisher": "Baylor College of Medicine News",
+                    "timestamp": "1738584000000",
+                    "newsUrl": "https://www.bcm.edu/news/lifestyle-and-your-blood-pressure",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNXJiRVpTVEhORmNGRTROVUZ0VFJDdUFSaWlBaWdCTWdrQkFKUm1xcWNPWVFN=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNXJiRVpTVEhORmNGRTROVUZ0VFJDdUFSaWlBaWdCTWdrQkFKUm1xcWNPWVFN"
+                    }
+                },
+                {
+                    "title": "5 Things to Do When You Wake Up for Better Blood Pressure, According to Dietitians",
+                    "snippet": "If you have hypertension, start your day with these 5 expert-backed morning habits to lower blood pressure and support heart health.",
+                    "publisher": "EatingWell",
+                    "timestamp": "1738152000000",
+                    "newsUrl": "https://www.eatingwell.com/things-to-do-when-you-wake-up-for-better-blood-pressure-8781717",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVNjbkJITW5wcWJVeFdhMVV6VFJESEF4aWlCU2dLTWdZaFZZenNKUWc=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVNjbkJITW5wcWJVeFdhMVV6VFJESEF4aWlCU2dLTWdZaFZZenNKUWc"
+                    }
+                },
+                {
+                    "title": "7 best foods to keep your blood pressure in check",
+                    "snippet": "High blood pressure, a silent killer, affects millions. Medication aids management, but a balanced diet with specific power-packed foods is vital for...",
+                    "publisher": "Mint",
+                    "timestamp": "1737865865000",
+                    "newsUrl": "https://www.livemint.com/web-stories/7-best-foods-to-keep-your-blood-pressure-in-check-visual-story-11737877625009.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUVSVXhIWVV4UFVUWkhObEV4VFJEaUJSaWZBeWdLTWdZQlFKYlVtQWs=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUVSVXhIWVV4UFVUWkhObEV4VFJEaUJSaWZBeWdLTWdZQlFKYlVtQWs"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "7-morning rituals to speed up belly fat loss",
+            "snippet": "Want to get rid of your belly fat? Try these morning rituals.",
+            "publisher": "India.com",
+            "timestamp": "1738570916000",
+            "newsUrl": "https://www.india.com/webstories/health/7-morning-rituals-to-speed-up-belly-fat-loss-7587485/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXpXazlvWVhsbFlVcGhiMVI1VFJEakJSaWZBeWdLTWdZbEJKU09uUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXpXazlvWVhsbFlVcGhiMVI1VFJEakJSaWZBeWdLTWdZbEJKU09uUWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "8 benefits of drinking lemon water in the morning",
+            "snippet": "Drinking lemon water daily offers numerous health benefits, from improved hydration and digestion to enhanced immunity and skin health.",
+            "publisher": "The Times of India",
+            "timestamp": "1738564200000",
+            "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/web-stories/8-benefits-of-drinking-lemon-water-in-the-morning/photostory/117877605.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUVUbU41ZDA1VGMwOURURlJ0VFJDQUJSamdBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUVUbU41ZDA1VGMwOURURlJ0VFJDQUJSamdBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Innovations in cancer care: AI, diagnostics, and integrated approaches offering new hope",
+            "snippet": "Daijiworld Media Network – Johannesburg. Johannesburg, Feb 3: Advances in cancer treatment and diagnostics are reshaping patient care, bringing hope to many...",
+            "publisher": "Daijiworld.com",
+            "timestamp": "1738558173000",
+            "newsUrl": "https://daijiworld.com/index.php/news/newsDisplay?newsID=1268248",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXJjbTB3WTJWWFVVTTFla3A0VFJDOEFSaU1BaWdCTWdhQklaVE5uUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXJjbTB3WTJWWFVVTTFla3A0VFJDOEFSaU1BaWdCTWdhQklaVE5uUWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "The prowess of metabolomics in cancer research: current trends, challenges and future perspectives",
+            "snippet": "Publication Type : Journal Article. Publisher : Springer. Source : Molecular and Cellular Biochemistry.",
+            "publisher": "Amrita Vishwa Vidyapeetham",
+            "timestamp": "1738568556000",
+            "newsUrl": "https://www.amrita.edu/publication/the-prowess-of-metabolomics-in-cancer-research-current-trends-challenges-and-future-perspectives/",
+            "hasSubnews": false
+        },
+        {
+            "title": "7 foods that help to reduce your risk of cancer",
+            "snippet": "There has been a rise in the risk of cancer and therefore, it is important that you take necessary steps that help in its prevention.",
+            "publisher": "India TV News",
+            "timestamp": "1738592149000",
+            "newsUrl": "https://www.indiatvnews.com/web-stories/lifestyle/world-cancer-day-2025-7-foods-that-help-to-reduce-your-risk-of-cancer-2025-02-03-974473",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWxVazVWWjFsTFJVTnFlV3RMVFJEakJSaWZBeWdLTWdZVmM0eXN4UVE=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWxVazVWWjFsTFJVTnFlV3RMVFJEakJSaWZBeWdLTWdZVmM0eXN4UVE"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "World Cancer Day 2025: Add These 9 Foods To Your Daily Diet To Reduce Risk",
+                    "snippet": "World Cancer Day 2025: Below we share a list of foods you can add to your daily diet to reduce the risk of cancer.",
+                    "publisher": "NDTV",
+                    "timestamp": "1738569020000",
+                    "newsUrl": "https://www.ndtv.com/health/world-cancer-day-2025-add-these-9-foods-to-your-daily-diet-to-reduce-risk-7622675",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNU1ZV2xMYW1aV2JETlNlVTlZVFJDeUF4akNCU2dLTWdZQkVKS3BLUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNU1ZV2xMYW1aV2JETlNlVTlZVFJDeUF4akNCU2dLTWdZQkVKS3BLUWM"
+                    }
+                },
+                {
+                    "title": "Cancer doctor shares three foods he eats to slash risk of disease and promote health",
+                    "snippet": "A doctor has shared the three foods he recommends everyone incorporates into their diet to reduce the risk of cancer. In the UK, more than 385,000 new cases...",
+                    "publisher": "Surrey Live",
+                    "timestamp": "1738389600000",
+                    "newsUrl": "https://www.getsurrey.co.uk/news/health/cancer-doctor-shares-three-foods-30870074",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXJOMkUyVUVScWJ6bDNkbTVoVFJEZ0F4aUFCU2dLTWdZcEZvak5sUW8=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXJOMkUyVUVScWJ6bDNkbTVoVFJEZ0F4aUFCU2dLTWdZcEZvak5sUW8"
+                    }
+                },
+                {
+                    "title": "I'm a doctor — I eat snack that helps heart and liver and guards against cancer",
+                    "snippet": "Dr Amir Khan, who regularly appears on the likes of Lorraine and Good Morning Britain, has shared his snack of choice which he says is 'like taking a pill'...",
+                    "publisher": "Lancs Live",
+                    "timestamp": "1738504301000",
+                    "newsUrl": "https://www.lancs.live/whats-on/food-drink-news/im-doctor--eat-snack-30918783",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXFVbTVmYUVreVNpMXpjMFV6VFJEZ0F4aUFCU2dLTWdhbFJZN05JUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXFVbTVmYUVreVNpMXpjMFV6VFJEZ0F4aUFCU2dLTWdhbFJZN05JUWM"
+                    }
+                },
+                {
+                    "title": "Making smart food choices to reduce cancer risk",
+                    "snippet": "The University of Kentucky Public Relations and Strategic Communications Office provides a weekly health column available for use and reprint by news media.",
+                    "publisher": "UKNow",
+                    "timestamp": "1738573220000",
+                    "newsUrl": "https://uknow.uky.edu/uk-healthcare/making-smart-food-choices-reduce-cancer-risk",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHpUbVJsWjJndE1VWlZhVXB4VFJDM0FSaVVBaWdCTWdZRkVJaHNKUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHpUbVJsWjJndE1VWlZhVXB4VFJDM0FSaVVBaWdCTWdZRkVJaHNKUWM"
+                    }
+                },
+                {
+                    "title": "7 foods to lower your cancer risk",
+                    "snippet": "Want to get over the risk of getting cancer? Incorporate these superfoods in your diet right away.",
+                    "publisher": "India.com",
+                    "timestamp": "1738469664000",
+                    "newsUrl": "https://www.india.com/webstories/health/7-foods-to-lower-your-cancer-risk-7584996/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNWxXVXRRWmxWek9WcHVVR0Z6VFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNWxXVXRRWmxWek9WcHVVR0Z6VFJEakJSaWZBeWdLTWdB"
+                    }
+                },
+                {
+                    "title": "Single best diet to follow for slashing cancer, dementia and heart disease risk",
+                    "snippet": "An expert has dished out advice on the ultimate diet for a healthy life - and it's not about cutting calories or shrinking portions.",
+                    "publisher": "The Mirror",
+                    "timestamp": "1738591560000",
+                    "newsUrl": "https://www.mirror.co.uk/news/health/single-best-diet-follow-slashing-34605926",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWhabmhITWpWaVpXWlpWRVptVFJEZ0F4aUFCU2dLTWdZaFJZYk5JUWs=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWhabmhITWpWaVpXWlpWRVptVFJEZ0F4aUFCU2dLTWdZaFJZYk5JUWs"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Obesity rare in rural children despite genetic susceptibility: study",
+            "snippet": "Genetic study in Indian children reveals socioeconomic status significantly influences genetic susceptibility to childhood obesity.",
+            "publisher": "The Hindu",
+            "timestamp": "1738426500000",
+            "newsUrl": "https://www.thehindu.com/sci-tech/obesity-rare-in-rural-children-despite-genetic-susceptibility-study/article69160929.ece",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVNZVVU0TVRoZk9UYzVlRmxXVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVNZVVU0TVRoZk9UYzVlRmxXVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Woman Shares How She Lost 30 Kg In 6 Months With Calorie Deficit And Indian Diet",
+            "snippet": "24-year-old Sonias viral transformation journey on Instagram shows how a calorie deficit and regular workouts can lead to healthy and noticeable weight...",
+            "publisher": "NDTV Food",
+            "timestamp": "1738582174000",
+            "newsUrl": "https://food.ndtv.com/weight-loss/womanshareshow-she-lost-30-kg-in-6-months-with-calorie-deficit-and-indian-diet-7624393",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTNOazVYT0hGcGVtRkhlRlZxVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTNOazVYT0hGcGVtRkhlRlZxVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Tired Of Being Told To Eat Less Salt? WHO Issues Guidelines On Alternatives That Won’t Raise BP, CVD Risk",
+            "snippet": "The sodium in salt is considered a 'villain' because excessive intake is strongly linked to high blood pressure (hypertension), which increases the risk of...",
+            "publisher": "ABP Live",
+            "timestamp": "1738589262000",
+            "newsUrl": "https://news.abplive.com/health/tired-of-being-told-to-eat-less-salt-who-guidelines-alternatives-that-won-t-raise-bp-cvd-risk-1748818",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVpNemxDVm5veGQwTkNNRmRTVFJDZkF4ampCU2dLTWdZZE1vZ1JMUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVpNemxDVm5veGQwTkNNRmRTVFJDZkF4ampCU2dLTWdZZE1vZ1JMUWM"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "Heart-Healthy Snacks: 6 Low-Sodium Options That You Must Try",
+                    "snippet": "Consuming a low-sodium diet can reduce blood pressure, improve overall heart health, reduce risk of kidney disease and alleviate bloating and water...",
+                    "publisher": "NDTV",
+                    "timestamp": "1738577601000",
+                    "newsUrl": "https://www.ndtv.com/health/heart-healthy-snacks-6-low-sodium-options-that-you-must-try-7623827",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWZZMUJyTkVGYVowcDBVVFJzVFJDeUF4akNCU2dLTWdhQkE0Z2hsZ1U=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWZZMUJyTkVGYVowcDBVVFJzVFJDeUF4akNCU2dLTWdhQkE0Z2hsZ1U"
+                    }
+                },
+                {
+                    "title": "The World Just Got New Advice on Salt. Here's What You Need to Know.",
+                    "snippet": "This week the World Health Organization (WHO) released new guidelines recommending people switch the regular salt they use at home for substitutes...",
+                    "publisher": "ScienceAlert",
+                    "timestamp": "1738561774000",
+                    "newsUrl": "https://www.sciencealert.com/the-world-just-got-new-advice-on-salt-heres-what-you-need-to-know",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWtVRkZLTVhOVVkwUlZiVEYwVFJEZ0Foam1CaWdLTWdZbFJZeXRKUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWtVRkZLTVhOVVkwUlZiVEYwVFJEZ0Foam1CaWdLTWdZbFJZeXRKUWM"
+                    }
+                },
+                {
+                    "title": "Health Talk | New WHO guidelines aim to cut excess sodium consumption",
+                    "snippet": "The WHO has released new guidelines to reduce sodium intake, recommending lower-sodium salt substitutes to lower blood pressure and cardiovascular risks.",
+                    "publisher": "Hindustan Times",
+                    "timestamp": "1738549807000",
+                    "newsUrl": "https://www.hindustantimes.com/health/health-talk-new-who-guidelines-aim-to-cut-excess-sodium-consumption-101738433597597.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNDFjMnMxT1ZCNmFXTlRXbFF0VFJDMUFoaWxCQ2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNDFjMnMxT1ZCNmFXTlRXbFF0VFJDMUFoaWxCQ2dLTWdB"
+                    }
+                },
+                {
+                    "title": "10 home remedies to keep heart healthy, cut salt from daily diet",
+                    "snippet": "Cutting sodium intake is simple with small changes like reading labels, choosing fresh foods, cooking at home, and swapping salty snacks for healthier...",
+                    "publisher": "Moneycontrol",
+                    "timestamp": "1738213488000",
+                    "newsUrl": "https://www.moneycontrol.com/health-and-fitness/10-home-remedies-to-keep-heart-healthy-cut-salt-from-daily-diet-visual-story-2793813.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxPVmhvWWpGd2Mya3dZMkZyVFJEX0JCamdBeWdLTWdZaFJZRHNyUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxPVmhvWWpGd2Mya3dZMkZyVFJEX0JCamdBeWdLTWdZaFJZRHNyUVk"
+                    }
+                },
+                {
+                    "title": "What WHO’s recommendation for low sodium salt alternatives means for India",
+                    "snippet": "WHO recommends low-sodium salt substitutes to reduce hypertension and cardiovascular diseases.",
+                    "publisher": "The Hindu",
+                    "timestamp": "1738322880000",
+                    "newsUrl": "https://www.thehindu.com/sci-tech/health/sodium/article69158576.ece",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVNiVjgwUzFZNU9ETlpNRGwwVFJDZkF4ampCU2dLTWdhUkVaTHlIQWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVNiVjgwUzFZNU9ETlpNRGwwVFJDZkF4ampCU2dLTWdhUkVaTHlIQWM"
+                    }
+                },
+                {
+                    "title": "Eating too much salt may mess with the body’s sodium-potassium balance; here’s what you can do",
+                    "snippet": "Maintaining the right balance of sodium and potassium is essential for numerous bodily functions, particularly for heart and muscle health.",
+                    "publisher": "The Indian Express",
+                    "timestamp": "1738317445000",
+                    "newsUrl": "https://indianexpress.com/article/lifestyle/health/salt-intake-sodium-potassium-balance-body-important-9551973/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVNWVmw2UlZoMWIxbHJkSFYwVFJEb0FSaWVBeWdLTWdZVkJacXVIUWs=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVNWVmw2UlZoMWIxbHJkSFYwVFJEb0FSaWVBeWdLTWdZVkJacXVIUWs"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "New research identified rare type immune cells for response against Cancer: Study",
+            "snippet": "Melbourne: The researchers have identified a rare type of immune cell, called stem-like T cells, that holds the key to maintaining powerful,...",
+            "publisher": "ETHealthWorld",
+            "timestamp": "1738588993000",
+            "newsUrl": "https://health.economictimes.indiatimes.com/news/industry/new-research-identified-rare-type-immune-cells-for-response-against-cancer-study/117889749",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNU1UR3hxWHpCT05VcFFZM0I1VFJEZ0F4aUFCU2dLTWdhZGM0eXRzUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNU1UR3hxWHpCT05VcFFZM0I1VFJEZ0F4aUFCU2dLTWdhZGM0eXRzUVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "No matches on dating apps? Study shows frequent users may suffer from body image issues and low-self esteem",
+            "snippet": "With so much hinging on just a few pictures, dating app users can get conscious and anxious about their physical appearance.",
+            "publisher": "Hindustan Times",
+            "timestamp": "1738576244000",
+            "newsUrl": "https://www.hindustantimes.com/lifestyle/relationships/no-matches-on-dating-apps-study-shows-frequent-users-may-suffer-from-body-image-issues-and-low-self-esteem-101738572444968.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWFRWEZWVUdVeVIyZHZSMlZOVFJDZkF4ampCU2dLTWdhWkVacTJtQWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWFRWEZWVUdVeVIyZHZSMlZOVFJDZkF4ampCU2dLTWdhWkVacTJtQWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Uganda starts mpox vaccination targetting high risk populations",
+            "snippet": "Kampala, Feb 1 (IANS) Uganda on Saturday launched mpox vaccination campaign targetting high-risk populations in Kampala, the Ugandan capital,...",
+            "publisher": "Ten News",
+            "timestamp": "1738472764000",
+            "newsUrl": "https://tennews.in/uganda-starts-mpox-vaccination-targetting-high-risk-populations/",
+            "hasSubnews": false
+        },
+        {
+            "title": "Dengue early warning system predicts risk two months in advance",
+            "snippet": "Study in Pune links dengue deaths to weather conditions, with a two to five-month lead time for outbreak prevention.",
+            "publisher": "The Hindu",
+            "timestamp": "1738425600000",
+            "newsUrl": "https://www.thehindu.com/sci-tech/dengue-early-warning-system-predicts-risk-two-months-in-advance/article69160907.ece",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNXNhMDEzTkc5UllXWjVTbU50VFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNXNhMDEzTkc5UllXWjVTbU50VFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Rheumatoid Arthritis Awareness Day: A childhood shaped by unseen chronic pain",
+            "snippet": "Today, February 2, 2025, marks Rheumatoid Arthritis Awareness Day—a day dedicated to shedding light on a debilitating disease that affects millions...",
+            "publisher": "Udayavani English",
+            "timestamp": "1738493040000",
+            "newsUrl": "https://www.udayavani.com/english-news/rheumatoid-arthritis-awareness-day-a-childhood-shaped-by-unseen-chronic-pain",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTNVMEV4VVVJdFlUaENjMkUwVFJDcUFSaXBBaWdCTWdZVlVwTFFMQWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTNVMEV4VVVJdFlUaENjMkUwVFJDcUFSaXBBaWdCTWdZVlVwTFFMQWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Digital Addiction- Experts in Kashmir Call for Action to Combat ‘Invisible Pandemic’",
+            "snippet": "By Fazal Ansari. Srinagar- Kashmir is witnessing a new kind of pandemic in the form of what experts call “Digital Addiction,” which is having a widespread...",
+            "publisher": "Kashmir Observer",
+            "timestamp": "1738499275000",
+            "newsUrl": "https://kashmirobserver.net/2025/02/02/digital-addiction-experts-in-kashmir-call-for-action-to-combat-invisible-pandemic/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNXdaMmRJV2xSeVkzTlFWWEZTVFJDc0F4ak1CU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNXdaMmRJV2xSeVkzTlFWWEZTVFJDc0F4ak1CU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Weekly Special Press Briefing on the Mpox Outbreak and other Health Emergencies in Africa",
+            "snippet": "WHAT: Join us for the weekly engagement with the media to provide updates on the mpox outbreak in affected Member States, the Marburg virus outbreak in...",
+            "publisher": "africacdc.org",
+            "timestamp": "1738567596000",
+            "newsUrl": "https://africacdc.org/news-item/weekly-special-press-briefing-on-the-mpox-outbreak-and-other-health-emergencies-in-africa-14/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWZjRm90YkdKdlR6RkNUSFpJVFJDcUJCaXFCQ2dLTWdhWlVwSk5xUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWZjRm90YkdKdlR6RkNUSFpJVFJDcUJCaXFCQ2dLTWdhWlVwSk5xUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "WHO EPI-WIN Webinar: Sudan Ebola virus disease outbreak: what we know",
+            "snippet": "This webinar will provide an overview of the current outbreak of Sudan Ebola virus disease: what we know, the current outbreak in Uganda, and prevention and...",
+            "publisher": "World Health Organization",
+            "timestamp": "1738585382000",
+            "newsUrl": "https://www.who.int/news-room/events/detail/2025/02/06/default-calendar/who-epi-win-webinar-sudan-ebola-virus-disease-outbreak-what-we-know",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdSMkZPY0hSbmNsODVUamRQVFJDM0FSaVRBaWdCTWdZQk01cFJHUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdSMkZPY0hSbmNsODVUamRQVFJDM0FSaVRBaWdCTWdZQk01cFJHUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Increased Intermuscular Fat Linked to Coronary Microvascular Dysfunction",
+            "snippet": "HealthDay News — Increased intermuscular fat is associated with coronary microvascular dysfunction (CMD) and adverse cardiovascular outcomes, according to a...",
+            "publisher": "The Cardiology Advisor",
+            "timestamp": "1738558800000",
+            "newsUrl": "https://www.thecardiologyadvisor.com/news/increased-intermuscular-fat-linked-to-coronary-microvascular-dysfunction/",
+            "hasSubnews": false
+        },
+        {
+            "title": "Study decodes how drinking sugary beverages raises diabetes risk",
+            "snippet": "A team of US researchers has decoded the role of gut microbes in increasing the risk of diabetes after consuming sugary drinks.",
+            "publisher": "The Hans India",
+            "timestamp": "1738588811000",
+            "newsUrl": "https://www.thehansindia.com/tech/study-decodes-how-drinking-sugary-beverages-raises-diabetes-risk-941984",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNWlNamx3Y2xsSmNHODFORzFrVFJDdEF4akxCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNWlNamx3Y2xsSmNHODFORzFrVFJDdEF4akxCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Free cervical cancer vaccination drive begins in Hyderabad",
+            "snippet": "Free Cervical Cancer Vaccination Programme launched by Apollo Cancer Centres and Cure Foundation, offering free HPV vaccinations to women and girls.",
+            "publisher": "The Hindu",
+            "timestamp": "1738588320000",
+            "newsUrl": "https://www.thehindu.com/news/cities/Hyderabad/free-cervical-cancer-vaccination-drive-begins-in-hyderabad/article69175627.ece",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNUNkbkpOUVRnd1lYbENaazg1VFJDZkF4ampCU2dLTWdNQllCUQ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNUNkbkpOUVRnd1lYbENaazg1VFJDZkF4ampCU2dLTWdNQllCUQ"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Plastic pollution could be the silent cause of premature births? Startling new research shares insights",
+            "snippet": "A groundbreaking study has uncovered a startling link between microplastic pollution and premature births, sparking fresh concerns over how these tiny...",
+            "publisher": "Hindustan Times",
+            "timestamp": "1738500228000",
+            "newsUrl": "https://www.hindustantimes.com/lifestyle/health/plastic-pollution-could-be-the-silent-cause-of-premature-births-startling-new-research-shares-insights-101738496975300.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVZRMWQzWmprdGNWaFpNV3BtVFJDZkF4ampCU2dLTWdhUkVwQkxIUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVZRMWQzWmprdGNWaFpNV3BtVFJDZkF4ampCU2dLTWdhUkVwQkxIUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Can you cure cancer? Top oncologist Dr Pritesh Munot answers 12 such questions",
+            "snippet": "While some types of cancer can be treated successfully, they may relapse, meaning a complete cure for cancer is not always possible. This World Cancer Day,...",
+            "publisher": "Health shots",
+            "timestamp": "1738589432000",
+            "newsUrl": "https://www.healthshots.com/preventive-care/self-care/common-questions-about-cancer/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNU1kbEJCU2pOV05GUkRZbGRwVFJDZkF4ampCU2dLTWdZaEpvak9tUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNU1kbEJCU2pOV05GUkRZbGRwVFJDZkF4ampCU2dLTWdZaEpvak9tUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Microplastics May Disrupt Blood Flow To The Brain: Study",
+            "snippet": "A new study reveals that microplastics can block blood flow in the brain, potentially leading to neurological issues like depression and strokes.",
+            "publisher": "Times Now",
+            "timestamp": "1738434600000",
+            "newsUrl": "https://www.timesnownews.com/health/microplastics-may-disrupt-blood-flow-to-the-brain-study-article-117840176",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXdWSGQzVUdaSmRFUkVNWEZGVFJDZkF4ampCU2dLTWdhQllZelhyQWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXdWSGQzVUdaSmRFUkVNWEZGVFJDZkF4ampCU2dLTWdhQllZelhyQWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Bird Flu Breakthrough: Scientists Develop Game-Changing Antibody To Prevent Severe H5N1 Infections",
+            "snippet": "A new antibody therapy effectively protects monkeys from severe H5N1 avian flu, offering hope for a universal flu vaccine and future pandemic preparedness.",
+            "publisher": "SciTechDaily",
+            "timestamp": "1738580927000",
+            "newsUrl": "https://scitechdaily.com/bird-flu-breakthrough-scientists-develop-game-changing-antibody-to-prevent-severe-h5n1-infections/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNUZZVzlVZUVoUGJGQkdVazF1VFJERUF4aW1CU2dLTWdrTkE1Q3N0V1pOUWdN=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNUZZVzlVZUVoUGJGQkdVazF1VFJERUF4aW1CU2dLTWdrTkE1Q3N0V1pOUWdN"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Camp Hill virus increases risk of epidemic in Alabama",
+            "snippet": "Camp Hill virus, related to Nipah, has emerged in North America, and there is growing concern it may spread from animals to humans.",
+            "publisher": "Sanskriti IAS",
+            "timestamp": "1738586267000",
+            "newsUrl": "https://www.sanskritiias.com/current-affairs/camp-hill-virus-increases-risk-of-epidemic-in-alabama",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iMkNnNHlOa1JLVHpGRmVpMXJhVFEwVFJDa0FSaXpBaWdCTWd1QlFJcTFxS2VoQ3dyMnFR=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iMkNnNHlOa1JLVHpGRmVpMXJhVFEwVFJDa0FSaXpBaWdCTWd1QlFJcTFxS2VoQ3dyMnFR"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "These Food Delivery Containers Can Cause Cancer?",
+            "snippet": "News: The discussion gained momentum after a viral Instagram video, in which an influencer warned against using or reusing black plastic containers.",
+            "publisher": "Popdiaries",
+            "timestamp": "1738573873000",
+            "newsUrl": "https://popdiaries.com/news/these-food-delivery-containers-can-cause-cancer-8686116",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxaM0ZCT1VORlZWWkthbVZqVFJDSEF4aVBCaWdLTWdZTkpJNnBuUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxaM0ZCT1VORlZWWkthbVZqVFJDSEF4aVBCaWdLTWdZTkpJNnBuUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "7 home workouts for good heart health",
+            "snippet": "Want to enhance your heart health? Try these home workout.",
+            "publisher": "India.com",
+            "timestamp": "1738570358000",
+            "newsUrl": "https://www.india.com/webstories/health/7-home-workouts-for-good-heart-health-7587222/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNWxWamxXVW5od05HRlFVbVpzVFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNWxWamxXVW5od05HRlFVbVpzVFJEakJSaWZBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Biomarkers of hope for Alzheimer’s",
+            "snippet": "Along with brain imaging, some potential blood and cerebrospinal fluid-based biomarkers have been found to be reliable methods for diagnosis of Alzheimer's,...",
+            "publisher": "Deccan Herald",
+            "timestamp": "1738445349000",
+            "newsUrl": "https://www.deccanherald.com/features/spirituality-and-wellness/biomarkers-of-hope-for-alzheimers-3382257",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXVSMlZwWTJONGVsWTNjV3N6VFJDZkF4ampCU2dLTWdhZEJJak5PUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXVSMlZwWTJONGVsWTNjV3N6VFJDZkF4ampCU2dLTWdhZEJJak5PUVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Long Covid impacts continue till now",
+            "snippet": "An analysis of blood...",
+            "publisher": "Ahmedabad Mirror",
+            "timestamp": "1738575519000",
+            "newsUrl": "https://www.ahmedabadmirror.com/long-covid-impacts-continue-till-now/81884598.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWtabWRvYjNOT2FGTnVYMk5TVFJES0F4aWVCU2dLTWdhSk1Zd25KZ1k=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWtabWRvYjNOT2FGTnVYMk5TVFJES0F4aWVCU2dLTWdhSk1Zd25KZ1k"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "5 ways to build a midday wellness routine",
+            "snippet": "Creating a simple midday wellness routine enhances focus and productivity. Incorporate small habits for improved well-being and experience results!",
+            "publisher": "Mint",
+            "timestamp": "1738452328000",
+            "newsUrl": "https://www.livemint.com/web-stories/5-ways-to-build-a-midday-wellness-routine-11738306597494.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNWlkMUF5YlZCblh6SmhkVFZFVFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNWlkMUF5YlZCblh6SmhkVFZFVFJEakJSaWZBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "7 High-Protein Vegetarian Food",
+            "snippet": "While non-vegetarian foods are rich in protein, there are some vegetarian options which you can add to your daily diet to increase your protein intake.",
+            "publisher": "News18",
+            "timestamp": "1738492311000",
+            "newsUrl": "https://www.news18.com/web-stories/lifestyle/7-high-protein-vegetarian-food-2802148/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHRUR2RSY1VVMVUyVnlZbVE1VFJEX0JCamdBeWdLTWdZQndJcnBSQVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHRUR2RSY1VVMVUyVnlZbVE1VFJEX0JCamdBeWdLTWdZQndJcnBSQVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Brain bleeding: Women are twice likely to be its victims",
+            "snippet": "By: Dr.Vipul Gupta. Female mortality rate attributed to brain bleeding is higher than men. According to the reports of WHO 2020, approx 4.98 lakh fatalities...",
+            "publisher": "Kashmir Vision",
+            "timestamp": "1738439231000",
+            "newsUrl": "https://kashmirvision.in/2025/02/02/brain-bleeding-women-are-twice-likely-to-be-its-victims/",
+            "hasSubnews": false
+        },
+        {
+            "title": "Holistic Hair Loss Care: Issues That Affect Loss, Regrowth",
+            "snippet": "A holistic or integrative approach to hair loss considers the hair growth cycle and hair loss from a nutritional, psychosocial, and physiological...",
+            "publisher": "Medscape",
+            "timestamp": "1738560677000",
+            "newsUrl": "https://www.medscape.com/viewarticle/holistic-care-hair-loss-addressing-issues-contribute-loss-2025a10002kk",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXRhMUpOYldJeGNHbHJVR2M1VFJDb0FSaXNBaWdCTWdZbEJJRHNWUUk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXRhMUpOYldJeGNHbHJVR2M1VFJDb0FSaXNBaWdCTWdZbEJJRHNWUUk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Edifier QD35 - best portable speaker you can buy",
+            "snippet": "Priced at around 190 - Mat takes a look at the latest QD35 speaker from Edifier. Its certainly eye catching, but is it worth the money?",
+            "publisher": "MSN",
+            "timestamp": "1738446326000",
+            "newsUrl": "https://www.msn.com/en-gb/money/technology/edifier-qd35-best-portable-speaker-you-can-buy/vi-AA1ydXR2",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNWllRkV4YWs1c1JYQkNPRzEzVFJEb0FSaWNBeWdLTWdrQkFvVGdEcWhFQ2dJ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNWllRkV4YWs1c1JYQkNPRzEzVFJEb0FSaWNBeWdLTWdrQkFvVGdEcWhFQ2dJ"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Raisin water for hair growth; Benefits & more",
+            "snippet": "Let's take a look at how raisin water helps in hair growth.",
+            "publisher": "The Times of India",
+            "timestamp": "1738481400000",
+            "newsUrl": "https://timesofindia.indiatimes.com/life-style/beauty/web-stories/raisin-water-for-hair-growth-benefits-more/photostory/117794120.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNURVRGhHT1hWTVVYQXROVXBPVFJDQUJSamdBeWdLTWdhaE01Q01IUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNURVRGhHT1hWTVVYQXROVXBPVFJDQUJSamdBeWdLTWdhaE01Q01IUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "World Cancer Day 2025: Cancer-Causing Foods: What to Avoid",
+            "snippet": "Learn about foods that increase cancer risk and those that help prevent it. Understand the impact of processed meat, sugar, and alcohol.",
+            "publisher": "Asianet Newsable ",
+            "timestamp": "1738563818000",
+            "newsUrl": "https://newsable.asianetnews.com/webstories/lifestyle/world-cancer-day-2025-cancer-causing-foods-what-to-avoid-rba-sr3gf6",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNDVaMnhHZHpoR2MzVXRNMGxUVFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNDVaMnhHZHpoR2MzVXRNMGxUVFJEakJSaWZBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Adulterated heroin ravaging youth in Kashmir",
+            "snippet": "But among these, the most harrowing were the patients who slowly walked to the examination rooms, their limbs wrapped in bandages, their wrists,...",
+            "publisher": "Greater Kashmir",
+            "timestamp": "1738522453000",
+            "newsUrl": "https://www.greaterkashmir.com/front-page-2/adulterated-heroin-ravaging-youth-in-kashmir/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdSbXQwY25oaWRVRnVlbTlhVFJERUF4aW5CU2dLTWdZMUE0d3hEUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdSbXQwY25oaWRVRnVlbTlhVFJERUF4aW5CU2dLTWdZMUE0d3hEUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Skin Cancer Warning: 5 Signs You Should NEVER Ignore!",
+            "snippet": "Skin cancer is one of the most common cancers globally, but early detection improves outcomes. We got in touch with Dr Manit Gundavda who shares key warning...",
+            "publisher": "Times Now",
+            "timestamp": "1738476000000",
+            "newsUrl": "https://www.timesnownews.com/health/skin-cancer-warning-5-signs-you-should-never-ignore-article-117852650",
+            "hasSubnews": false
+        },
+        {
+            "title": "Why you should eat 3 soaked almonds every morning",
+            "snippet": "Starting your day with soaked almonds is a time-tested habit for boosting health and vitality. These tiny powerhouses are loaded with essential nutrients,...",
+            "publisher": "The Times of India",
+            "timestamp": "1738427400000",
+            "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/web-stories/why-you-should-eat-3-soaked-almonds-every-morning/photostory/117830500.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUtSVVJoVEhodFdtWlpjV0ptVFJDQUJSamdBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUtSVVJoVEhodFdtWlpjV0ptVFJDQUJSamdBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "All you need to know about vitamin B6 toxicity",
+            "snippet": "Despite being readily available in the diet, vitamin B6 is also widely included in various supplements, multivitamins and other products.",
+            "publisher": "The Financial Express",
+            "timestamp": "1738582328000",
+            "newsUrl": "https://www.financialexpress.com/web-stories/healthcare/all-you-need-to-know-about-vitamin-b6-toxicity-2/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUpVMjV2ZEZoUE4wZ3RMV3Q1VFJEX0JCamdBeWdLTWdZZGdKQ050UVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUpVMjV2ZEZoUE4wZ3RMV3Q1VFJEX0JCamdBeWdLTWdZZGdKQ050UVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Can eating papaya, mangoes help you build muscle? Here’s what an expert has to say",
+            "snippet": "According to digital creator Ted Carr, it is apparently possible to bank on papaya and mangoes to build muscle. We were as surprised to hear this as you...",
+            "publisher": "The Indian Express",
+            "timestamp": "1738497300000",
+            "newsUrl": "https://indianexpress.com/article/lifestyle/health/can-papaya-mangoes-help-build-muscle-9468311/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUtRbUZFUzFoQk1sODBUWEJwVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUtRbUZFUzFoQk1sODBUWEJwVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "10 reasons why parents should not yell at their kids",
+            "snippet": "Parents often find themselves overwhelmed and frustrated, leading to yelling at their children. However, this approach can have negative effects on a...",
+            "publisher": "The Times of India",
+            "timestamp": "1738492200000",
+            "newsUrl": "https://timesofindia.indiatimes.com/life-style/parenting/10-reasons-why-parents-should-not-yell-at-their-kids/photostory/117852577.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNW1Selp6VDJRdFFrMWlVVjlaVFJDQUJSamdBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNW1Selp6VDJRdFFrMWlVVjlaVFJDQUJSamdBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "How to get rid of dark circles naturally",
+            "snippet": "Dark circles not just affect your appearance but also negatively impacts your well-being. From restful sleep to managing stress, here are some tips to...",
+            "publisher": "Mint",
+            "timestamp": "1738452293000",
+            "newsUrl": "https://www.livemint.com/web-stories/how-to-get-rid-of-dark-circles-naturally-11738324853347.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTFiSFp4TjIxSU5WUkNRamhZVFJEakJSaWZBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTFiSFp4TjIxSU5WUkNRamhZVFJEakJSaWZBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Urine-based test detects aggressive prostate cancer",
+            "snippet": "New urine test, MPS2, clinically validated by University of Michigan researchers, can potentially replace invasive prostate cancer screening procedures.",
+            "publisher": "The Hindu",
+            "timestamp": "1738425900000",
+            "newsUrl": "https://www.thehindu.com/sci-tech/urine-based-test-detects-aggressive-prostate-cancer/article69160931.ece",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxjMll5TjBOVFpUQjRNSEZ4VFJDcUJCaXFCQ2dLTWdhTmtwQXBPUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxjMll5TjBOVFpUQjRNSEZ4VFJDcUJCaXFCQ2dLTWdhTmtwQXBPUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Engaging in this fun activity can delay dementia and boost longevity",
+            "snippet": "Leading a socially active life as one ages may help delay the onset of dementia. Activities like bingo nights, dining with friends, and attending reli.",
+            "publisher": "The Times of India",
+            "timestamp": "1738436460000",
+            "newsUrl": "https://timesofindia.indiatimes.com/life-style/health-fitness/health-news/engaging-in-this-fun-activity-can-delay-dementia-and-boost-longevity/articleshow/117841170.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVhlR1ZsTVZsSVRIWldWRFJZVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVhlR1ZsTVZsSVRIWldWRFJZVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        }
+    ]
+}

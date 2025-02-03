@@ -1,0 +1,1037 @@
+{
+    "status": "success",
+    "items": [
+        {
+            "title": "Windows 11 Users Finally Get iPhone Support: How It Works",
+            "snippet": "A new feature is being tested by Microsoft for Windows Insiders in both the Dev and Beta channels. The company has already support to Android users giving...",
+            "publisher": "News18",
+            "timestamp": "1738549820000",
+            "newsUrl": "https://www.news18.com/tech/windows-11-users-finally-get-iphone-support-how-it-works-9209632.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNTJWRGx2V1Zrd1UyMVdja0ZHVFJDZkF4ampCU2dLTWdrRkE0b1RzV2JCSVFN=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNTJWRGx2V1Zrd1UyMVdja0ZHVFJDZkF4ampCU2dLTWdrRkE0b1RzV2JCSVFN"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "Latest Windows 11 Insiders update brings iPhone integration to the Start menu - GSMArena.com news",
+                    "snippet": "Microsoft is testing a new addition for Windows Insiders in the Dev and Beta channels, offering better integration for iPhone users. The new addition adds a...",
+                    "publisher": "GSMArena.com",
+                    "timestamp": "1738166761000",
+                    "newsUrl": "https://www.gsmarena.com/latest_windows_11_insiders_update_brings_iphone_integration_to_the_start_menu-news-66304.php",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVhVVEJRYjJWRGRFUTNTelJ6VFJEckFoak1CaWdLTWdZZEVvcnNuUWs=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVhVVEJRYjJWRGRFUTNTelJ6VFJEckFoak1CaWdLTWdZZEVvcnNuUWs"
+                    }
+                },
+                {
+                    "title": "Seamless phone integration from the Start menu gets even better for Windows Insiders",
+                    "snippet": "Hello Windows Insiders,. Last year, we previewed the ability for existing Android connected users to access their Android device from the Start menu.",
+                    "publisher": "Windows Blog",
+                    "timestamp": "1738051200000",
+                    "newsUrl": "https://blogs.windows.com/windows-insider/2025/01/28/seamless-phone-integration-from-the-start-menu-gets-even-better-for-windows-insiders/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNW9XSEF3T0RodlpGZFJhR3B1VFJDZkF4ampCU2dLTWdZZGc0WnRPUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNW9XSEF3T0RodlpGZFJhR3B1VFJDZkF4ampCU2dLTWdZZGc0WnRPUVk"
+                    }
+                },
+                {
+                    "title": "Microsoft makes it easier for Phone Link users to move on from their old phone",
+                    "snippet": "Microsoft is reportedly testing a much better way for users to unlink their old phone from Phone Link in Windows 11.",
+                    "publisher": "Android Authority",
+                    "timestamp": "1738570731000",
+                    "newsUrl": "https://www.androidauthority.com/microsoft-phone-link-remove-old-phone-3522482/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXRiWGRUTXpNNE9GTlJUMTlxVFJDZkF4ampCU2dLTWdZQk1vN0RKZ2c=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXRiWGRUTXpNNE9GTlJUMTlxVFJDZkF4ampCU2dLTWdZQk1vN0RKZ2c"
+                    }
+                },
+                {
+                    "title": "Connect Your iPhone to a Windows PC and Share Files Effortlessly",
+                    "snippet": "Do you want to connect and manage your iPhone on your Windows PC? Learn the guide on how to set up via Phone Link and use the file transfer feature.",
+                    "publisher": "nextpit",
+                    "timestamp": "1738504800000",
+                    "newsUrl": "https://www.nextpit.com/pair-your-iphone-windows-phone-link-how-to",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNW1jbkF0UTNGRmJEQjBkSGxVVFJDaUF4amRCU2dLTWdZaFVKTE1MUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNW1jbkF0UTNGRmJEQjBkSGxVVFJDaUF4amRCU2dLTWdZaFVKTE1MUWM"
+                    }
+                },
+                {
+                    "title": "Managing smartphones with Windows 11 will become easier",
+                    "snippet": "Microsoft has announced a number of changes for the insider version of Windows 11 aimed at improving the integration of smartphones with PCs.",
+                    "publisher": "Mezha.Media",
+                    "timestamp": "1738155173000",
+                    "newsUrl": "https://mezha.media/en/2025/01/29/managing-smartphones-with-windows-11-will-become-easier/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxjRXQwVEd0cFJIQlZWbkpsVFJERUF4aW1CU2dLTWdhZGtvYnRRUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxjRXQwVEd0cFJIQlZWbkpsVFJERUF4aW1CU2dLTWdhZGtvYnRRUVk"
+                    }
+                },
+                {
+                    "title": "Microsoft finally fixes the most annoying part of Phone Link",
+                    "snippet": "Phone Link is a handy way to sync your Windows PC and your phone together, but sometimes Microsoft makes decisions that are just plain weird.",
+                    "publisher": "XDA Developers",
+                    "timestamp": "1738557240000",
+                    "newsUrl": "https://www.xda-developers.com/microsoft-fixes-annoying-phone-link/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUtZVTFFVTJsYWFFVkdiMUl3VFJERUF4aW1CU2dLTWdZaGRJSU1zZ2M=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUtZVTFFVTJsYWFFVkdiMUl3VFJERUF4aW1CU2dLTWdZaGRJSU1zZ2M"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Microsoft’s Free Offer Deadline—Millions Of Windows Users Suddenly Upgrade",
+            "snippet": "Surprising news for Windows users — hundreds of millions of users must act now.",
+            "publisher": "Forbes",
+            "timestamp": "1738449205000",
+            "newsUrl": "https://www.forbes.com/sites/zakdoffman/2025/02/01/microsofts-free-offer-deadline-millions-of-windows-users-suddenly-upgrade/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUZOMFZPWldRNE0yMXJRbUYyVFJEREF4aW9CU2dLTWdhQlk0Q3VyUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUZOMFZPWldRNE0yMXJRbUYyVFJEREF4aW9CU2dLTWdhQlk0Q3VyUWM"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "Windows 10's demise nears, but Linux is forever",
+                    "snippet": "Opinion Come October 14, 2025, Windows 10 support dies. Despite that, more users than ever are using Windows 10 rather than moving to Windows 11.",
+                    "publisher": "The Register",
+                    "timestamp": "1738062120000",
+                    "newsUrl": "https://www.theregister.com/2025/01/28/windows_10_demise_linux/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXlUbXBOY1RaQ1FWbExjV2h0VFJDM0FSaVRBaWdCTWdhbGM0RE93UU0=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXlUbXBOY1RaQ1FWbExjV2h0VFJDM0FSaVRBaWdCTWdhbGM0RE93UU0"
+                    }
+                },
+                {
+                    "title": "Windows 11 hits a new market share milestone as Windows 10's death looms on the horizon",
+                    "snippet": "Global market share data suggests that Windows 11 hit 36.65% overall OS version market share in January 2025, as Microsoft starts warning users of Windows...",
+                    "publisher": "Windows Central",
+                    "timestamp": "1738554335000",
+                    "newsUrl": "https://www.windowscentral.com/software-apps/windows-11/windows-11-hits-a-new-market-share-milestone-ahead-of-windows-10s-end-of-life-support",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxXVGhEWDJoSFNWTTJNWGRXVFJDMEFSakFBaWdLTWdhQkVaUWdsUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxXVGhEWDJoSFNWTTJNWGRXVFJDMEFSakFBaWdLTWdhQkVaUWdsUWM"
+                    }
+                },
+                {
+                    "title": "The clock is ticking: Why businesses must prepare for Windows 11 now",
+                    "snippet": "As the October 2025 deadline for Windows 10 support approaches, Australian businesses face urgent risks, highlighting the need for proactive upgrades to...",
+                    "publisher": "IT Brief Australia",
+                    "timestamp": "1738549320000",
+                    "newsUrl": "https://itbrief.com.au/story/the-clock-is-ticking-why-businesses-must-prepare-for-windows-11-now",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUJWM0ZGU0ZwSWFGZG5UbEJzVFJDZ0F4amhCU2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUJWM0ZGU0ZwSWFGZG5UbEJzVFJDZ0F4amhCU2dLTWdB"
+                    }
+                },
+                {
+                    "title": "It's time for another round of Statcounter stories - here's why you shouldn't believe them",
+                    "snippet": "Windows 10 is less popular! Windows 11 is regaining its mojo! Or is it the other way around? None of those explanations are true, and I got the receipts to...",
+                    "publisher": "ZDNet",
+                    "timestamp": "1738588320000",
+                    "newsUrl": "https://www.zdnet.com/article/its-time-for-another-round-of-statcounter-stories-heres-why-you-shouldnt-believe-them/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXVVVlJQYW1Zd05IcExiR3BIVFJDZkF4ampCU2dLTWdZQk1JeUpyUVU=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXVVVlJQYW1Zd05IcExiR3BIVFJDZkF4ampCU2dLTWdZQk1JeUpyUVU"
+                    }
+                },
+                {
+                    "title": "Windows 10 support ending in 2025: Try out alternative operating systems without installing them",
+                    "snippet": "The impending end of Windows 10 support (October 2025) means that many users may have to switch to a different OS. Alternative operating systems such as...",
+                    "publisher": "Notebookcheck.net",
+                    "timestamp": "1738559700000",
+                    "newsUrl": "https://www.notebookcheck.net/Windows-10-support-ending-in-2025-Try-out-alternative-operating-systems-without-installing-them.955857.0.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNXZUWEZwY1hscFgzRkNaVVI1VFJEZ0F4aUFCU2dLTWdrQklJeWxHdW9kWmdJ=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNXZUWEZwY1hscFgzRkNaVVI1VFJEZ0F4aUFCU2dLTWdrQklJeWxHdW9kWmdJ"
+                    }
+                },
+                {
+                    "title": "Windows 11 Market Share Hits Record High As Windows 10 Heads Out To Pasture",
+                    "snippet": "The recent gain represents one of the biggest month-to-month leaps in the past year. It also ascends Windows 11 to its highest market share yet,...",
+                    "publisher": "Hot Hardware",
+                    "timestamp": "1738589220000",
+                    "newsUrl": "https://hothardware.com/news/windows-11-market-share-record-high",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iMkNnNXNha1ppWkMxQ0xVSnhSWEZ0VFJDUUF4akVCU2dLTWdzQkFJS09RZVFscFdvdVpB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iMkNnNXNha1ppWkMxQ0xVSnhSWEZ0VFJDUUF4akVCU2dLTWdzQkFJS09RZVFscFdvdVpB"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "iPhone 17 Vs iPhone 17 Pro Max: 3 Expected Differences In Price, Design, Camera, And More",
+            "snippet": "The upcoming launch of Apple's iPhone 17 and iPhone 17 Pro Max has been anticipated by consumers. Read on to learn more about three expected differences in...",
+            "publisher": "HerZindagi English",
+            "timestamp": "1738584459000",
+            "newsUrl": "https://www.herzindagi.com/society-culture/iphone-17-vs-iphone-17-pro-max-price-design-camera-feature-differences-article-1016947",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNXlaRWc1VVU4eVRIUm5VVXRJVFJDb0FSaXNBaWdCTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNXlaRWc1VVU4eVRIUm5VVXRJVFJDb0FSaXNBaWdCTWdB"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "Apple iPhone 17 Pro vs iPhone 16 Pro: 5 major changes to expect",
+                    "snippet": "Apple iPhone 17 Pro has surfaced in so many leaks and rumours which have revealed the details of the upcoming iPhone. Here are five big changes likely to...",
+                    "publisher": "Moneycontrol",
+                    "timestamp": "1738570569000",
+                    "newsUrl": "https://www.moneycontrol.com/technology/apple-iphone-17-pro-vs-iphone-16-pro-5-major-changes-to-expect-article-12928677.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHhaamQyVVcxT2JsQnNjRzFuVFJDZkF4ampCU2dLTWdhTmNwUnFNUWc=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHhaamQyVVcxT2JsQnNjRzFuVFJDZkF4ampCU2dLTWdhTmNwUnFNUWc"
+                    }
+                },
+                {
+                    "title": "iPhone 17 Pro Vs iPhone 16 Pro: Camera, Battery, iOS, Chip, And More",
+                    "snippet": "New design and chip, improved camera and better AI capability may make the iPhone 17 Pro one of the most anticipated iPhone launches yet.",
+                    "publisher": "NDTV Profit",
+                    "timestamp": "1738561439000",
+                    "newsUrl": "https://www.ndtvprofit.com/technology/iphone-17-pro-vs-iphone-16-pro-camera-battery-ios-chip-ai-and-more",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNU5NMXB4WlRReE9FeHlURGQzVFJDZkF4ampCU2dLTWdhVk1vNHNIUW8=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNU5NMXB4WlRReE9FeHlURGQzVFJDZkF4ampCU2dLTWdhVk1vNHNIUW8"
+                    }
+                },
+                {
+                    "title": "iPhone 17 series: Expected price in India, camera upgrades, design changes and more",
+                    "snippet": "The standard iPhone 17 is expected to be priced at around Rs 79,900. The iPhone 17 Air will likely be priced at Rs 89,900. The iPhone 17 Pro is expected to...",
+                    "publisher": "Digit",
+                    "timestamp": "1738564500000",
+                    "newsUrl": "https://www.digit.in/news/mobile-phones/iphone-17-series-expected-price-in-india-camera-upgrades-design-changes-and-more.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXBTMVl3TTBvMmJDMW9jVnA0VFJDZkF4ampCU2dLTWdZZFpJS3VMUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXBTMVl3TTBvMmJDMW9jVnA0VFJDZkF4ampCU2dLTWdZZFpJS3VMUVk"
+                    }
+                },
+                {
+                    "title": "Apple Loop: iPhone 17 Design, Tiktok Still Missing, iPhone SE Release Dates",
+                    "snippet": "This week's Apple headlines; iPhone 17 design leaks, iPhone SE release dates, new iOS 18 features, Starlink comes to iPhone, Tiktok still missing,...",
+                    "publisher": "Forbes",
+                    "timestamp": "1738360660000",
+                    "newsUrl": "https://www.forbes.com/sites/ewanspence/2025/01/31/apple-news-headlines-iphone-17-iphone-se-ios-18-tiktok-starlink/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXpjbEZoTVdKWWVHWmxaR2hrVFJERUF4aW1CU2dLTWdhTmFKQ21MZ2M=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXpjbEZoTVdKWWVHWmxaR2hrVFJERUF4aW1CU2dLTWdhTmFKQ21MZ2M"
+                    }
+                },
+                {
+                    "title": "Know the Differences Between the iPhone 17 and iPhone 17 Air",
+                    "snippet": "The iPhone 17 series will be released in September 2025. The two major variants of the series will be the standard iPhone 17 and the iPhone 17 Air.",
+                    "publisher": "ThePhilox",
+                    "timestamp": "1738531956000",
+                    "newsUrl": "https://thephilox.com/know-the-differences-between-the-iphone-17-and-iphone-17-air/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNDVNVTVNZUVSRWJUTjVaRk5XVFJDZkF4ampCU2dLTWdZQkk0clBKUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNDVNVTVNZUVSRWJUTjVaRk5XVFJDZkF4ampCU2dLTWdZQkk0clBKUVk"
+                    }
+                },
+                {
+                    "title": "iPhone 17 Pro Max, 17 Pro: 6 New Features To Expect Over iPhone 16 Pro Models",
+                    "snippet": "Here are six exciting features rumoured for the iPhone 17 Pro and 17 Pro Max, surpassing the iPhone 16 Pro models.",
+                    "publisher": "Times Now",
+                    "timestamp": "1738561688000",
+                    "newsUrl": "https://www.timesnownews.com/web-stories/technology/iphone-17-pro-max-17-pro-6-new-features-to-expect-over-iphone-16-pro-models/photostory/151155193.cms",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHRXVkJmUzFoblIySk5XVlJoVFJDQUJSamdBeWdLTWdZQlFvSXpxUWs=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHRXVkJmUzFoblIySk5XVlJoVFJDQUJSamdBeWdLTWdZQlFvSXpxUWs"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Microsoft Paint Gets a New Copilot Menu, Windows Search Expanded to Support OneDrive Files",
+            "snippet": "Microsoft released a new Windows 11 Insider Preview build on Friday that makes changes to the Paint app and improves the Windows Search functionality.",
+            "publisher": "Gadgets 360",
+            "timestamp": "1738586194000",
+            "newsUrl": "https://www.gadgets360.com/ai/news/microsoft-paint-copilot-menu-windows-search-onedrive-files-support-preview-7624218",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTNWalZqVm1wVWQxVk5VRFJQVFJDZkF4ampCU2dLTWdZcGxZak5NUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTNWalZqVm1wVWQxVk5VRFJQVFJDZkF4ampCU2dLTWdZcGxZak5NUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "For Noise’s premiumisation journey, the ColorFit Pro 6 Max is a crucial chapter",
+            "snippet": "The Noise ColorFit Pro 6 Max smartwatch's refined design gets attention, and that is its biggest win. There are some fixable rough edges with software,...",
+            "publisher": "Hindustan Times",
+            "timestamp": "1738561969000",
+            "newsUrl": "https://www.hindustantimes.com/business/for-noise-s-premiumisation-journey-the-colorfit-pro-6-max-is-a-crucial-chapter-101738561970302.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUZiMkpaY1dKa1RWOW1WMEpzVFJDZkF4ampCU2dLTWdZaFJZek1KUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUZiMkpaY1dKa1RWOW1WMEpzVFJDZkF4ampCU2dLTWdZaFJZek1KUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Amazon Mega Smartwatch Days: Up to 80% off on best selling smartwatches from Amazfit, Redmi and more | Mint",
+            "snippet": "Don't miss out on the Amazon Mega Smartwatch Days sale! Get up to 80% off on top-selling smartwatches from leading brands like Amazfit, Redmi, and more.",
+            "publisher": "Mint",
+            "timestamp": "1738580885000",
+            "newsUrl": "https://www.livemint.com/technology/gadgets/amazon-mega-smartwatch-days-up-to-80-off-on-best-selling-smartwatches-from-amazfit-redmi-and-more-11738567084687.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUhOblF5VURsMWRrc3dVMk5tVFJDZkF4ampCU2dLTWdhZGNaTHJzQWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUhOblF5VURsMWRrc3dVMk5tVFJDZkF4ampCU2dLTWdhZGNaTHJzQWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Why India is attracting rare Salvador Dali art | Mint",
+            "snippet": "A comprehensive showcase of the artist's rare etchings, prints, watercolours, tapestries comes to India for the first time.",
+            "publisher": "Mint",
+            "timestamp": "1738580418000",
+            "newsUrl": "https://www.livemint.com/mint-lounge/art-and-culture/salvador-dali-india-exhibition-etchings-print-11738567972803.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTZMVkEzUkVzeVVVVlhjVXBHVFJDZkF4amlCU2dLTWdZUmRKVE1yUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTZMVkEzUkVzeVVVVlhjVXBHVFJDZkF4amlCU2dLTWdZUmRKVE1yUWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Galaxy A56, Vivo V50 To iQOO Neo 10R, Top Smartphones To Watch Out For In Feb. 2025",
+            "snippet": "With multiple launches to look forward to, February is going to be an exciting month for smartphone lovers. Take a brief look at Samsung Galaxy A56,...",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738589798000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/samsung-galaxy-a56-vivo-v50-to-iqoo-neo-10r-top-smartphones-to-watch-out-for-in-feb-2025?src=stry_bell",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNWlOalJ5UXpaMVgyUTNTMXB4VFJDZkF4ampCU2dLTWdOSmtBRQ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNWlOalJ5UXpaMVgyUTNTMXB4VFJDZkF4ampCU2dLTWdOSmtBRQ"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "iQOO Neo 10R to have India-exclusive Raging Blue colour: Design details inside",
+                    "snippet": "iQOO is set to launch a new mid-range smartphone - the iQOO Neo 10R in India soon and we have some interesting design details.",
+                    "publisher": "Digit",
+                    "timestamp": "1738326180000",
+                    "newsUrl": "https://www.digit.in/news/mobile-phones/iqoo-neo-10r-to-have-india-exclusive-raging-blue-colour-design-details-inside.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWhWWE0yYzFobFNtZEtVMncxVFJDZkF4ampCU2dLTWdZTndJb3B3Z1E=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWhWWE0yYzFobFNtZEtVMncxVFJDZkF4ampCU2dLTWdZTndJb3B3Z1E"
+                    }
+                },
+                {
+                    "title": "February 2025: Top smartphones launching in India this month",
+                    "snippet": "This month, iQOO, Honor, Vivo, Tecno Mobile and others are expected to bring all-new phones in a wide range of price bands worldwide and in India in...",
+                    "publisher": "Deccan Herald",
+                    "timestamp": "1738582099000",
+                    "newsUrl": "https://www.deccanherald.com/technology/gadgets/february-2025-top-smartphones-launching-in-india-this-month-3386639",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUVNekpEVXpSQmNGaFplRkpyVFJDZkF4ampCU2dLTWdhaGc1Q01zUVk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUVNekpEVXpSQmNGaFplRkpyVFJDZkF4ampCU2dLTWdhaGc1Q01zUVk"
+                    }
+                },
+                {
+                    "title": "February 2025 smartphone launches: Vivo V50, iQOO Neo 10R, and more devices to watch out for",
+                    "snippet": "Smartphone markers, in January 2025, already presented us with a slew of launches, including the OnePlus 13 at the start of the month, followed by Samsung's...",
+                    "publisher": "Hindustan Times",
+                    "timestamp": "1738583341000",
+                    "newsUrl": "https://www.hindustantimes.com/technology/february-2025-smartphone-launches-vivo-v50-iqoo-neo-10r-and-more-devices-to-watch-out-for-101738582602448.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNHllV1ZDVkdOUFkxUkdjbFZ5VFJDMUFoaWxCQ2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNHllV1ZDVkdOUFkxUkdjbFZ5VFJDMUFoaWxCQ2dLTWdB"
+                    }
+                },
+                {
+                    "title": "iQOO Neo 10R Confirmed to Launch in India in a Raging Blue Shade",
+                    "snippet": "iQOO Neo 10R will be unveiled in India soon, but an exact launch date is yet to be confirmed. Ahead of it, iQOO has revealed the the rear panel design of...",
+                    "publisher": "Gadgets 360",
+                    "timestamp": "1738577165000",
+                    "newsUrl": "https://www.gadgets360.com/mobiles/news/iqoo-neo-10r-colour-option-india-launch-expected-features-7622992",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXlXRUV5ZG10MFgwZDNha3QxVFJDZkF4ampCU2dLTWdhZEZJQ3ZFUW8=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXlXRUV5ZG10MFgwZDNha3QxVFJDZkF4ampCU2dLTWdhZEZJQ3ZFUW8"
+                    }
+                },
+                {
+                    "title": "From vivo V50 to iQOO Neo 10R: 5 mid-range phones launching in February",
+                    "snippet": "The next wave of mid-range smartphones is just around the corner.",
+                    "publisher": "The Indian Express",
+                    "timestamp": "1738551900000",
+                    "newsUrl": "https://indianexpress.com/article/technology/mobile-tabs/vivo-v50-to-iqoo-neo-10r-5-mid-range-phones-launching-in-february-9813435/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXVOMmhLTTFnM2VrUnNObTU1VFJEb0FSaWVBeWdLTWdhaGM1S01yUWM=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXVOMmhLTTFnM2VrUnNObTU1VFJEb0FSaWVBeWdLTWdhaGM1S01yUWM"
+                    }
+                },
+                {
+                    "title": "iQOO officially showcases Neo 10R - GSMArena.com news",
+                    "snippet": "The phone looks like an iQOO Z9 Turbo. The brand iQOO is preparing to launch a new phone in India called Neo 10R. We knew it's coming soon, and today we...",
+                    "publisher": "GSMArena.com",
+                    "timestamp": "1738576322000",
+                    "newsUrl": "https://www.gsmarena.com/iqoo_officially_showcases_neo_10r-news-66353.php",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNW1iM05IYVU5Q2MyVTJTR2w2VFJEckFoak1CaWdLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNW1iM05IYVU5Q2MyVTJTR2w2VFJEckFoak1CaWdLTWdB"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Gurman: Apple to launch an event-planning service called Confetti - GSMArena.com news",
+            "snippet": "Apple will introduce a new iCloud service designed for managing events and invitations. This service will differ from Calendar and is set to launch “this...",
+            "publisher": "GSMArena.com",
+            "timestamp": "1738563602000",
+            "newsUrl": "https://www.gsmarena.com/gurman_apple_to_launch_an_eventplanning_service_called_confetti-news-66350.php",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUtTR2RQVUROMFRFaFBSazAzVFJEckFoak1CaWdLTWdZWkpvQU1uZ00=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUtTR2RQVUROMFRFaFBSazAzVFJEckFoak1CaWdLTWdZWkpvQU1uZ00"
+            },
+            "hasSubnews": true,
+            "subnews": [
+                {
+                    "title": "Apple’s new ‘Confetti’ feature may change how you send event invites",
+                    "snippet": "Apple is working on a new event-invite service called “Confetti,” which could be available as early as this week. This feature is expected to be part of the...",
+                    "publisher": "The Financial Express",
+                    "timestamp": "1738565185000",
+                    "newsUrl": "https://www.financialexpress.com/life/technology-apples-new-confetti-feature-may-change-how-you-send-event-invites-3736116/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWpYMWhvWWpsb1dtUmxheTFMVFJDZkF4ampCU2dLTWdZSko0cEpxZ1U=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWpYMWhvWWpsb1dtUmxheTFMVFJDZkF4ampCU2dLTWdZSko0cEpxZ1U"
+                    }
+                },
+                {
+                    "title": "Apple may launch new invite tool Confetti this week: All the details",
+                    "snippet": "According to Bloomberg's Mark Gurman, Apple could launch Confetti as early as this week.",
+                    "publisher": "Moneycontrol",
+                    "timestamp": "1738561711000",
+                    "newsUrl": "https://www.moneycontrol.com/technology/apple-may-launch-new-invite-tool-confetti-this-week-all-the-details-article-12928250.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNTVaR0V3TmxKRVJ6RktSelJoVFJDZkF4ampCU2dLTWdPWkpSQQ=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNTVaR0V3TmxKRVJ6RktSelJoVFJDZkF4ampCU2dLTWdPWkpSQQ"
+                    }
+                },
+                {
+                    "title": "Your iPhone Is About To Get An Unexpected New Feature, Report Says",
+                    "snippet": "Apple is about to release a surprise new feature for the iPhone (and likely the iPad and Mac) to help you invite people to parties and other events,...",
+                    "publisher": "Forbes",
+                    "timestamp": "1738520047000",
+                    "newsUrl": "https://www.forbes.com/sites/davidphelan/2025/02/02/your-iphone-is-about-to-get-an-unexpected-all-new-feature-report-says/",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVRkREI2TFhGaFprcGhZamRJVFJERUF4aW1CU2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVRkREI2TFhGaFprcGhZamRJVFJERUF4aW1CU2dLTWdB"
+                    }
+                },
+                {
+                    "title": "Apple to launch iCloud-based service for sending event invitations: Report",
+                    "snippet": "Apple iCloud events invite service: Named \"Confetti\" internally, the new Apple iCloud-based service will reportedly allow users to send invites for parties...",
+                    "publisher": "Business Standard",
+                    "timestamp": "1738567414000",
+                    "newsUrl": "https://www.business-standard.com/technology/tech-news/apple-to-launch-icloud-based-service-for-sending-event-invitations-report-125020300475_1.html",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVFOMGRoY0RGbmRDMVFjMFYzVFJDZkF4amlCU2dLTWdZbFZZTHVKUUk=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVFOMGRoY0RGbmRDMVFjMFYzVFJDZkF4amlCU2dLTWdZbFZZTHVKUUk"
+                    }
+                },
+                {
+                    "title": "Apple Will Reportedly Launch New iCloud-Based ‘Confetti’ Service for Event Invites This Week",
+                    "snippet": "Apple may roll out a dedicated service for events and invites as soon as this week, according to a recent newsletter published by Bloomberg's Mark Gurman.",
+                    "publisher": "Gadgets 360",
+                    "timestamp": "1738558315000",
+                    "newsUrl": "https://www.gadgets360.com/apps/news/icloud-confetti-service-event-invites-launch-apple-power-on-newsletter-mark-gurman-7621073",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVFVVEphVVRCblEwVnRNMTlKVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVFVVEphVVRCblEwVnRNMTlKVFJDZkF4ampCU2dLTWdB"
+                    }
+                },
+                {
+                    "title": "Apple is readying 'Confetti,' its new event scheduling app",
+                    "snippet": "Apple is preparing to test a new app for event and meeting invitations, internally dubbed \"Confetti.\" The tech giant plans to roll out this internal trial...",
+                    "publisher": "NewsBytes",
+                    "timestamp": "1738555753000",
+                    "newsUrl": "https://www.newsbytesapp.com/news/science/apple-set-to-test-confetti-its-new-event-scheduling-app/story",
+                    "images": {
+                        "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUlNSGx6VEVSb1dWWnNabU5pVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                        "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUlNSGx6VEVSb1dWWnNabU5pVFJDZkF4ampCU2dLTWdB"
+                    }
+                }
+            ]
+        },
+        {
+            "title": "Vivo V50 smartphone with Zeiss camera launching soon: Expected specs, more",
+            "snippet": "Vivo V50 is expected to be powered by the Qualcomm Snapdragon 7 Gen 3 chip and could feature a 6000mAh battery.",
+            "publisher": "Business Standard",
+            "timestamp": "1738573126000",
+            "newsUrl": "https://www.business-standard.com/technology/tech-news/vivo-v50-smartphone-with-zeiss-camera-launching-soon-expected-specs-more-125020300609_1.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdkelk0TW5BMlZHSlJZV1JSVFJDZkF4ampCU2dLTWdhWlU0eXJwUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdkelk0TW5BMlZHSlJZV1JSVFJDZkF4ampCU2dLTWdhWlU0eXJwUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Offers Galaxy S25 Ultra At A Discount Of Up To $1020, Making It 3x Cheaper Than Apple's iPhone 16 Pro: Here's How You Can Get It For Almost Free",
+            "snippet": "Samsung's Galaxy S25 Ultra is undercutting Apple's iPhone 16 Pro at launch, with trade-in deals dropping its price to as low as $399.",
+            "publisher": "Benzinga India",
+            "timestamp": "1738582407000",
+            "newsUrl": "https://in.benzinga.com/tech/25/02/43429568/samsung-offers-galaxy-s25-ultra-at-a-discount-of-up-to-1020-making-it-3x-cheaper-than-apples-iphone-16-pro-heres-how-you-can-get-it-for-almost-free",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVpkVzVRZG5BNFJITnRTMEpPVFJERUF4aW1CU2dLTWdZVmtJUXd2UVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVpkVzVRZG5BNFJITnRTMEpPVFJERUF4aW1CU2dLTWdZVmtJUXd2UVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "How To Clear iPhone Cache: Check Out This Easy Solution, Banish The Slowdown",
+            "snippet": "If you notice your iPhone is laggy, clearing the cache might do the trick. Temporary files kept by apps for caching (saving for later) take up space and...",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738579322000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/how-to-clear-iphone-cache-check-out-this-easy-solution-banish-the-slowdown-iphone-16-iphone-15-iphone-14-on-ios-18",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNDVRM00wTUVoNWNVNXlWMGcxVFJDZkF4ampCU2dLTWdPTlFRdw=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNDVRM00wTUVoNWNVNXlWMGcxVFJDZkF4ampCU2dLTWdPTlFRdw"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "How small credit card disputes with banks can snowball into major mistrust | Mint",
+            "snippet": "The RBI ombudsman is the last resort for customers if banks fail to address their grievances.",
+            "publisher": "Mint",
+            "timestamp": "1738564267000",
+            "newsUrl": "https://www.livemint.com/money/personal-finance/credit-card-disputes-misselling-annual-fee-dues-complaints-rbi-ombudsman-banking-issues-customer-care-service-11738551390254.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNHdWa2hsVERZNU5FZDZlVFpQVFJDZkF4ampCU2dLTWdNQkJBbw=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNHdWa2hsVERZNU5FZDZlVFpQVFJDZkF4ampCU2dLTWdNQkJBbw"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Garena Free Fire MAX Redeem code for February 3: How to avail free rewards?",
+            "snippet": "Free Fire Max code for February 3 will let you redeem in-game items like weapons, characters, gun skins, pets, and many freebies for free.",
+            "publisher": "India TV News",
+            "timestamp": "1738571099000",
+            "newsUrl": "https://www.indiatvnews.com/technology/news/garena-free-fire-max-redeem-code-for-february-3-how-to-avail-free-rewards-2025-02-03-974412",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNWpUMnhJTkVGcVVuUjBSMGxEVFJDZkF4ampCU2dLTWdtaEE0U09rU3B6MHdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNWpUMnhJTkVGcVVuUjBSMGxEVFJDZkF4ampCU2dLTWdtaEE0U09rU3B6MHdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Nothing Phone 3a coming soon: Launch date, expected specifications and everything we know",
+            "snippet": "Leaks and rumours surrounding the Phone 3a series suggest some exciting upgrades.",
+            "publisher": "Hindustan Times",
+            "timestamp": "1738560035000",
+            "newsUrl": "https://www.hindustantimes.com/technology/nothing-phone-3a-coming-soon-launch-date-expected-specifications-and-everything-we-know-101738559641964.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUhiRkZVWTFwaFdWZGZia1pTVFJDZkF4ampCU2dLTWdZQmtvTG1SQVE=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUhiRkZVWTFwaFdWZGZia1pTVFJDZkF4ampCU2dLTWdZQmtvTG1SQVE"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Oppo Reno 15 Pro 5G: A Flagship Smartphone with a 400MP Camera and 165W Fast Charging",
+            "snippet": "Oppo is gearing up to launch its latest premium smartphone, the Oppo Reno 15 Pro 5G, a device designed to push the boundaries of mobile photography and...",
+            "publisher": "Udaipur Kiran",
+            "timestamp": "1738471061000",
+            "newsUrl": "https://udaipurkiran.com/oppo-reno-15-pro-5g-a-flagship-smartphone-with-a-400mp-camera-and-165w-fast-charging/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNW1WRmx0YUZaRVZYWnZSekExVFJDZkF4amlCU2dLTWdhUklJaXBwUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNW1WRmx0YUZaRVZYWnZSekExVFJDZkF4amlCU2dLTWdhUklJaXBwUVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Asus Zenfone 12 Ultra Specifications, Images Leaked; Said to Get Snapdragon 8 Elite SoC, 5,500mAh Battery",
+            "snippet": "Asus Zenfone 12 Ultra is set to launch on February 6. The Taiwanese brand has already teased the handset giving us a glimpse of the design.",
+            "publisher": "Gadgets 360",
+            "timestamp": "1738577746000",
+            "newsUrl": "https://www.gadgets360.com/mobiles/news/asus-zenfone-12-ultra-specifications-images-renders-leak-design-7623090",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNUZSbVJsT1hjeWFWVldZMVJXVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNUZSbVJsT1hjeWFWVldZMVJXVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Five New Apple Products Could Launch Next Month: iPhone SE 4, iPad 11, New iPad Air, and More",
+            "snippet": "Apple could launch five new products next month, including the iPhone SE 4, iPad 11, iPad Air M3, a smart dispaly, and new Air Tags.",
+            "publisher": "Gizbot",
+            "timestamp": "1738569743000",
+            "newsUrl": "https://www.gizbot.com/features/five-new-apple-products-could-launch-next-month-iphone-se-4-ipad-11-new-ipad-air-and-more-108865.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVRlRmRQT0hKa01FOTVSa2x6VFJEU0FoallCQ2dLTWdhcE5Zck5uUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVRlRmRQT0hKa01FOTVSa2x6VFJEU0FoallCQ2dLTWdhcE5Zck5uUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "WhatsApp's Top 6 Features of 2025: AI Chat, Custom Stickers, Dial Pad and More",
+            "snippet": "WhatsApp rolled out several exciting features in January 2025, enhancing functionality for Android, iOS, and desktop users. Some of these updates were...",
+            "publisher": "The Hans India",
+            "timestamp": "1738558891000",
+            "newsUrl": "https://www.thehansindia.com/technology/tech-news/whatsapps-top-6-features-of-2025-ai-chat-custom-stickers-dial-pad-and-more-941840",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTVhRUZRTkRaYWVXbEZNM0Y2VFJDdEF4akxCU2dLTWdZaFZZenNLUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTVhRUZRTkRaYWVXbEZNM0Y2VFJDdEF4akxCU2dLTWdZaFZZenNLUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Cristiano Ronaldo-Backed UFL, Rival To FIFA Games, Plans To Release PC Version This Summer",
+            "snippet": "Cristiano Ronaldo-backed UFL plans to launch a PC edition in summer and a mobile version next year, the CEO behind the studio that made the football...",
+            "publisher": "News18",
+            "timestamp": "1738588452000",
+            "newsUrl": "https://www.news18.com/football/cristiano-ronaldo-backed-ufl-rival-to-fifa-games-plans-to-release-pc-version-this-summer-9213154.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdTVFV0WTJOaFNURkpSems1VFJDZkF4ampCU2dLTWdZUmNwWm9KZ2c=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdTVFV0WTJOaFNURkpSems1VFJDZkF4ampCU2dLTWdZUmNwWm9KZ2c"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung G Fold Smartphone: 3-Stage Foldable Mobile Marvel, Rival To Huawei Mate XT, Likely In-The-Works",
+            "snippet": "Samsung is leading the charge in terms of foldable smartphones globally. In fact, its foldables are considered best. While Chinese smartphone manufacturers...",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738590682000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/samsung-g-fold-smartphone-3-stage-foldable-mobile-marvel-rival-to-huawei-mate-xt-likely-in-the-works",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNWZiVmxwTW01VVZHNUNWVEZsVFJDMEFSaTBBU2dLTWdZUmtwQUpOUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNWZiVmxwTW01VVZHNUNWVEZsVFJDMEFSaTBBU2dLTWdZUmtwQUpOUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Monday Motivation: A productive morning starts the night before | Mint",
+            "snippet": "Anchit Kapil, founder of streetwear brand Crepdog Crew, discusses his productivity practices and the mentors he admires.",
+            "publisher": "Mint",
+            "timestamp": "1738553410000",
+            "newsUrl": "https://www.livemint.com/mint-lounge/business-of-life/anchit-kapil-crepdog-crew-sneakers-streetwear-interview-11738551991366.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNXRORU5tYzB0dGFuSkxRVUZOVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNXRORU5tYzB0dGFuSkxRVUZOVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Google Pixel 9a spotted on another certification website, hints at specifications ahead of launch",
+            "snippet": "Google's next budget smartphone, the Pixel 9a, is tipped to launch in the first quarter of 2025. Now, the upcoming smartphone has appeared on the EMVCo...",
+            "publisher": "Moneycontrol",
+            "timestamp": "1738586536000",
+            "newsUrl": "https://www.moneycontrol.com/technology/google-pixel-9a-spotted-on-another-certification-website-hints-at-specifications-ahead-of-launch-article-12928176.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTBZM1kzWTJOTFVHRkNjbXhNVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTBZM1kzWTJOTFVHRkNjbXhNVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Global smartphone market soared 7% in 2024 as vendors prepare for tricky 2025",
+            "snippet": "According to the latest Canalys research, the global smartphone market grew 7% in 2024, reaching 1.22 billion units, marking a rebound following two...",
+            "publisher": "Canalys",
+            "timestamp": "1738590846000",
+            "newsUrl": "https://canalys.com/newsroom/worldwide-smartphone-market-2024",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxNeTFxTkRKSGRFWlNNemxNVFJDb0FSaXNBaWdCTWdZRk1ZeWtNZ1k=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxNeTFxTkRKSGRFWlNNemxNVFJDb0FSaXNBaWdCTWdZRk1ZeWtNZ1k"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung begins early deliveries of Galaxy S25 lineup",
+            "snippet": "Samsung has begun early deliveries to those who pre-ordered the Galaxy S25 series. Samsung's flagship smartphone lineup will become generally available for...",
+            "publisher": "CNBCTV18",
+            "timestamp": "1738592182000",
+            "newsUrl": "https://www.cnbctv18.com/technology/samsung-begins-early-deliveries-of-galaxy-s25-lineup-19551956.htm",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXRRMWN6U1ZoNFNGQjZTblJqVFJEZ0F4aUFCU2dLTWdhQkk0YXJPUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXRRMWN6U1ZoNFNGQjZTblJqVFJEZ0F4aUFCU2dLTWdhQkk0YXJPUVU"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "How to create an ADHD accessible workspace | Mint",
+            "snippet": "As awareness of ADHD among adults increases, diagnosed individuals need greater understanding and support from those around them.",
+            "publisher": "Mint",
+            "timestamp": "1738549807000",
+            "newsUrl": "https://www.livemint.com/mint-lounge/ideas/adhd-accessible-inclusive-workspace-neurodiversity-wellbeing-11738508907003.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVBablJyUVc1clRHdDBZVE5LVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVBablJyUVc1clRHdDBZVE5LVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "YouTube expands two-way interaction spaces, Communities feature, for channels",
+            "snippet": "SOCIAL News: YouTube is expanding its Communities feature to enable deeper interactions between creators and viewers on mobile-only channels.",
+            "publisher": "The Times of India",
+            "timestamp": "1738591440000",
+            "newsUrl": "https://timesofindia.indiatimes.com/technology/social/youtube-expands-two-way-interaction-spaces-communities-feature-for-channels/articleshow/117890421.cms",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVhhbXBMVUhJeGEyNDBUM28wVFJDZkF4ampCU2dLTWdhZGhaVEtNUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVhhbXBMVUhJeGEyNDBUM28wVFJDZkF4ampCU2dLTWdhZGhaVEtNUWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Big move by Mukesh Ambani, massive discount on iPhone 14, available at just Rs..., you can buy from...",
+            "snippet": "Reliance Digital, the e-commerce platform owned by billionaire Mukesh Ambani, is offering a healthy discount on the Apple iPhone 14.",
+            "publisher": "India.com",
+            "timestamp": "1738496211000",
+            "newsUrl": "https://www.india.com/business/big-move-by-mukesh-ambani-massive-discount-on-apple-iphone-14-available-at-just-rs-48000-you-can-buy-from-reliance-digital-iphone-16-7585889/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVBUbE56Y0RSQmFWRm1WbFZ3VFJERUF4aW1CU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVBUbE56Y0RSQmFWRm1WbFZ3VFJERUF4aW1CU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Boult Drift Max Smartwatch With Bluetooth Calling Support, IP68 Rating Launched in India",
+            "snippet": "Boult Drift Max smartwatch has been launched in India. The budget wearable offers Bluetooth calling functionality that lets users make and receive voice...",
+            "publisher": "Gadgets 360",
+            "timestamp": "1738586315000",
+            "newsUrl": "https://www.gadgets360.com/wearables/news/boult-drift-max-price-in-india-launch-specifications-features-7624290",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVNUbEZKTlUxcVJHWXRialpIVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVNUbEZKTlUxcVJHWXRialpIVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Apple iPad Price On Amazon Slashed By 27%; Check Amount Now",
+            "snippet": "Apple iPad (10th Generation) has taken a giant price cut! Back when this was first launched, the iPad was priced at Rs. 54900 while now, it is available for...",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738587481000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/apple-ipad-price-cut-amazon-by-27-to-rs-39999",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNUZiRTh6Y2pNMlRHaGpPV1oxVFJDYkF4amNCU2dLTWdtVmNvNFN2YVdTU3dJ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNUZiRTh6Y2pNMlRHaGpPV1oxVFJDYkF4amNCU2dLTWdtVmNvNFN2YVdTU3dJ"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Gmail users beware! AI-powered hacking threatens 250 crore accounts worldwide",
+            "snippet": "As cybercriminals continue to refine their tactics, users need to remain cautious. By being aware of these AI-driven hacks and following these steps to...",
+            "publisher": "India TV News",
+            "timestamp": "1738591939000",
+            "newsUrl": "https://www.indiatvnews.com/technology/news/gmail-users-beware-ai-powered-hacking-threatens-250-crore-accounts-worldwide-2025-02-03-974472",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iJ0NnNU1XRzU0YTNCWU5WTjNXVVJHVFJDZkF4ampCU2dLTWdPbEVRWQ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iJ0NnNU1XRzU0YTNCWU5WTjNXVVJHVFJDZkF4ampCU2dLTWdPbEVRWQ"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Best projector in 2025: Top 10 picks with bright, sharp and stunning visuals for seamless streaming and presentations | Mint",
+            "snippet": "The best projectors in 2025 offer bright, vibrant visuals, smart features, and seamless connectivity. Top brands deliver 4K support, auto keystone...",
+            "publisher": "Mint",
+            "timestamp": "1738584272000",
+            "newsUrl": "https://www.livemint.com/technology/gadgets/best-projector-top-10-picks-with-bright-sharp-and-stunning-visuals-for-seamless-streaming-and-presentations-11738577932986.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNW5NR2QzY1VGdE1XNW5OR3hYVFJDZkF4ampCU2dLTWdrSlVvN0d1dVpyelFF=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNW5NR2QzY1VGdE1XNW5OR3hYVFJDZkF4ampCU2dLTWdrSlVvN0d1dVpyelFF"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "OnePlus Nord 4 5G Six Months Review: a Midrange King",
+            "snippet": "Here's a six months review of the OnePlus Nord 4 5G, and in that time frame the device has not slowed down or showed any signs of struggle.",
+            "publisher": "TelecomTalk",
+            "timestamp": "1738477547000",
+            "newsUrl": "https://telecomtalk.info/oneplus-nord-4-5g-long-term-review/988993/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNU1Zamd3UmxOa1ZXWklOVVJuVFJERUF4aW1CU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNU1Zamd3UmxOa1ZXWklOVVJuVFJERUF4aW1CU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Members app gets updated before One UI 7 update rollout",
+            "snippet": "Before the stable One UI 7 update rollout, Samsung has released a new update for the Samsung Members app, which is compatible....",
+            "publisher": "Sammy Fans",
+            "timestamp": "1738582615000",
+            "newsUrl": "https://www.sammyfans.com/2025/02/03/samsung-members-app-gets-updated-before-one-ui-7-update-rollout/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNDVZMUZ5T0V4RVJtMVZYekoyVFJDa0F4amFCU2dLTWdZbGM0SXgwUUk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNDVZMUZ5T0V4RVJtMVZYekoyVFJDa0F4amFCU2dLTWdZbGM0SXgwUUk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Have Samsung Galaxy S24, S24+, S24 Ultra, A16, A15 to Z Flip 6? Update Now; Check Full List",
+            "snippet": "The update is mainly security-related but also contains important fixes for Samsung Galaxy S24, Galaxy S24+, S24 Ultra, Galaxy A16, A15 to Z Flip 6.",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738564202000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/have-samsung-galaxy-s24-s24-s24-ultra-a16-a15-to-z-flip-6-update-now-check-full-list",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTZORms0TjFGbVYwbFZabFV0VFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTZORms0TjFGbVYwbFZabFV0VFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Google Play repelled millions of malicious apps in 2024",
+            "snippet": "Google took several measures in 2024 to improve the security of the Android and Google Play ecosystem.",
+            "publisher": "Techzine Europe",
+            "timestamp": "1738577547000",
+            "newsUrl": "https://www.techzine.eu/news/security/128344/google-play-repelled-millions-of-malicious-apps-in-2024/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNURhVEEzUjNaaGJtcHZUa2xGVFJERUF4aW1CU2dLTWdhdGtwQ1BPUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNURhVEEzUjNaaGJtcHZUa2xGVFJERUF4aW1CU2dLTWdhdGtwQ1BPUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Oppo Find N5 Confirmed to Come in White Colour Option; to Launch Alongside Watch X2",
+            "snippet": "Oppo Find N5 to come in a white colour option, to launch alongside Watch X2.",
+            "publisher": "Gadgets 360",
+            "timestamp": "1738570779000",
+            "newsUrl": "https://www.gadgets360.com/mobiles/news/oppo-find-n5-watch-x2-colour-variant-zhou-yibao-weibo-7622276",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNXZhR3RSZGpWVFZtZGhVMjFzVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNXZhR3RSZGpWVFZtZGhVMjFzVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "5 reasons the OnePlus 13R is a must buy",
+            "snippet": "The OnePlus 13R is a great buy, and here is why you should consider it.",
+            "publisher": "Android Police",
+            "timestamp": "1738593300000",
+            "newsUrl": "https://www.androidpolice.com/oneplus-13r-reasons-to-buy/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHRjRkF4TlhSSmIyeGpUa3B1VFJDZkF4ampCU2dLTWdZaEpJYU5tUWc=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHRjRkF4TlhSSmIyeGpUa3B1VFJDZkF4ampCU2dLTWdZaEpJYU5tUWc"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "AI to revolutionise fundamental physics and ‘could show how universe will end’",
+            "snippet": "Exclusive: Cern's next director general Mark Thomson says AI is paving the way for huge advances in particle physics.",
+            "publisher": "The Guardian",
+            "timestamp": "1738589167000",
+            "newsUrl": "https://www.theguardian.com/science/2025/feb/03/ai-to-revolutionise-fundamental-physics-and-could-show-how-universe-will-end",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNTFkR1Z3VEhkWlNrTXlWV1pzVFJDWEFoalJBeWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNTFkR1Z3VEhkWlNrTXlWV1pzVFJDWEFoalJBeWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Phil Spencer confirms that there will be a next Xbox console",
+            "snippet": "Xbox has significantly expanded its ecosystem, allowing its games to reach various screens and strongly betting on Cloud Gaming. In a recent interview.",
+            "publisher": "Softonic EN",
+            "timestamp": "1738568707000",
+            "newsUrl": "https://en.softonic.com/articles/phil-spencer-confirms-that-there-will-be-a-next-xbox-console",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNDJiakZ0YWprMFNETlJSMDg1VFJDZkF4ampCU2dLTWdhdEZaVE9GUW8=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNDJiakZ0YWprMFNETlJSMDg1VFJDZkF4ampCU2dLTWdhdEZaVE9GUW8"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Galaxy S25 Phones Get Gemini AI In Hindi For India: How It Works",
+            "snippet": "Samsung and Google have worked together in recent years and the latest deal brings Gemini in Hindi to the new phones.",
+            "publisher": "News18",
+            "timestamp": "1738593035000",
+            "newsUrl": "https://www.news18.com/tech/samsung-galaxy-s25-phones-get-gemini-ai-in-hindi-for-india-how-it-works-9212621.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNU5jRmhUTjBGSGFVZHJialpyVFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNU5jRmhUTjBGSGFVZHJialpyVFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "5 things to keep in mind before buying gaming smartphone",
+            "snippet": "If you are an avid gamer and wants to buy a smartphone which can handle your graphics-intensive games, then here are the 5 things that you need to know...",
+            "publisher": "News9 LIVE",
+            "timestamp": "1738515129000",
+            "newsUrl": "https://www.news9live.com/technology/mobile-phone/5-things-to-keep-in-mind-before-buying-gaming-smartphone-2811967",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUpkbkJuY1ZRNFZXMU5kbXRxVFJDb0FSaXNBaWdCTWdZVms0Wkx1UVE=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUpkbkJuY1ZRNFZXMU5kbXRxVFJDb0FSaXNBaWdCTWdZVms0Wkx1UVE"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "How to start building an art collection | Mint",
+            "snippet": "Indian art is having a moment. The Hurun India Art List of 2024 recorded staggering sales for the top 50 artists from the country at ₹301 crore—a 19%...",
+            "publisher": "Mint",
+            "timestamp": "1738477813000",
+            "newsUrl": "https://www.livemint.com/mint-lounge/art-and-culture/art-collection-indian-market-emerging-indian-artists-11738235680313.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUdUMVF6YTA1RldtTkpPVVEwVFJDZkF4ampCU2dLTWdZNWNJalZOQVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUdUMVF6YTA1RldtTkpPVVEwVFJDZkF4ampCU2dLTWdZNWNJalZOQVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Apple's Big Week: Starlink Partnership, Deepseek Praise, Tariff Concerns, Earnings Beat And Urgent Security Fixes",
+            "snippet": "The past week has been a whirlwind for Apple Inc. AAPL+2.25%. Get Free Report. , with a slew of significant developments. From a surprising partnership with...",
+            "publisher": "Benzinga India",
+            "timestamp": "1738512047000",
+            "newsUrl": "https://in.benzinga.com/25/02/43423468/apples-big-week-starlink-partnership-deepseek-praise-tariff-concerns-earnings-beat-and-urgent-security-fixes",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNDVURWhmU1ZnelZGa3RVVlZ3VFJERUF4aW5CU2dLTWdiQllZNzBMQVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNDVURWhmU1ZnelZGa3RVVlZ3VFJERUF4aW5CU2dLTWdiQllZNzBMQVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Galaxy Z Flip 7 and Fold 7 tipped to cost the same as the predecessors, to be powered by Exynos...",
+            "snippet": "After launching the S25 series globally, Samsung is gearing upto to launch the upcoming Galaxy Z Flip 7 and Fold 7 in the coming months.",
+            "publisher": "Moneycontrol",
+            "timestamp": "1738472522000",
+            "newsUrl": "https://www.moneycontrol.com/technology/samsung-galaxy-z-flip-7-and-fold-7-tipped-to-cost-the-same-as-the-predecessors-to-be-powered-by-exynos-2500-soc-article-12927376.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXNiMDR0TTJjM2N6QldVVEkxVFJDZkF4ampCU2dLTWdhSlFZd0Zvd2s=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXNiMDR0TTJjM2N6QldVVEkxVFJDZkF4ampCU2dLTWdhSlFZd0Zvd2s"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Amazon is offering all Apple products at slashed prices: Get up to 45% off on Apple iPad, MacBook, Apple Watch, and more",
+            "snippet": "If you are an Apple fan, then, you can avail up to 45% off on your favourite Apple products like iPad, MacBook, Apple Watch and more.",
+            "publisher": "Hindustan Times",
+            "timestamp": "1738575420000",
+            "newsUrl": "https://www.hindustantimes.com/technology/amazon-is-offering-all-apple-products-at-slashed-prices-get-up-to-45-off-on-apple-ipad-macbook-apple-watch-and-more-101738317551954.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNTZTM1YyVkVsbGVUaEtSVlo0VFJDZkF4ampCU2dLTWdhSllvcElxUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNTZTM1YyVkVsbGVUaEtSVlo0VFJDZkF4ampCU2dLTWdhSllvcElxUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "iPhone 17 Launch Looming, But Is Foldable iPhone Coming Soon Too?",
+            "snippet": "iPhone 17 launch is looming, but stealing a lot of the thunder away are various rumors about a foldable iPhone. While camera, battery, chip, iOS and other...",
+            "publisher": "NDTV Profit",
+            "timestamp": "1738565062000",
+            "newsUrl": "https://www.ndtvprofit.com/technology/iphone-17-launch-looming-but-is-foldable-iphone-coming-in-2025",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iL0NnNDBlWFZEYVdaNlEyVm1OMnh1VFJDZkF4ampCU2dLTWdrRmNJd0h0bVltREFJ=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iL0NnNDBlWFZEYVdaNlEyVm1OMnh1VFJDZkF4ampCU2dLTWdrRmNJd0h0bVltREFJ"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Best tablet brands in 2025: Top 10 picks from Apple, Samsung, and more with latest features | Mint",
+            "snippet": "Find the best tablet brands in 2025, featuring top picks from Apple, Samsung, and more. These tablets offer cutting-edge features like powerful processors,...",
+            "publisher": "Mint",
+            "timestamp": "1738568293000",
+            "newsUrl": "https://www.livemint.com/technology/gadgets/best-tablet-brands-in-2025-top-10-picks-from-apple-samsung-and-more-with-latest-features-11738562601411.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNVFiMWhUTnpaWmNVSlJOVTlVVFJDZkF4amlCU2dLTWdhcGdvNU9zUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNVFiMWhUTnpaWmNVSlJOVTlVVFJDZkF4amlCU2dLTWdhcGdvNU9zUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Poco F7 Global Variant Reportedly Spotted on EEC Certification Site, Expected to Launch Soon",
+            "snippet": "The Poco F7 with the model number 25053PC47G was spotted on the European Economic Community (EEC) database. It appears with the notification number...",
+            "publisher": "Gadgets 360",
+            "timestamp": "1738561762000",
+            "newsUrl": "https://www.gadgets360.com/mobiles/news/poco-f7-global-variant-eec-listing-report-features-expected-launch-7621526",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUxOa3B1U1hselYwWXhjSGg2VFJDZkF4ampCU2dLTWdZWlFvcFBxUWM=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUxOa3B1U1hselYwWXhjSGg2VFJDZkF4ampCU2dLTWdZWlFvcFBxUWM"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "MANLI RTX 5080 Gallardo \"Drag Reduction System\" and voice controlled RGB tested",
+            "snippet": "We rarely see MANLI products in reviews, mainly because the company is smaller than its competitors and doesn't have the same reach or sampling capability.",
+            "publisher": "VideoCardz.com",
+            "timestamp": "1738572480000",
+            "newsUrl": "https://videocardz.com/newz/manli-rtx-5080-gallardo-drag-reduction-system-and-voice-controlled-rgb-tested",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNVlOUzFuU0RaMmNrbHlhRE13VFJDUEF4aUFCaWdLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNVlOUzFuU0RaMmNrbHlhRE13VFJDUEF4aUFCaWdLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "OpenAI Operator AI agent will be open to more ChatGPT users in a few months",
+            "snippet": "OpenAI's recently launched AI agent, Operator, will be available on ChatGPT in the next few months, but initially it may only be accessible by the Plus...",
+            "publisher": "India Today",
+            "timestamp": "1738567011000",
+            "newsUrl": "https://www.indiatoday.in/technology/news/story/openai-operator-ai-agent-will-be-open-to-more-chatgpt-users-in-a-few-months-2673873-2025-02-03",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNHdUVWhSUjB3M1kwWlhNbkZoVFJDZkF4ampCU2dLTWdZTlJKNlFJUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNHdUVWhSUjB3M1kwWlhNbkZoVFJDZkF4ampCU2dLTWdZTlJKNlFJUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Gadgets Weekly: Lava Yuva Smart phone and more",
+            "snippet": "Technology companies Lava International Ltd, Xiaomi, Samsung, Blaupunkt and others launched AI-powered smart ACs, power banks, home theatre speakers,...",
+            "publisher": "Deccan Herald",
+            "timestamp": "1738456200000",
+            "newsUrl": "https://www.deccanherald.com/technology/gadgets/gadgets-weekly-lava-yuva-smart-phone-and-more-3382823",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNW1jMmMxYVcwdFVWaHFXak0xVFJDZkF4ampCU2dLTWdhcE5aTHRuUWs=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNW1jMmMxYVcwdFVWaHFXak0xVFJDZkF4ampCU2dLTWdhcE5aTHRuUWs"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Google Adds Biometric Verification Requirement to 2FA Mobile Sign-ins",
+            "snippet": "Google has implemented enhanced security measures for its two-factor authentication (2FA) process on mobile devices, introducing a new requirement for...",
+            "publisher": "Mobile ID World",
+            "timestamp": "1738484194000",
+            "newsUrl": "https://mobileidworld.com/google-adds-biometric-verification-requirement-to-2fa-mobile-sign-ins/",
+            "hasSubnews": false
+        },
+        {
+            "title": "Some Galaxy S25 Ultra buyers report mysterious screen glitch",
+            "snippet": "Galaxy S25 Ultra buyers report screen glitch, blinking issues and unkind return policies such as unfair refund and cancellation of freebies.",
+            "publisher": "Sammy Fans",
+            "timestamp": "1738584584000",
+            "newsUrl": "https://www.sammyfans.com/2025/02/03/some-galaxy-s25-ultra-buyers-report-mysterious-screen-glitch/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iMkNnNHhlbkZMVTJkU1pYZDZNbUpGVFJDa0F4amFCU2dLTWdzQk1JaVdLT1hBeWVuZVRB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iMkNnNHhlbkZMVTJkU1pYZDZNbUpGVFJDa0F4amFCU2dLTWdzQk1JaVdLT1hBeWVuZVRB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Don't wait for Microsoft — here's how you can see your battery percentage on Windows 11",
+            "snippet": "If you don't want to wait for Windows 11 to get a battery percentage indicator, you can enable your own right now, and it works on Windows 10, too.",
+            "publisher": "XDA Developers",
+            "timestamp": "1738497600000",
+            "newsUrl": "https://www.xda-developers.com/how-see-battery-percentage-windows-11/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNUpNQzB5WVUxb1NHbDJSRmRyVFJDZkF4amlCU2dLTWdZQmxZek1QUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNUpNQzB5WVUxb1NHbDJSRmRyVFJDZkF4amlCU2dLTWdZQmxZek1QUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Samsung Galaxy S25 Ultra torture test is a step backwards from last year’s model",
+            "snippet": "A screen that's more prone to scratches and camera rings that pop off with help from a razer knife.",
+            "publisher": "Tom's Guide",
+            "timestamp": "1738521237000",
+            "newsUrl": "https://www.tomsguide.com/phones/samsung-phones/samsung-galaxy-s25-ultra-torture-test-is-a-step-backwards-from-last-years-model",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iI0NnNU9XVTVRU1RWSlRFaHNkak00VFJDZkF4ampCU2dLTWdB=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iI0NnNU9XVTVRU1RWSlRFaHNkak00VFJDZkF4ampCU2dLTWdB"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Best gadgets: This Valentine’s Day, impress your partner with these top picks such as tablets, smartwatches and more | Mint",
+            "snippet": "Find the perfect Valentine's Day gift with the best gadgets, from sleek smartwatches and earbuds to handy portable speakers and power banks.",
+            "publisher": "Mint",
+            "timestamp": "1738485016000",
+            "newsUrl": "https://www.livemint.com/technology/gadgets/best-gadgets-this-valentine-s-day-impress-your-partner-with-these-top-picks-such-as-tablets-smartwatches-and-more-11738316614374.html",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXhNMVpaU2xvemJWVkNVVjl2VFJDZkF4ampCU2dLTWdhVk1vSnJMUVk=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXhNMVpaU2xvemJWVkNVVjl2VFJDZkF4ampCU2dLTWdhVk1vSnJMUVk"
+            },
+            "hasSubnews": false
+        },
+        {
+            "title": "Apple Watch owners: Time to get your batteries checked, you might be getting paid",
+            "snippet": "If you have ever opened your Apple Watch and thought, “Wow, this battery looks a bit bloated,” there might be a chance for you to get paid for free.",
+            "publisher": "The Financial Express",
+            "timestamp": "1738478955000",
+            "newsUrl": "https://www.financialexpress.com/life/technology-apple-watch-owners-time-to-get-your-batteries-checked-you-might-be-getting-paid-3735250/",
+            "images": {
+                "thumbnail": "https://news.google.com/api/attachments/CC8iK0NnNXlUbUpDWTFacFQwZE9NSE01VFJERUFSamVBaWdLTWdZaE1Jek5zUVU=-w280-h168-p-df-rw",
+                "thumbnailProxied": "https://img.devisty.store/newsimage/CC8iK0NnNXlUbUpDWTFacFQwZE9NSE01VFJERUFSamVBaWdLTWdZaE1Jek5zUVU"
+            },
+            "hasSubnews": false
+        }
+    ]
+}

@@ -1,0 +1,589 @@
+{
+    "status": "success",
+    "lr": [
+        {
+            "code": "id-ID",
+            "name": "Bahasa Indonesia (Indonesia)"
+        },
+        {
+            "code": "cs-CZ",
+            "name": "Čeština (Česko)"
+        },
+        {
+            "code": "de-DE",
+            "name": "Deutsch (Deutschland)"
+        },
+        {
+            "code": "de-LI",
+            "name": "Deutsch (Liechtenstein)"
+        },
+        {
+            "code": "de-LU",
+            "name": "Deutsch (Luxemburg)"
+        },
+        {
+            "code": "de-AT",
+            "name": "Deutsch (Österreich)"
+        },
+        {
+            "code": "de-CH",
+            "name": "Deutsch (Schweiz)"
+        },
+        {
+            "code": "en-AL",
+            "name": "English (Albania)"
+        },
+        {
+            "code": "en-AG",
+            "name": "English (Antigua & Barbuda)"
+        },
+        {
+            "code": "en-AU",
+            "name": "English (Australia)"
+        },
+        {
+            "code": "en-BH",
+            "name": "English (Bahrain)"
+        },
+        {
+            "code": "en-BD",
+            "name": "English (Bangladesh)"
+        },
+        {
+            "code": "en-BZ",
+            "name": "English (Belize)"
+        },
+        {
+            "code": "en-BA",
+            "name": "English (Bosnia & Herzegovina)"
+        },
+        {
+            "code": "en-BW",
+            "name": "English (Botswana)"
+        },
+        {
+            "code": "en-KH",
+            "name": "English (Cambodia)"
+        },
+        {
+            "code": "en-CA",
+            "name": "English (Canada)"
+        },
+        {
+            "code": "en-EE",
+            "name": "English (Estonia)"
+        },
+        {
+            "code": "en-ET",
+            "name": "English (Ethiopia)"
+        },
+        {
+            "code": "en-FJ",
+            "name": "English (Fiji)"
+        },
+        {
+            "code": "en-GH",
+            "name": "English (Ghana)"
+        },
+        {
+            "code": "en-IS",
+            "name": "English (Iceland)"
+        },
+        {
+            "code": "en-IN",
+            "name": "English (India)"
+        },
+        {
+            "code": "en-ID",
+            "name": "English (Indonesia)"
+        },
+        {
+            "code": "en-IE",
+            "name": "English (Ireland)"
+        },
+        {
+            "code": "en-IL",
+            "name": "English (Israel)"
+        },
+        {
+            "code": "en-JM",
+            "name": "English (Jamaica)"
+        },
+        {
+            "code": "en-KE",
+            "name": "English (Kenya)"
+        },
+        {
+            "code": "en-LV",
+            "name": "English (Latvia)"
+        },
+        {
+            "code": "en-MY",
+            "name": "English (Malaysia)"
+        },
+        {
+            "code": "en-MT",
+            "name": "English (Malta)"
+        },
+        {
+            "code": "en-MU",
+            "name": "English (Mauritius)"
+        },
+        {
+            "code": "en-NA",
+            "name": "English (Namibia)"
+        },
+        {
+            "code": "en-NP",
+            "name": "English (Nepal)"
+        },
+        {
+            "code": "en-NZ",
+            "name": "English (New Zealand)"
+        },
+        {
+            "code": "en-NG",
+            "name": "English (Nigeria)"
+        },
+        {
+            "code": "en-MK",
+            "name": "English (North Macedonia)"
+        },
+        {
+            "code": "en-PK",
+            "name": "English (Pakistan)"
+        },
+        {
+            "code": "en-PG",
+            "name": "English (Papua New Guinea)"
+        },
+        {
+            "code": "en-PH",
+            "name": "English (Philippines)"
+        },
+        {
+            "code": "en-RW",
+            "name": "English (Rwanda)"
+        },
+        {
+            "code": "en-SG",
+            "name": "English (Singapore)"
+        },
+        {
+            "code": "en-ZA",
+            "name": "English (South Africa)"
+        },
+        {
+            "code": "en-LK",
+            "name": "English (Sri Lanka)"
+        },
+        {
+            "code": "en-TZ",
+            "name": "English (Tanzania)"
+        },
+        {
+            "code": "en-TT",
+            "name": "English (Trinidad & Tobago)"
+        },
+        {
+            "code": "en-UG",
+            "name": "English (Uganda)"
+        },
+        {
+            "code": "en-GB",
+            "name": "English (United Kingdom)"
+        },
+        {
+            "code": "en-US",
+            "name": "English (United States)"
+        },
+        {
+            "code": "en-ZM",
+            "name": "English (Zambia)"
+        },
+        {
+            "code": "en-ZW",
+            "name": "English (Zimbabwe)"
+        },
+        {
+            "code": "es-AR",
+            "name": "Español (Argentina)"
+        },
+        {
+            "code": "es-BO",
+            "name": "Español (Bolivia)"
+        },
+        {
+            "code": "es-CL",
+            "name": "Español (Chile)"
+        },
+        {
+            "code": "es-CO",
+            "name": "Español (Colombia)"
+        },
+        {
+            "code": "es-CR",
+            "name": "Español (Costa Rica)"
+        },
+        {
+            "code": "es-CU",
+            "name": "Español (Cuba)"
+        },
+        {
+            "code": "es-EC",
+            "name": "Español (Ecuador)"
+        },
+        {
+            "code": "es-SV",
+            "name": "Español (El Salvador)"
+        },
+        {
+            "code": "es-ES",
+            "name": "Español (España)"
+        },
+        {
+            "code": "es-US",
+            "name": "Español (Estados Unidos)"
+        },
+        {
+            "code": "es-GT",
+            "name": "Español (Guatemala)"
+        },
+        {
+            "code": "es-HN",
+            "name": "Español (Honduras)"
+        },
+        {
+            "code": "es-MX",
+            "name": "Español (México)"
+        },
+        {
+            "code": "es-NI",
+            "name": "Español (Nicaragua)"
+        },
+        {
+            "code": "es-PA",
+            "name": "Español (Panamá)"
+        },
+        {
+            "code": "es-PY",
+            "name": "Español (Paraguay)"
+        },
+        {
+            "code": "es-PE",
+            "name": "Español (Perú)"
+        },
+        {
+            "code": "es-DO",
+            "name": "Español (República Dominicana)"
+        },
+        {
+            "code": "es-UY",
+            "name": "Español (Uruguay)"
+        },
+        {
+            "code": "es-VE",
+            "name": "Español (Venezuela)"
+        },
+        {
+            "code": "fi-FI",
+            "name": "Finnish (Finland)"
+        },
+        {
+            "code": "fr-BE",
+            "name": "Français (Belgique)"
+        },
+        {
+            "code": "fr-BJ",
+            "name": "Français (Bénin)"
+        },
+        {
+            "code": "fr-BF",
+            "name": "Français (Burkina Faso)"
+        },
+        {
+            "code": "fr-CM",
+            "name": "Français (Cameroun)"
+        },
+        {
+            "code": "fr-CA",
+            "name": "Français (Canada)"
+        },
+        {
+            "code": "fr-CV",
+            "name": "Français (Cap-Vert)"
+        },
+        {
+            "code": "fr-CI",
+            "name": "Français (Côte d’Ivoire)"
+        },
+        {
+            "code": "fr-FR",
+            "name": "Français (France)"
+        },
+        {
+            "code": "fr-GA",
+            "name": "Français (Gabon)"
+        },
+        {
+            "code": "fr-HT",
+            "name": "Français (Haïti)"
+        },
+        {
+            "code": "fr-ML",
+            "name": "Français (Mali)"
+        },
+        {
+            "code": "fr-MA",
+            "name": "Français (Maroc)"
+        },
+        {
+            "code": "fr-NE",
+            "name": "Français (Niger)"
+        },
+        {
+            "code": "fr-SN",
+            "name": "Français (Sénégal)"
+        },
+        {
+            "code": "fr-CH",
+            "name": "Français (Suisse)"
+        },
+        {
+            "code": "fr-TG",
+            "name": "Français (Togo)"
+        },
+        {
+            "code": "hr-HR",
+            "name": "Hrvatski (Hrvatska)"
+        },
+        {
+            "code": "it-IT",
+            "name": "Italiano (Italia)"
+        },
+        {
+            "code": "lv-LV",
+            "name": "Latviešu (Latvija)"
+        },
+        {
+            "code": "lt-LT",
+            "name": "Lietuvių (Lietuva)"
+        },
+        {
+            "code": "hu-HU",
+            "name": "Magyar (Magyarország)"
+        },
+        {
+            "code": "nl-AW",
+            "name": "Nederlands (Aruba)"
+        },
+        {
+            "code": "nl-BE",
+            "name": "Nederlands (België)"
+        },
+        {
+            "code": "nl-NL",
+            "name": "Nederlands (Nederland)"
+        },
+        {
+            "code": "no-NO",
+            "name": "Norsk (Norge)"
+        },
+        {
+            "code": "pl-PL",
+            "name": "Polski (Polska)"
+        },
+        {
+            "code": "pt-BR",
+            "name": "Português (Brasil)"
+        },
+        {
+            "code": "pt-PT",
+            "name": "Português (Portugal)"
+        },
+        {
+            "code": "ro-MD",
+            "name": "Română (Republica Moldova)"
+        },
+        {
+            "code": "ro-RO",
+            "name": "Română (România)"
+        },
+        {
+            "code": "sk-SK",
+            "name": "Slovenčina (Slovensko)"
+        },
+        {
+            "code": "sl-SI",
+            "name": "Slovenščina (Slovenija)"
+        },
+        {
+            "code": "sv-SE",
+            "name": "Svenska (Sverige)"
+        },
+        {
+            "code": "vi-VN",
+            "name": "Tiếng Việt (Việt Nam)"
+        },
+        {
+            "code": "tr-TR",
+            "name": "Türkçe (Türkiye)"
+        },
+        {
+            "code": "el-GR",
+            "name": "Ελληνικά (Ελλάδα)"
+        },
+        {
+            "code": "el-CY",
+            "name": "Ελληνικά (Κύπρος)"
+        },
+        {
+            "code": "bg-BG",
+            "name": "Български (България)"
+        },
+        {
+            "code": "ru-AZ",
+            "name": "Русский (Азербайджан)"
+        },
+        {
+            "code": "ru-AM",
+            "name": "Русский (Армения)"
+        },
+        {
+            "code": "ru-BY",
+            "name": "Русский (Беларусь)"
+        },
+        {
+            "code": "ru-KZ",
+            "name": "Русский (Казахстан)"
+        },
+        {
+            "code": "ru-KG",
+            "name": "Русский (Киргизия)"
+        },
+        {
+            "code": "ru-RU",
+            "name": "Русский (Россия)"
+        },
+        {
+            "code": "ru-TJ",
+            "name": "Русский (Таджикистан)"
+        },
+        {
+            "code": "ru-TM",
+            "name": "Русский (Туркменистан)"
+        },
+        {
+            "code": "ru-UZ",
+            "name": "Русский (Узбекистан)"
+        },
+        {
+            "code": "ru-UA",
+            "name": "Русский (Украина)"
+        },
+        {
+            "code": "sr-RS",
+            "name": "Српски (Србија)"
+        },
+        {
+            "code": "uk-UA",
+            "name": "Українська (Україна)"
+        },
+        {
+            "code": "he-IL",
+            "name": "עברית (ישראל)"
+        },
+        {
+            "code": "ar-JO",
+            "name": "العربية (الأردن)"
+        },
+        {
+            "code": "ar-AE",
+            "name": "العربية (الإمارات العربية المتحدة)"
+        },
+        {
+            "code": "ar-KW",
+            "name": "العربية (الكويت)"
+        },
+        {
+            "code": "ar-SA",
+            "name": "العربية (المملكة العربية السعودية)"
+        },
+        {
+            "code": "ar-OM",
+            "name": "العربية (عُمان)"
+        },
+        {
+            "code": "ar-QA",
+            "name": "العربية (قطر)"
+        },
+        {
+            "code": "ar-LB",
+            "name": "العربية (لبنان)"
+        },
+        {
+            "code": "ar-EG",
+            "name": "العربية (مصر)"
+        },
+        {
+            "code": "mr-IN",
+            "name": "मराठी (भारत)"
+        },
+        {
+            "code": "hi-IN",
+            "name": "हिन्दी (भारत)"
+        },
+        {
+            "code": "bn-BD",
+            "name": "বাংলা (বাংলাদেশ)"
+        },
+        {
+            "code": "bn-IN",
+            "name": "বাংলা (ভারত)"
+        },
+        {
+            "code": "ta-IN",
+            "name": "தமிழ் (இந்தியா)"
+        },
+        {
+            "code": "te-IN",
+            "name": "తెలుగు (భారతదేశం)"
+        },
+        {
+            "code": "kn-IN",
+            "name": "ಕನ್ನಡ (ಭಾರತ)"
+        },
+        {
+            "code": "ml-IN",
+            "name": "മലയാളം (ഇന്ത്യ)"
+        },
+        {
+            "code": "th-LA",
+            "name": "ไทย (ลาว)"
+        },
+        {
+            "code": "th-TH",
+            "name": "ไทย (ไทย)"
+        },
+        {
+            "code": "zh-CN",
+            "name": "中文 (中国)"
+        },
+        {
+            "code": "zh-TW",
+            "name": "中文 (台灣)"
+        },
+        {
+            "code": "zh-HK",
+            "name": "中文 (香港)"
+        },
+        {
+            "code": "ja-JP",
+            "name": "日本語 (日本)"
+        },
+        {
+            "code": "ko-KR",
+            "name": "한국어 (대한민국)"
+        }
+    ]
+}

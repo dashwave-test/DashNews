@@ -1,6 +1,9 @@
+import 'dart:convert';
+import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import '../models/news_category.dart';
 
 class FirebaseService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -12,17 +15,15 @@ class FirebaseService {
 
   /// Fetches all Google News categories from Firestore
   ///
-  /// Returns a Stream of QuerySnapshot that contains the category documents
-  /// Each document has:
-  /// * id (String) - The unique identifier for the category
-  /// * name (String) - The display name of the category
-  /// * icon (String?) - Optional URL for the category icon
-  static Stream<QuerySnapshot> getGNewsCategories() {
+  /// Returns a Stream of List<NewsCategory> that contains the category documents
+  static Stream<List<NewsCategory>> getGNewsCategories() {
     try {
       return _firestore
           .collection('gnews_categories')
-          .orderBy('name')
-          .snapshots();
+          .snapshots()
+          .map((snapshot) => snapshot.docs
+              .map((doc) => NewsCategory.fromFirestore(doc))
+              .toList());
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(
         e,
@@ -35,31 +36,52 @@ class FirebaseService {
 
   /// Fetches all Google News categories from Firestore as a Future
   ///
-  /// Returns a Future<List<Map<String, dynamic>>> containing the category data
-  /// Each map has:
-  /// * id (String) - The unique identifier for the category
-  /// * name (String) - The display name of the category
-  /// * icon (String?) - Optional URL for the category icon
-  static Future<List<Map<String, dynamic>>> getGNewsCategoriesFuture() async {
+  /// Returns a Future<List<NewsCategory>> containing the category data
+  static Future<List<NewsCategory>> getGNewsCategoriesFuture() async {
     try {
       final snapshot = await _firestore
           .collection('gnews_categories')
-          .orderBy('name')
           .get();
 
-      return snapshot.docs.map((doc) {
-        final data = doc.data();
-        return {
-          'id': doc.id,
-          'name': data['name'] as String,
-          'icon': data['icon'] as String?,
-        };
-      }).toList();
+      return snapshot.docs
+          .map((doc) => NewsCategory.fromFirestore(doc))
+          .toList();
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(
         e,
         stack,
         reason: 'Error fetching GNews categories',
+      );
+      rethrow;
+    }
+  }
+
+  /// Fetches news data based on the category
+  /// If the category is 'entertainment', it loads from mock data
+  /// Otherwise, fetches from Firestore
+  static Future<Map<String, dynamic>> getNewsByCategory(String categoryId) async {
+    try {
+      if (categoryId == 'entertainment') {
+        // Load mock data for entertainment news
+        final String response = await rootBundle.loadString('assets/mock/latest_news_response.json');
+        return json.decode(response);
+      } else {
+        // Fetch from Firestore for other categories
+        final snapshot = await _firestore
+            .collection('news')
+            .where('categoryId', isEqualTo: categoryId)
+            .get();
+
+        return {
+          'status': 'success',
+          'items': snapshot.docs.map((doc) => doc.data()).toList(),
+        };
+      }
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(
+        e,
+        stack,
+        reason: 'Error fetching news by category',
       );
       rethrow;
     }
