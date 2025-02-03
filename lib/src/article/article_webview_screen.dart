@@ -40,7 +40,17 @@ class _ArticleWebViewScreenState extends State<ArticleWebViewScreen> {
           },
         ),
       )
-      ..loadRequest(Uri.parse(widget.url));
+      ..loadRequest(Uri.parse(_ensureValidUrl(widget.url)));
+  }
+
+  String _ensureValidUrl(String url) {
+    if (url.isEmpty) {
+      return 'about:blank';
+    }
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      return 'https://$url';
+    }
+    return url;
   }
 
   @override
