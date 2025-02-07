@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "796615120018",
-    "project_id": "dashwave-news-app",
-    "storage_bucket": "dashwave-news-app.firebasestorage.app"
+    "project_number": "454221877807",
+    "project_id": "dashwave-news-app-449907",
+    "storage_bucket": "dashwave-news-app-449907.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:796615120018:android:3c343e0b12fe249efac24b",
+        "mobilesdk_app_id": "1:454221877807:android:e61409de78ae6c2ff32cda",
         "android_client_info": {
-          "package_name": "com.dashwave.news"
+          "package_name": "io.dashwave.news"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDiiW8Osgqp7NLz533SeW8Ja_bqSXJy7Ok"
+          "current_key": "AIzaSyDCiTlR2G3to7bBzCY2DLDutdWroxNn55o"
         }
       ],
       "services": {

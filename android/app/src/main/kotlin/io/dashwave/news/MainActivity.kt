@@ -1,4 +1,4 @@
-package com.dashwave.news
+package io.dashwave.news
 
 import io.flutter.embedding.android.FlutterActivity
 

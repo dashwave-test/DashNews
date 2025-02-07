@@ -18,17 +18,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     OnboardingItem(
       title: 'Breaking News',
       description: 'Stay informed with the latest breaking news from around the world.',
-      image: 'assets/images/onboarding1.png',
+      image: 'assets/images/onboarding_breaking_news.png',
     ),
     OnboardingItem(
       title: 'Personalized Feed',
       description: 'Get news that matters to you with our personalized feed.',
-      image: 'assets/images/onboarding2.png',
+      image: 'assets/images/onboarding_personalized_feed.png',
     ),
     OnboardingItem(
       title: 'Save & Share',
       description: 'Save articles for later and share them with your friends.',
-      image: 'assets/images/onboarding3.png',
+      image: 'assets/images/onboarding_save_share.png',
     ),
   ];
 

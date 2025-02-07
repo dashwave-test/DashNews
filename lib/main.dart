@@ -18,6 +18,7 @@ import 'src/trending/trending_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'src/services/network_service.dart';
+import 'src/utils/feature_flags.dart';
 
 void main() async {
   runZonedGuarded<Future<void>>(() async {
@@ -54,6 +55,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
+        ChangeNotifierProvider(create: (_) => FeatureFlags()),
       ],
       child: MaterialApp(
         title: 'DashWave News',

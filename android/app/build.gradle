@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace "com.dashwave.news"
+    namespace "io.dashwave.news"
     compileSdkVersion 34
     ndkVersion flutter.ndkVersion
 
@@ -24,7 +24,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.dashwave.news"
+        applicationId "io.dashwave.news"
         minSdkVersion 23
         targetSdkVersion 34
         versionCode 1
