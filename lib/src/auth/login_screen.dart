@@ -4,6 +4,7 @@ import '../home/home_screen.dart';
 import 'signup_screen.dart';
 import '../providers/auth_provider.dart' as app_provider;
 import 'package:provider/provider.dart';
+import '../config/feature_flags.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -16,13 +17,13 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  bool _rememberMe = false;
   bool _isPasswordVisible = false;
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   String? _emailError;
   String? _passwordError;
   bool _isLoading = false;
+  bool _rememberMe = false;
 
   void _validateEmail(String value) {
     setState(() {
@@ -48,10 +49,14 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
-  void _toggleRememberMe() {
-    setState(() {
-      _rememberMe = !_rememberMe;
-    });
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+        duration: const Duration(seconds: 3),
+      ),
+    );
   }
 
   Future<void> _handleLogin() async {
@@ -75,17 +80,21 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       } on FirebaseAuthException catch (e) {
         setState(() {
-          if (e.code == 'user-not-found') {
+          if (e.code == 'user-not-found' || e.code == 'invalid-credential') {
             _emailError = 'No user found for that email.';
+            _showErrorSnackBar('No user found for that email.');
           } else if (e.code == 'wrong-password') {
             _passwordError = 'Wrong password provided.';
+            _showErrorSnackBar('Wrong password provided.');
           } else {
             _emailError = e.message;
+            _showErrorSnackBar(e.message ?? 'An error occurred during login.');
           }
         });
       } catch (e) {
         setState(() {
           _emailError = 'An error occurred. Please try again.';
+          _showErrorSnackBar('An error occurred. Please try again.');
         });
       } finally {
         if (mounted) {
@@ -93,6 +102,13 @@ class _LoginScreenState extends State<LoginScreen> {
             _isLoading = false;
           });
         }
+      }
+    } else {
+      // Show error messages for invalid input
+      if (_emailError != null) {
+        _showErrorSnackBar(_emailError!);
+      } else if (_passwordError != null) {
+        _showErrorSnackBar(_passwordError!);
       }
     }
   }
@@ -289,27 +305,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    InkWell(
-                      onTap: _toggleRememberMe,
-                      child: Row(
+                    if (FeatureFlags.isFeatureEnabled(FeatureFlags.LOGIN_REMEMBER_ME))
+                      Row(
                         children: [
-                          SizedBox(
-                            width: 24,
-                            height: 24,
-                            child: Checkbox(
-                              value: _rememberMe,
-                              onChanged: (value) {
-                                setState(() {
-                                  _rememberMe = value!;
-                                });
-                              },
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(4),
-                              ),
-                              activeColor: Theme.of(context).primaryColor,
-                            ),
+                          Checkbox(
+                            value: _rememberMe,
+                            onChanged: (value) {
+                              setState(() {
+                                _rememberMe = value ?? false;
+                              });
+                            },
                           ),
-                          const SizedBox(width: 8),
                           Text(
                             'Remember me',
                             style: TextStyle(
@@ -319,7 +325,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                    ),
                     TextButton(
                       onPressed: () {
                         // TODO: Implement forgot password functionality
@@ -372,87 +377,88 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                   ),
                 ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        'or continue with',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                if (FeatureFlags.isFeatureEnabled(FeatureFlags.SOCIAL_LOGIN)) ...[
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: Theme.of(context).dividerColor,
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: Theme.of(context).dividerColor,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          // TODO: Implement Facebook login
-                        },
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          side: BorderSide(color: Theme.of(context).dividerColor),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        icon: Icon(Icons.facebook, color: Theme.of(context).primaryColor),
-                        label: Text(
-                          'Facebook',
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          'or continue with',
                           style: TextStyle(
-                            color: Theme.of(context).textTheme.bodyMedium?.color,
-                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () {
-                          // TODO: Implement Google login
-                        },
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          side: BorderSide(color: Theme.of(context).dividerColor),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: Theme.of(context).dividerColor,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            // TODO: Implement Facebook login
+                          },
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            side: BorderSide(color: Theme.of(context).dividerColor),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
                           ),
-                        ),
-                        icon: Image.asset(
-                          'assets/images/google.png',
-                          width: 24,
-                          height: 24,
-                        ),
-                        label: Text(
-                          'Google',
-                          style: TextStyle(
-                            color: Theme.of(context).textTheme.bodyMedium?.color,
-                            fontWeight: FontWeight.w500,
+                          icon: Icon(Icons.facebook, color: Theme.of(context).primaryColor),
+                          label: Text(
+                            'Facebook',
+                            style: TextStyle(
+                              color: Theme.of(context).textTheme.bodyMedium?.color,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: () {
+                            // TODO: Implement Google login
+                          },
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            side: BorderSide(color: Theme.of(context).dividerColor),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          icon: Image.asset(
+                            'assets/images/google.png',
+                            width: 24,
+                            height: 24,
+                          ),
+                          label: Text('Google',
+                            style: TextStyle(
+                              color: Theme.of(context).textTheme.bodyMedium?.color,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
