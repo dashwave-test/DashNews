@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'country_select_screen.dart';
 import 'auth_service.dart';
+import '../config/feature_flags.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -341,80 +342,82 @@ class _SignupScreenState extends State<SignupScreen> {
                           ),
                   ),
                 ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: const Color(0xFFEEEEEE),
-                      ),
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: Text(
-                        'or continue with',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF666666),
+                if (FeatureFlags.isFeatureEnabled(FeatureFlags.SOCIAL_SIGNUP)) ...[
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: const Color(0xFFEEEEEE),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: 1,
-                        color: const Color(0xFFEEEEEE),
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 24),
-                Row(
-                  children: [
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          side: const BorderSide(color: Color(0xFFEEEEEE)),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                        ),
-                        icon: const Icon(Icons.facebook, color: Color(0xFF246BFD)),
-                        label: const Text(
-                          'Facebook',
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        child: Text(
+                          'or continue with',
                           style: TextStyle(
-                            color: Color(0xFF1E1E1E),
-                            fontWeight: FontWeight.w500,
+                            fontSize: 14,
+                            color: Color(0xFF666666),
                           ),
                         ),
                       ),
-                    ),
-                    const SizedBox(width: 16),
-                    Expanded(
-                      child: OutlinedButton.icon(
-                        onPressed: () {},
-                        style: OutlinedButton.styleFrom(
-                          padding: const EdgeInsets.symmetric(vertical: 12),
-                          side: const BorderSide(color: Color(0xFFEEEEEE)),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
+                      Expanded(
+                        child: Container(
+                          height: 1,
+                          color: const Color(0xFFEEEEEE),
                         ),
-                        icon: const Icon(Icons.g_mobiledata,
-                            color: Color(0xFF246BFD), size: 32),
-                        label: const Text(
-                          'Google',
-                          style: TextStyle(
-                            color: Color(0xFF1E1E1E),
-                            fontWeight: FontWeight.w500,
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 24),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: () {},
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            side: const BorderSide(color: Color(0xFFEEEEEE)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          icon: const Icon(Icons.facebook, color: Color(0xFF246BFD)),
+                          label: const Text(
+                            'Facebook',
+                            style: TextStyle(
+                              color: Color(0xFF1E1E1E),
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: OutlinedButton.icon(
+                          onPressed: () {},
+                          style: OutlinedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
+                            side: const BorderSide(color: Color(0xFFEEEEEE)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          icon: const Icon(Icons.g_mobiledata,
+                              color: Color(0xFF246BFD), size: 32),
+                          label: const Text(
+                            'Google',
+                            style: TextStyle(
+                              color: Color(0xFF1E1E1E),
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
                 const SizedBox(height: 24),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
