@@ -101,7 +101,7 @@ class _SignupScreenState extends State<SignupScreen> {
           _passwordController.text,
         );
         if (mounted && userCredential != null && userCredential.user != null) {
-          String nextScreen = await _authProvider.getNextSdendddecreen();
+          String nextScreen = await _authProvider.getNextScreen();
           if (!mounted) return;
           Navigator.of(context).pushReplacementNamed(nextScreen);
         }

@@ -108,8 +108,10 @@ class AuthProvider with ChangeNotifier {
         if (userData['followedTopics'] == null || (userData['followedTopics'] as List).isEmpty) {
           return TopicsScreen.routeName;
         }
-        if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
-          return NewsSourcesScreen.routeName;
+        if (!FeatureFlags.isFeatureDisabled(FeatureFlags.DISABLE_NEWS_SOURCES)) {
+          if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
+            return NewsSourcesScreen.routeName;
+          }
         }
         if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
           return EditProfileScreen.routeName;
