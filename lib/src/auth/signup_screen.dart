@@ -279,37 +279,38 @@ class _SignupScreenState extends State<SignupScreen> {
                   ],
                 ),
                 const SizedBox(height: 16),
-                InkWell(
-                  onTap: _toggleRememberMe,
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: Checkbox(
-                          value: _rememberMe,
-                          onChanged: (value) {
-                            setState(() {
-                              _rememberMe = value!;
-                            });
-                          },
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
+                if (FeatureFlags.isFeatureEnabled(FeatureFlags.SIGNUP_REMEMBER_ME))
+                  InkWell(
+                    onTap: _toggleRememberMe,
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 24,
+                          height: 24,
+                          child: Checkbox(
+                            value: _rememberMe,
+                            onChanged: (value) {
+                              setState(() {
+                                _rememberMe = value!;
+                              });
+                            },
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4),
+                            ),
+                            activeColor: const Color(0xFF246BFD),
                           ),
-                          activeColor: const Color(0xFF246BFD),
                         ),
-                      ),
-                      const SizedBox(width: 8),
-                      const Text(
-                        'Remember me',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Color(0xFF1E1E1E),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Remember me',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Color(0xFF1E1E1E),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
                 const SizedBox(height: 32),
                 SizedBox(
                   width: double.infinity,
