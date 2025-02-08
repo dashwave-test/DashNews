@@ -42,6 +42,11 @@ class AuthService {
   // Get the next screen to show based on user's completion status
   Future<String> getNextScreen(String userId) async {
     try {
+      User? currentUser = _auth.currentUser;
+      if (currentUser != null && !currentUser.emailVerified) {
+        return 'email_verification';
+      }
+
       DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
       if (userDoc.exists) {
         Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;

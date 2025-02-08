@@ -2,10 +2,20 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../services/firebase_service.dart';
+import '../auth/login_screen.dart';
+import '../auth/email_verification_screen.dart';
+import '../auth/country_select_screen.dart';
+import '../auth/topics_screen.dart';
+import '../auth/news_sources_screen.dart';
+import '../auth/edit_profile_screen.dart';
+import '../home/home_screen.dart';
+import '../config/feature_flags.dart';
 
 class AuthProvider with ChangeNotifier {
   User? _user;
   bool _isLoading = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   User? get user => _user;
   bool get isLoading => _isLoading;
@@ -18,25 +28,50 @@ class AuthProvider with ChangeNotifier {
     });
   }
 
-  Future<void> signIn(String email, String password) async {
+  Future<User?> signIn(String email, String password) async {
     try {
       _isLoading = true;
       notifyListeners();
-      await FirebaseService.signIn(email, password);
+      User? user = await FirebaseService.signIn(email, password);
+      return user;
     } finally {
       _isLoading = false;
       notifyListeners();
     }
   }
 
-  Future<void> signUp(String email, String password, String username) async {
+  Future<UserCredential?> signUp(String email, String password) async {
     try {
       _isLoading = true;
       notifyListeners();
-      final user = await FirebaseService.signUp(email, password);
-      if (user != null) {
-        await FirebaseService.createUserDocument(user.uid, email, username);
-      }
+      UserCredential userCredential = await _auth.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      
+      // Create user document in Firestore
+      await _firestore.collection('users').doc(userCredential.user!.uid).set({
+        'email': email,
+        'username': email.split('@')[0],
+        'fullName': '',
+        'bio': '',
+        'website': '',
+        'phone': '',
+        'followers': 0,
+        'following': 0,
+        'newsCount': 0,
+        'profilePicture': '',
+        'savedArticles': [],
+        'followedTopics': [],
+        'followedSources': [],
+        'country': '',
+        'createdAt': FieldValue.serverTimestamp(),
+        'lastLoginAt': FieldValue.serverTimestamp(),
+      });
+
+      return userCredential;
+    } on FirebaseAuthException catch (e) {
+      throw e;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -56,33 +91,42 @@ class AuthProvider with ChangeNotifier {
 
   Future<String> getNextScreen() async {
     if (_user == null) {
-      return '/login';
+      return LoginScreen.routeName;
     }
 
-    final userDoc = await FirebaseFirestore.instance.collection('users').doc(_user!.uid).get();
-    
-    if (!userDoc.exists) {
-      return '/edit-profile';
+    try {
+      if (!_user!.emailVerified && !FeatureFlags.isFeatureDisabled(FeatureFlags.EMAIL_VERIFICATION)) {
+        return EmailVerificationScreen.routeName;
+      }
+
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(_user!.uid).get();
+      if (userDoc.exists) {
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+        if (userData['country'] == null || userData['country'].toString().isEmpty) {
+          return CountrySelectScreen.routeName;
+        }
+        if (userData['followedTopics'] == null || (userData['followedTopics'] as List).isEmpty) {
+          return TopicsScreen.routeName;
+        }
+        if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
+          return NewsSourcesScreen.routeName;
+        }
+        if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
+          return EditProfileScreen.routeName;
+        }
+        return HomeScreen.routeName;
+      }
+      return CountrySelectScreen.routeName;
+    } catch (e) {
+      return CountrySelectScreen.routeName;
     }
+  }
 
-    final userData = userDoc.data() as Map<String, dynamic>;
-
-    if (userData['country'] == null) {
-      return '/country-select';
+  Future<void> checkEmailVerification() async {
+    if (_user != null && !_user!.emailVerified && !FeatureFlags.isFeatureDisabled(FeatureFlags.EMAIL_VERIFICATION)) {
+      await _user!.reload();
+      _user = FirebaseAuth.instance.currentUser;
+      notifyListeners();
     }
-
-    if (userData['topics'] == null || (userData['topics'] as List).isEmpty) {
-      return '/topics';
-    }
-
-    if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
-      return '/news-sources';
-    }
-
-    if (userData['fullName'] == null || userData['fullName'].isEmpty) {
-      return '/edit-profile';
-    }
-
-    return '/home';
   }
 }

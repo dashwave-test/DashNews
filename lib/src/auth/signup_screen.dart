@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'country_select_screen.dart';
-import 'auth_service.dart';
+import 'package:provider/provider.dart';
+import '../providers/auth_provider.dart' as app_provider;
 import '../config/feature_flags.dart';
+import 'email_verification_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -23,7 +24,13 @@ class _SignupScreenState extends State<SignupScreen> {
   final _passwordController = TextEditingController();
   String? _usernameError;
   String? _passwordError;
-  final AuthService _authService = AuthService();
+  late app_provider.AuthProvider _authProvider;
+
+  @override
+  void initState() {
+    super.initState();
+    _authProvider = Provider.of<app_provider.AuthProvider>(context, listen: false);
+  }
 
   void _validateUsername(String value) {
     setState(() {
@@ -89,15 +96,14 @@ class _SignupScreenState extends State<SignupScreen> {
       });
 
       try {
-        await _authService.signUp(
+        UserCredential? userCredential = await _authProvider.signUp(
           _usernameController.text,
           _passwordController.text,
         );
-        if (mounted) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const CountrySelectScreen()),
-          );
+        if (mounted && userCredential != null && userCredential.user != null) {
+          String nextScreen = await _authProvider.getNextSdendddecreen();
+          if (!mounted) return;
+          Navigator.of(context).pushReplacementNamed(nextScreen);
         }
       } on FirebaseAuthException catch (e) {
         setState(() {
@@ -411,8 +417,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             'Google',
                             style: TextStyle(
                               color: Color(0xFF1E1E1E),
-                              fontWeight: FontWeight.w500,
-                            ),
+                              fontWeight: FontWeight.w500,),
                           ),
                         ),
                       ),
@@ -424,7 +429,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Already have an account? ',
+                      "Already have an account? ",
                       style: TextStyle(
                         fontSize: 14,
                         color: Color(0xFF666666),
@@ -439,7 +444,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         padding: EdgeInsets.zero,
                         minimumSize: Size.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      ),
+                ),
                       child: const Text(
                         'Login',
                         style: TextStyle(

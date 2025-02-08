@@ -15,6 +15,7 @@ import 'src/auth/news_sources_screen.dart';
 import 'src/auth/edit_profile_screen.dart';
 import 'src/auth/profile_screen.dart';
 import 'src/trending/trending_screen.dart';
+import 'src/auth/email_verification_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 import 'src/services/network_service.dart';
@@ -88,6 +89,8 @@ class MyApp extends StatelessWidget {
 
                   if (snapshot.hasData && snapshot.data != null) {
                     switch (snapshot.data) {
+                      case EmailVerificationScreen.routeName:
+                        return const EmailVerificationScreen();
                       case '/country-select':
                         return const CountrySelectScreen();
                       case '/topics':
@@ -101,6 +104,8 @@ class MyApp extends StatelessWidget {
                           currentEmail: '',
                           currentPhoneNumber: '',
                         );
+                      case '/home':
+                        return const HomeScreen();
                       default:
                         return const HomeScreen();
                     }
@@ -118,6 +123,7 @@ class MyApp extends StatelessWidget {
           '/onboarding': (context) => const OnboardingScreen(),
           '/signup': (context) => const SignupScreen(),
           '/login': (context) => const LoginScreen(),
+          EmailVerificationScreen.routeName: (context) => const EmailVerificationScreen(),
           '/country-select': (context) => const CountrySelectScreen(),
           '/topics': (context) => const TopicsScreen(),
           '/news-sources': (context) => const NewsSourcesScreen(),

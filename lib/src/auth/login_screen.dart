@@ -5,6 +5,8 @@ import 'signup_screen.dart';
 import '../providers/auth_provider.dart' as app_provider;
 import 'package:provider/provider.dart';
 import '../config/feature_flags.dart';
+import 'email_verification_screen.dart';
+import 'auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -24,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   String? _passwordError;
   bool _isLoading = false;
   bool _rememberMe = false;
+  final AuthService _authService = AuthService();
 
   void _validateEmail(String value) {
     setState(() {
@@ -71,12 +74,22 @@ class _LoginScreenState extends State<LoginScreen> {
       });
 
       try {
-        await context.read<app_provider.AuthProvider>().signIn(
+        User? user = await context.read<app_provider.AuthProvider>().signIn(
           _emailController.text.trim(),
           _passwordController.text.trim(),
         );
-        if (mounted) {
-          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+        if (mounted && user != null) {
+          String nextScreen = await _authService.getNextScreen(user.uid);
+          if (nextScreen == 'email_verification') {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const EmailVerificationScreen(),
+              ),
+            );
+          } else {
+            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          }
         }
       } on FirebaseAuthException catch (e) {
         setState(() {
@@ -437,7 +450,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             // TODO: Implement Google login
                           },
                           style: OutlinedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
+                padding: const EdgeInsets.symmetric(vertical: 12),
                             side: BorderSide(color: Theme.of(context).dividerColor),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
