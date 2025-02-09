@@ -1,6 +1,6 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import '../models/news_category.dart';
@@ -11,78 +11,84 @@ class FirebaseService {
 
   static Stream<User?> get authStateChanges => _auth.authStateChanges();
 
-  static User? get currentUser => _auth.currentUser;
-
-  /// Fetches all Google News categories from Firestore
-  ///
-  /// Returns a Stream of List<NewsCategory> that contains the category documents
-  static Stream<List<NewsCategory>> getGNewsCategories() {
+  static Future<User?> signInWithEmailAndPassword(String email, String password) async {
     try {
-      return _firestore
-          .collection('gnews_categories')
-          .snapshots()
-          .map((snapshot) => snapshot.docs
-              .map((doc) => NewsCategory.fromFirestore(doc))
-              .toList());
-    } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(
-        e,
-        stack,
-        reason: 'Error fetching GNews categories',
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: email,
+        password: password,
       );
+      return userCredential.user;
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error signing in with email and password');
       rethrow;
     }
   }
 
-  /// Fetches all Google News categories from Firestore as a Future
-  ///
-  /// Returns a Future<List<NewsCategory>> containing the category data
+  static Future<void> signOut() async {
+    try {
+      await _auth.signOut();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error signing out');
+      rethrow;
+    }
+  }
+
   static Future<List<NewsCategory>> getGNewsCategoriesFuture() async {
     try {
-      final snapshot = await _firestore
-          .collection('gnews_categories')
-          .get();
-
-      return snapshot.docs
-          .map((doc) => NewsCategory.fromFirestore(doc))
-          .toList();
+      QuerySnapshot querySnapshot = await _firestore.collection('gnews_categories').get();
+      return querySnapshot.docs.map((doc) => NewsCategory.fromFirestore(doc)).toList();
     } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(
-        e,
-        stack,
-        reason: 'Error fetching GNews categories',
-      );
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching GNews categories');
       rethrow;
     }
   }
 
-  /// Fetches news data based on the category
-  /// If the category is 'entertainment', it loads from mock data
-  /// Otherwise, fetches from Firestore
-  static Future<Map<String, dynamic>> getNewsByCategory(String categoryId) async {
+  static Future<void> updateUserFollowedTopics(String userId, List<String> followedTopics) async {
     try {
-      if (categoryId == 'entertainment') {
-        // Load mock data for entertainment news
-        final String response = await rootBundle.loadString('assets/mock/latest_news_response.json');
-        return json.decode(response);
-      } else {
-        // Fetch from Firestore for other categories
-        final snapshot = await _firestore
-            .collection('news')
-            .where('categoryId', isEqualTo: categoryId)
-            .get();
-
-        return {
-          'status': 'success',
-          'items': snapshot.docs.map((doc) => doc.data()).toList(),
-        };
-      }
+      await _firestore.collection('users').doc(userId).update({
+        'followedTopics': followedTopics,
+      });
     } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(
-        e,
-        stack,
-        reason: 'Error fetching news by category',
-      );
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error updating user followed topics');
+      rethrow;
+    }
+  }
+
+  static Future<List<String>> getUserFollowedTopics(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      if (userDoc.exists) {
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+        return List<String>.from(userData['followedTopics'] ?? []);
+      }
+      return [];
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching user followed topics');
+      rethrow;
+    }
+  }
+
+  static Future<void> updateUserCountry(String userId, String country) async {
+    try {
+      await _firestore.collection('users').doc(userId).update({
+        'country': country,
+      });
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error updating user country');
+      rethrow;
+    }
+  }
+
+  static Future<String?> getUserCountry(String userId) async {
+    try {
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(userId).get();
+      if (userDoc.exists) {
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+        return userData['country'] as String?;
+      }
+      return null;
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching user country');
       rethrow;
     }
   }
@@ -95,56 +101,41 @@ class FirebaseService {
       );
       return userCredential.user;
     } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign up');
-      print('Error during sign up: $e');
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error signing up');
       rethrow;
     }
   }
 
-  static Future<User?> signIn(String email, String password) async {
+  static Future<void> resetPassword(String email) async {
     try {
-      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      return userCredential.user;
+      await _auth.sendPasswordResetEmail(email: email);
     } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign in');
-      print('Error during sign in: $e');
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error resetting password');
       rethrow;
     }
   }
 
-  static Future<void> signOut() async {
+  static Future<void> updateUserProfile(String userId, Map<String, dynamic> data) async {
     try {
-      await _auth.signOut();
+      await _firestore.collection('users').doc(userId).update(data);
     } catch (e, stack) {
-      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error during sign out');
-      print('Error during sign out: $e');
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error updating user profile');
       rethrow;
     }
   }
 
-  static Future<void> createUserDocument(String uid, String email, String username) async {
+  static Future<void> createUserDocument(String userId, String email, String username) async {
     try {
-      await _firestore.collection('users').doc(uid).set({
+      await _firestore.collection('users').doc(userId).set({
         'email': email,
         'username': username,
         'createdAt': FieldValue.serverTimestamp(),
+        'followedSources': [],
+        'followedTopics': [],
       });
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error creating user document');
-      print('Error creating user document: $e');
       rethrow;
     }
-  }
-
-  static Future<void> logCustomError(String message, {Map<String, dynamic>? parameters}) async {
-    await FirebaseCrashlytics.instance.recordError(
-      Exception(message),
-      StackTrace.current,
-      reason: 'Custom error',
-      information: parameters != null ? [parameters.toString()] : [],
-    );
   }
 }

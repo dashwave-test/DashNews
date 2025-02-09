@@ -32,7 +32,7 @@ class AuthProvider with ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
-      User? user = await FirebaseService.signIn(email, password);
+      User? user = await FirebaseService.signInWithEmailAndPassword(email, password);
       return user;
     } finally {
       _isLoading = false;
@@ -95,31 +95,42 @@ class AuthProvider with ChangeNotifier {
     }
 
     try {
+      // Fetch the latest user data from Firestore
+      DocumentSnapshot userDoc = await _firestore.collection('users').doc(_user!.uid).get();
+      
+      if (!userDoc.exists) {
+        return CountrySelectScreen.routeName;
+      }
+
+      Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+
+      // Reload the user to get the latest email verification status
+      await _user!.reload();
+      _user = _auth.currentUser;
+
       if (!_user!.emailVerified && !FeatureFlags.isFeatureDisabled(FeatureFlags.EMAIL_VERIFICATION)) {
         return EmailVerificationScreen.routeName;
       }
 
-      DocumentSnapshot userDoc = await _firestore.collection('users').doc(_user!.uid).get();
-      if (userDoc.exists) {
-        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
-        if (userData['country'] == null || userData['country'].toString().isEmpty) {
-          return CountrySelectScreen.routeName;
-        }
-        if (userData['followedTopics'] == null || (userData['followedTopics'] as List).isEmpty) {
-          return TopicsScreen.routeName;
-        }
-        if (!FeatureFlags.isFeatureDisabled(FeatureFlags.DISABLE_NEWS_SOURCES)) {
-          if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
-            return NewsSourcesScreen.routeName;
-          }
-        }
-        if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
-          return EditProfileScreen.routeName;
-        }
-        return HomeScreen.routeName;
+      print(userData['followedTopics']);
+
+      if (userData['country'] == null || userData['country'].toString().isEmpty) {
+        return CountrySelectScreen.routeName;
       }
-      return CountrySelectScreen.routeName;
+      if (userData['followedTopics'] == null || (userData['followedTopics'] as List).isEmpty) {
+        return TopicsScreen.routeName;
+      }
+      if (!FeatureFlags.isFeatureDisabled(FeatureFlags.DISABLE_NEWS_SOURCES)) {
+        if (userData['followedSources'] == null || (userData['followedSources'] as List).isEmpty) {
+          return NewsSourcesScreen.routeName;
+        }
+      }
+      if (userData['fullName'] == null || userData['fullName'].toString().isEmpty) {
+        return EditProfileScreen.routeName;
+      }
+      return HomeScreen.routeName;
     } catch (e) {
+      print('Error in getNextScreen: $e');
       return CountrySelectScreen.routeName;
     }
   }

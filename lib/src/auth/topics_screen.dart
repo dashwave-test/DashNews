@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'news_sources_screen.dart';
+import 'package:provider/provider.dart';
+import '../services/firebase_service.dart';
+import '../providers/auth_provider.dart' as app_auth_provider;
 
 class TopicsScreen extends StatefulWidget {
   static const routeName = '/topics';
@@ -17,34 +19,52 @@ class _TopicsScreenState extends State<TopicsScreen> {
   final Set<String> _selectedTopics = {};
   String _searchQuery = '';
   bool _isLoading = false;
-  final List<String> _topics = [
-    'National',
-    'International',
-    'Sport',
-    'Lifestyle',
-    'Business',
-    'Health',
-    'Fashion',
-    'Technology',
-    'Science',
-    'Art',
-    'Politics',
-  ];
+  bool _isLoadingTopics = true;
+  List<String> _topics = [];
 
   List<String> get _filteredTopics => _topics
       .where((topic) =>
           topic.toLowerCase().contains(_searchQuery.toLowerCase()))
       .toList();
 
+  @override
+  void initState() {
+    super.initState();
+    _loadTopics();
+  }
+
+  Future<void> _loadTopics() async {
+    setState(() {
+      _isLoadingTopics = true;
+    });
+    try {
+      final categories = await FirebaseService.getGNewsCategoriesFuture();
+      setState(() {
+        _topics = categories
+            .map((category) => category.name ?? '')
+            .where((name) => name.isNotEmpty && name.toLowerCase() != 'latest')
+            .toList();
+        _isLoadingTopics = false;
+      });
+    } catch (e) {
+      print('Error loading topics: $e');
+      setState(() {
+        _isLoadingTopics = false;
+      });
+    }
+  }
+
   Future<void> _updateUserTopics() async {
     final user = FirebaseAuth.instance.currentUser;
     if (user != null) {
       try {
         await FirebaseFirestore.instance.collection('users').doc(user.uid).update({
-          'topics': _selectedTopics.toList(),
+          'followedTopics': _selectedTopics.toList(),
         });
         if (mounted) {
-          Navigator.pushReplacementNamed(context, NewsSourcesScreen.routeName);
+          final authProvider = Provider.of<app_auth_provider.AuthProvider>(context, listen: false);
+          final nextScreen = await authProvider.getNextScreen();
+          Navigator.of(context).pushReplacementNamed(nextScreen);
         }
       } catch (e) {
         if (mounted) {
@@ -123,50 +143,52 @@ class _TopicsScreenState extends State<TopicsScreen> {
             ),
           ),
           Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Wrap(
-                spacing: 8.0,
-                runSpacing: 8.0,
-                children: _filteredTopics.map((topic) {
-                  final isSelected = _selectedTopics.contains(topic);
-                  return InkWell(
-                    onTap: () {
-                      setState(() {
-                        if (isSelected) {
-                          _selectedTopics.remove(topic);
-                        } else {
-                          _selectedTopics.add(topic);
-                        }
-                      });
-                    },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        color: isSelected ? const Color(0xFF246BFD) : Theme.of(context).cardColor,
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(
-                          color: isSelected
-                              ? const Color(0xFF246BFD)
-                              : Theme.of(context).dividerColor,
-                        ),
-                      ),
-                      child: Text(
-                        topic,
-                        style: TextStyle(
-                          color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
-                          fontSize: 14,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
+            child: _isLoadingTopics
+                ? const Center(child: CircularProgressIndicator())
+                : Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                    child: Wrap(
+                      spacing: 8.0,
+                      runSpacing: 8.0,
+                      children: _filteredTopics.map((topic) {
+                        final isSelected = _selectedTopics.contains(topic);
+                        return InkWell(
+                          onTap: () {
+                            setState(() {
+                              if (isSelected) {
+                                _selectedTopics.remove(topic);
+                              } else {
+                                _selectedTopics.add(topic);
+                              }
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
+                            decoration: BoxDecoration(
+                              color: isSelected ? const Color(0xFF246BFD) : Theme.of(context).cardColor,
+                              borderRadius: BorderRadius.circular(8),
+                              border: Border.all(
+                                color: isSelected
+                                    ? const Color(0xFF246BFD)
+                                    : Theme.of(context).dividerColor,
+                              ),
+                            ),
+                            child: Text(
+                              topic,
+                              style: TextStyle(
+                                color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
+                                fontSize: 14,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
                     ),
-                  );
-                }).toList(),
-              ),
-            ),
+                  ),
           ),
           Padding(
             padding: const EdgeInsets.all(24.0),
