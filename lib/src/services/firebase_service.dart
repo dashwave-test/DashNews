@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import '../models/news_category.dart';
+import '../models/news_article.dart';
+import 'local_storage_service.dart';
 
 class FirebaseService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -35,8 +37,20 @@ class FirebaseService {
 
   static Future<List<NewsCategory>> getGNewsCategoriesFuture() async {
     try {
+      // First, try to get categories from local storage
+      List<NewsCategory> localCategories = await LocalStorageService.getCategories();
+      if (localCategories.isNotEmpty) {
+        return localCategories;
+      }
+
+      // If local storage is empty, fetch from Firestore
       QuerySnapshot querySnapshot = await _firestore.collection('gnews_categories').get();
-      return querySnapshot.docs.map((doc) => NewsCategory.fromFirestore(doc)).toList();
+      List<NewsCategory> categories = querySnapshot.docs.map((doc) => NewsCategory.fromFirestore(doc)).toList();
+
+      // Save fetched categories to local storage
+      await LocalStorageService.saveCategories(categories);
+
+      return categories;
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching GNews categories');
       rethrow;
@@ -135,6 +149,34 @@ class FirebaseService {
       });
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error creating user document');
+      rethrow;
+    }
+  }
+
+  static Future<List<NewsArticle>> getPaginatedNews({
+    required String categoryID,
+    String languageCode = 'en',
+    String countryCode = 'IN',
+    required int startPage,
+    required int count,
+  }) async {
+    try {
+      print("Category ID: ${categoryID}");
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('news_articles')
+          .where('category', isEqualTo: categoryID)
+          .orderBy('timestamp', descending: true)
+          .limit(count)
+          //.startAfter([startPage * count])
+          .get();
+
+      print("Number of documents returned: ${querySnapshot.docs.length}");
+
+      return querySnapshot.docs
+          .map((doc) => NewsArticle.fromJson(doc.data() as Map<String, dynamic>))
+          .toList();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching paginated news');
       rethrow;
     }
   }

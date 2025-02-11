@@ -79,16 +79,9 @@ class _LoginScreenState extends State<LoginScreen> {
           _passwordController.text.trim(),
         );
         if (mounted && user != null) {
-          String nextScreen = await _authService.getNextScreen(user.uid);
-          if (nextScreen == 'email_verification') {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const EmailVerificationScreen(),
-              ),
-            );
-          } else {
-            Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+          String nextScreen = await context.read<app_provider.AuthProvider>().getNextScreen();
+          if (mounted) {
+            Navigator.of(context).pushReplacementNamed(nextScreen);
           }
         }
       } on FirebaseAuthException catch (e) {
@@ -450,7 +443,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             // TODO: Implement Google login
                           },
                           style: OutlinedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(vertical: 12),
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             side: BorderSide(color: Theme.of(context).dividerColor),
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(8),
@@ -461,7 +454,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 24,
                             height: 24,
                           ),
-                          label: Text('Google',
+                          label: Text(
+                            'Google',
                             style: TextStyle(
                               color: Theme.of(context).textTheme.bodyMedium?.color,
                               fontWeight: FontWeight.w500,

@@ -10,6 +10,7 @@ import '../article/article_webview_screen.dart';
 import '../auth/profile_screen.dart';
 import '../services/firebase_service.dart';
 import '../models/news_category.dart';
+import '../models/news_article.dart';
 import '../services/network_service.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -85,7 +86,7 @@ class _HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<_HomeTab> {
-  String _selectedCategoryId = '';
+  String _selectedCategoryId = 'latest';
   List<NewsCategory> _categories = [];
   bool _isLoadingCategories = true;
   bool _isLoadingLatestNews = false;
@@ -93,14 +94,15 @@ class _HomeTabState extends State<_HomeTab> {
   String? _categoriesError;
   String? _latestNewsError;
   String? _trendingNewsError;
-  List<dynamic> _latestNewsItems = [];
-  List<dynamic> _trendingNewsItems = [];
+  List<NewsArticle> _latestNewsItems = [];
+  List<NewsArticle> _trendingNewsItems = [];
 
   @override
   void initState() {
     super.initState();
     _loadCategories();
     _loadTrendingNews();
+    _loadLatestNews(_selectedCategoryId);
   }
 
   String _formatTimestamp(String timestamp) {
@@ -132,10 +134,6 @@ class _HomeTabState extends State<_HomeTab> {
       final categories = await FirebaseService.getGNewsCategoriesFuture();
       setState(() {
         _categories = categories;
-        if (categories.isNotEmpty) {
-          _selectedCategoryId = categories[0].id ?? '';
-          _loadLatestNews(_selectedCategoryId);
-        }
         _isLoadingCategories = false;
       });
     } catch (e) {
@@ -178,15 +176,15 @@ class _HomeTabState extends State<_HomeTab> {
         _trendingNewsError = null;
       });
 
-      final response = await NetworkService.getNews();
-      if (response['status'] == 'success') {
-        setState(() {
-          _trendingNewsItems = response['items'];
-          _isLoadingTrendingNews = false;
-        });
-      } else {
-        throw Exception('Failed to load trending news');
-      }
+      final trendingNews = await FirebaseService.getPaginatedNews(
+        categoryID: 'trending',
+        startPage: 0,
+        count: 30,
+      );
+      setState(() {
+        _trendingNewsItems = trendingNews;
+        _isLoadingTrendingNews = false;
+      });
     } catch (e) {
       setState(() {
         _isLoadingTrendingNews = false;
@@ -210,15 +208,16 @@ class _HomeTabState extends State<_HomeTab> {
         _latestNewsError = null;
       });
 
-      final response = await NetworkService.getNews(categoryId: categoryId);
-      if (response['status'] == 'success') {
-        setState(() {
-          _latestNewsItems = response['items'];
-          _isLoadingLatestNews = false;
-        });
-      } else {
-        throw Exception('Failed to load latest news');
-      }
+      final latestNews = await FirebaseService.getPaginatedNews(
+        categoryID: categoryId,
+        startPage: 0,
+        count: 30,
+      );
+      print("Latest news count = ${latestNews.length}");
+      setState(() {
+        _latestNewsItems = latestNews;
+        _isLoadingLatestNews = false;
+      });
     } catch (e) {
       setState(() {
         _isLoadingLatestNews = false;
@@ -227,7 +226,7 @@ class _HomeTabState extends State<_HomeTab> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Failed to load latest news. Please try again later.'),
+            content: Text('Failed to load latest news. Please try again later. ${e}'),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -296,19 +295,32 @@ class _HomeTabState extends State<_HomeTab> {
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(
-        children: _categories.map((category) {
-          return _CategoryChip(
-            label: category.alias ?? category.name ?? '',
-            isSelected: category.id == _selectedCategoryId,
+        children: [
+          _CategoryChip(
+            label: 'Latest',
+            isSelected: _selectedCategoryId == 'latest',
             context: context,
             onSelected: (selected) {
               setState(() {
-                _selectedCategoryId = category.id ?? '';
+                _selectedCategoryId = 'latest';
                 _loadLatestNews(_selectedCategoryId);
               });
             },
-          );
-        }).toList(),
+          ),
+          ..._categories.map((category) {
+            return _CategoryChip(
+              label: category.alias ?? category.name ?? '',
+              isSelected: category.id == _selectedCategoryId,
+              context: context,
+              onSelected: (selected) {
+                setState(() {
+                  _selectedCategoryId = category.id ?? '';
+                  _loadLatestNews(_selectedCategoryId);
+                });
+              },
+            );
+          }).toList(),
+        ],
       ),
     );
   }
@@ -375,19 +387,19 @@ class _HomeTabState extends State<_HomeTab> {
               context,
               MaterialPageRoute(
                 builder: (context) => ArticleWebViewScreen(
-                  url: newsItem['url'] ?? '',
-                  title: newsItem['title'] ?? '',
+                  url: newsItem.newsUrl ?? '',
+                  title: newsItem.title ?? '',
                 ),
               ),
             );
           },
           child: _buildLatestNewsItem(
             context,
-            newsItem['category'] ?? '',
-            newsItem['title'] ?? '',
-            newsItem['publisher'] ?? '',
-            newsItem['timestamp'] ?? '',
-            newsItem['images']?['thumbnailProxied'] ?? newsItem['images']?['thumbnail'] ?? 'assets/images/news1.jpg',
+            newsItem.category ?? '',
+            newsItem.title ?? '',
+            newsItem.publisher ?? '',
+            newsItem.timestamp ?? '',
+            newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
           ),
         );
       }).toList(),
@@ -482,8 +494,7 @@ class _HomeTabState extends State<_HomeTab> {
                   TextButton(
                     onPressed: () {
                       Navigator.pushNamed(context, TrendingScreen.routeName);
-                    },
-                    child: Text(
+                    },child: Text(
                       'See all',
                       style: TextStyle(
                         color: Theme.of(context).primaryColor,
@@ -502,19 +513,19 @@ class _HomeTabState extends State<_HomeTab> {
                       context,
                       MaterialPageRoute(
                         builder: (context) => ArticleWebViewScreen(
-                          url: _trendingNewsItems[0]['url'] ?? '',
-                          title: _trendingNewsItems[0]['title'] ?? '',
+                          url: _trendingNewsItems[0].newsUrl ?? '',
+                          title: _trendingNewsItems[0].title ?? '',
                         ),
                       ),
                     );
                   },
                   child: _buildNewsCard(
                     context,
-                    _trendingNewsItems[0]['category'] ?? '',
-                    _trendingNewsItems[0]['title'] ?? '',
-                    _trendingNewsItems[0]['publisher'] ?? '',
-                    _trendingNewsItems[0]['timestamp'] ?? '',
-                    _trendingNewsItems[0]['images']?['thumbnailProxied'] ?? _trendingNewsItems[0]['images']?['thumbnail'] ?? 'assets/images/news1.jpg',
+                    _trendingNewsItems[0].category ?? '',
+                    _trendingNewsItems[0].title ?? '',
+                    _trendingNewsItems[0].publisher ?? '',
+                    _trendingNewsItems[0].timestamp ?? '',
+                    _trendingNewsItems[0].images?['thumbnailProxied'] ?? _trendingNewsItems[0].images?['thumbnail'] ?? 'assets/images/news1.jpg',
                   ),
                 ),
               ),
