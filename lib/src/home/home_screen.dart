@@ -12,6 +12,8 @@ import '../services/firebase_service.dart';
 import '../models/news_category.dart';
 import '../models/news_article.dart';
 import '../services/network_service.dart';
+import '../config/feature_flags.dart';
+import 'category_based_news_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -86,23 +88,62 @@ class _HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<_HomeTab> {
-  String _selectedCategoryId = 'latest';
+  String? _selectedCategoryId;
   List<NewsCategory> _categories = [];
   bool _isLoadingCategories = true;
   bool _isLoadingLatestNews = false;
   bool _isLoadingTrendingNews = false;
+  bool _isLoadingMoreNews = false;
   String? _categoriesError;
   String? _latestNewsError;
   String? _trendingNewsError;
   List<NewsArticle> _latestNewsItems = [];
   List<NewsArticle> _trendingNewsItems = [];
+  Map<String, DocumentSnapshot?> _lastDocuments = {};
+  Map<String, List<NewsArticle>> _categoryNewsItems = {};
+  final ScrollController _scrollController = ScrollController();
+  bool _showScrollToTopButton = false;
 
   @override
   void initState() {
     super.initState();
     _loadCategories();
-    _loadTrendingNews();
-    _loadLatestNews(_selectedCategoryId);
+    if (FeatureFlags.isFeatureEnabled(FeatureFlags.HOME_SCREEN_TRENDING)) {
+      _loadTrendingNews();
+    }
+    _scrollController.addListener(_scrollListener);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _scrollListener() {
+    if (_scrollController.offset >= 1000 && !_showScrollToTopButton) {
+      setState(() {
+        _showScrollToTopButton = true;
+      });
+    } else if (_scrollController.offset < 1000 && _showScrollToTopButton) {
+      setState(() {
+        _showScrollToTopButton = false;
+      });
+    }
+
+    if (_scrollController.offset >= _scrollController.position.maxScrollExtent &&
+        !_scrollController.position.outOfRange) {
+      _loadMoreLatestNews();
+    }
+  }
+
+  void _scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 
   String _formatTimestamp(String timestamp) {
@@ -133,8 +174,12 @@ class _HomeTabState extends State<_HomeTab> {
       
       final categories = await FirebaseService.getGNewsCategoriesFuture();
       setState(() {
-        _categories = categories;
+        _categories = _sortCategories(categories);
         _isLoadingCategories = false;
+        if (_categories.isNotEmpty) {
+          _selectedCategoryId = _categories[0].id;
+          _loadLatestNews(_selectedCategoryId!);
+        }
       });
     } catch (e) {
       setState(() {
@@ -169,6 +214,20 @@ class _HomeTabState extends State<_HomeTab> {
     }
   }
 
+  List<NewsCategory> _sortCategories(List<NewsCategory> categories) {
+    final allCategory = categories.firstWhere(
+      (category) => category.alias?.toLowerCase() == 'all',
+      orElse: () => NewsCategory(),
+    );
+
+    if (allCategory.id != null) {
+      categories.remove(allCategory);
+      categories.insert(0, allCategory);
+    }
+
+    return categories;
+  }
+
   Future<void> _loadTrendingNews() async {
     try {
       setState(() {
@@ -176,13 +235,14 @@ class _HomeTabState extends State<_HomeTab> {
         _trendingNewsError = null;
       });
 
-      final trendingNews = await FirebaseService.getPaginatedNews(
+      final result = await FirebaseService.getPaginatedNews(
         categoryID: 'trending',
         startPage: 0,
-        count: 30,
+        count:30,
       );
       setState(() {
-        _trendingNewsItems = trendingNews;
+        _trendingNewsItems = result.articles;
+        _lastDocuments['trending'] = result.lastDocument;
         _isLoadingTrendingNews = false;
       });
     } catch (e) {
@@ -208,14 +268,17 @@ class _HomeTabState extends State<_HomeTab> {
         _latestNewsError = null;
       });
 
-      final latestNews = await FirebaseService.getPaginatedNews(
+      final result = await FirebaseService.getPaginatedNews(
         categoryID: categoryId,
         startPage: 0,
-        count: 30,
+        count: 10, // Load 10 articles at a time
+        lastDoc: _lastDocuments[categoryId],
       );
-      print("Latest news count = ${latestNews.length}");
+      print("Latest news count = ${result.articles.length}");
       setState(() {
-        _latestNewsItems = latestNews;
+        _latestNewsItems = result.articles;
+        _lastDocuments[categoryId] = result.lastDocument;
+        _categoryNewsItems[categoryId] = result.articles;
         _isLoadingLatestNews = false;
       });
     } catch (e) {
@@ -227,6 +290,50 @@ class _HomeTabState extends State<_HomeTab> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text('Failed to load latest news. Please try again later. ${e}'),
+            backgroundColor: Theme.of(context).colorScheme.error,
+          ),
+        );
+      }
+    }
+  }
+
+  Future<void> _loadMoreLatestNews() async {
+    if (_isLoadingMoreNews || _selectedCategoryId == null) return;
+
+    try {
+      setState(() {
+        _isLoadingMoreNews = true;
+      });
+
+      final lastDoc = _lastDocuments[_selectedCategoryId];
+      if (lastDoc == null) return;
+
+      final result = await FirebaseService.getPaginatedNews(
+        categoryID: _selectedCategoryId!,
+        startPage: 0,
+        count: 10, // Load 10 articles at a time
+        lastDoc: lastDoc,
+      );
+
+      if (result.articles.isNotEmpty) {
+        setState(() {
+          final currentItems = _categoryNewsItems[_selectedCategoryId] ?? [];
+          _categoryNewsItems[_selectedCategoryId!] = [...currentItems, ...result.articles];
+          _lastDocuments[_selectedCategoryId!] = result.lastDocument;
+        });
+      }
+
+      setState(() {
+        _isLoadingMoreNews = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoadingMoreNews = false;
+      });
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to load more news. Please try again later.'),
             backgroundColor: Theme.of(context).colorScheme.error,
           ),
         );
@@ -295,32 +402,25 @@ class _HomeTabState extends State<_HomeTab> {
       scrollDirection: Axis.horizontal,
       padding: const EdgeInsets.symmetric(horizontal: 16.0),
       child: Row(
-        children: [
-          _CategoryChip(
-            label: 'Latest',
-            isSelected: _selectedCategoryId == 'latest',
+        children: _categories.map((category) {
+          final categoryLabel = category.alias?.isNotEmpty == true ? category.alias : category.name;
+          if (categoryLabel == null || categoryLabel.isEmpty) {
+            return const SizedBox.shrink(); // Skip this category
+          }
+          return _CategoryChip(
+            label: categoryLabel,
+            isSelected: category.id == _selectedCategoryId,
             context: context,
             onSelected: (selected) {
               setState(() {
-                _selectedCategoryId = 'latest';
-                _loadLatestNews(_selectedCategoryId);
+                _selectedCategoryId = category.id;
+                if (_selectedCategoryId != null) {
+                  _loadLatestNews(_selectedCategoryId!);
+                }
               });
             },
-          ),
-          ..._categories.map((category) {
-            return _CategoryChip(
-              label: category.alias ?? category.name ?? '',
-              isSelected: category.id == _selectedCategoryId,
-              context: context,
-              onSelected: (selected) {
-                setState(() {
-                  _selectedCategoryId = category.id ?? '';
-                  _loadLatestNews(_selectedCategoryId);
-                });
-              },
-            );
-          }).toList(),
-        ],
+          );
+        }).toList(),
       ),
     );
   }
@@ -366,7 +466,11 @@ class _HomeTabState extends State<_HomeTab> {
             SizedBox(
               width: double.infinity,
               child: TextButton.icon(
-                onPressed: () => _loadLatestNews(_selectedCategoryId),
+                onPressed: () {
+                  if (_selectedCategoryId != null) {
+                    _loadLatestNews(_selectedCategoryId!);
+                  }
+                },
                 icon: const Icon(Icons.refresh),
                 label: const Text('Retry'),
                 style: TextButton.styleFrom(
@@ -379,30 +483,36 @@ class _HomeTabState extends State<_HomeTab> {
       );
     }
 
+    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ?? []) : _latestNewsItems;
+
     return Column(
-      children: _latestNewsItems.skip(1).take(4).map((newsItem) {
-        return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => ArticleWebViewScreen(
-                  url: newsItem.newsUrl ?? '',
-                  title: newsItem.title ?? '',
+      children: [...newsItems.map((newsItem) {
+          return GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ArticleWebViewScreen(
+                    url: newsItem.newsUrl ?? '',
+                    title:newsItem.title ?? '',
+                  ),
                 ),
-              ),
-            );
-          },
-          child: _buildLatestNewsItem(
-            context,
-            newsItem.category ?? '',
-            newsItem.title ?? '',
-            newsItem.publisher ?? '',
-            newsItem.timestamp ?? '',
-            newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
+              );
+            },
+            child: _buildLatestNewsItem(
+              context,
+              newsItem.title ?? '',
+              newsItem.publisher ?? '',
+              newsItem.timestamp ?? '',
+              newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
+            ),
+          );
+        }).toList(),
+        if (_isLoadingMoreNews)
+          const Padding(padding: EdgeInsets.all(8.0),
+            child: Center(child: CircularProgressIndicator()),
           ),
-        );
-      }).toList(),
+      ],
     );
   }
 
@@ -443,127 +553,168 @@ class _HomeTabState extends State<_HomeTab> {
           ],
         ),
         actions: [
-          IconButton(
-            icon: Icon(Icons.notifications_none_outlined, color: Theme.of(context).iconTheme.color),
-            onPressed: () {
-              Navigator.pushNamed(context, NotificationScreen.routeName);
-            },
-          ),
+          if (FeatureFlags.isFeatureEnabled(FeatureFlags.HOME_SCREEN_NOTIFICATIONS))
+            IconButton(
+              icon: Icon(Icons.notifications_none_outlined, color: Theme.of(context).iconTheme.color),
+              onPressed: () {
+                Navigator.pushNamed(context, NotificationScreen.routeName);
+              },
+            ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.pushNamed(context, SearchScreen.routeName);
-                },
-                child: AbsorbPointer(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Search',
-                      filled: true,
-                      fillColor: Theme.of(context).cardColor,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide.none,
-                      ),
-                      prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
-                      suffixIcon: Icon(Icons.tune, color: Theme.of(context).iconTheme.color),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Trending',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).textTheme.titleLarge?.color,
-                    ),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushNamed(context, TrendingScreen.routeName);
-                    },child: Text(
-                      'See all',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            if (_trendingNewsItems.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ArticleWebViewScreen(
-                          url: _trendingNewsItems[0].newsUrl ?? '',
-                          title: _trendingNewsItems[0].title ?? '',
+      body: Stack(
+        children: [
+          SingleChildScrollView(
+            controller: _scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                if (FeatureFlags.isFeatureEnabled(FeatureFlags.HOME_SCREEN_SEARCH))
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context, SearchScreen.routeName);
+                      },
+                      child: AbsorbPointer(
+                        child: TextField(
+                          decoration: InputDecoration(
+                            hintText: 'Search',
+                            filled: true,
+                            fillColor: Theme.of(context).cardColor,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide.none,
+                            ),
+                            prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
+                            suffixIcon: Icon(Icons.tune, color: Theme.of(context).iconTheme.color),
+                          ),
                         ),
                       ),
-                    );
-                  },
-                  child: _buildNewsCard(
-                    context,
-                    _trendingNewsItems[0].category ?? '',
-                    _trendingNewsItems[0].title ?? '',
-                    _trendingNewsItems[0].publisher ?? '',
-                    _trendingNewsItems[0].timestamp ?? '',
-                    _trendingNewsItems[0].images?['thumbnailProxied'] ?? _trendingNewsItems[0].images?['thumbnail'] ?? 'assets/images/news1.jpg',
-                  ),
-                ),
-              ),
-            const SizedBox(height: 24),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Latest',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      color: Theme.of(context).textTheme.titleLarge?.color,
                     ),
                   ),
-                  TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'See all',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
+                if (FeatureFlags.isFeatureEnabled(FeatureFlags.HOME_SCREEN_TRENDING)) ...[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Trending',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Theme.of(context).textTheme.titleLarge?.color,
+                          ),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pushNamed(context, TrendingScreen.routeName);
+                          },
+                          child: Text(
+                            'See all',
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  if (_trendingNewsItems.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ArticleWebViewScreen(
+                                url: _trendingNewsItems[0].newsUrl ?? '',
+                                title: _trendingNewsItems[0].title ?? '',
+                              ),
+                            ),
+                          );
+                        },
+                        child: _buildNewsCard(
+                          context,
+                          _trendingNewsItems[0].category ?? '',
+                          _trendingNewsItems[0].title ?? '',
+                          _trendingNewsItems[0].publisher ?? '',
+                          _trendingNewsItems[0].timestamp ?? '',
+                          _trendingNewsItems[0].images?['thumbnailProxied'] ?? _trendingNewsItems[0].images?['thumbnail'] ?? 'assets/images/news1.jpg',
+                        ),
                       ),
                     ),
-                  ),
+                  const SizedBox(height: 24),
                 ],
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Latest',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Theme.of(context).textTheme.titleLarge?.color,
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          if (_selectedCategoryId != null) {
+                            final selectedCategory = _categories.firstWhere(
+                              (category) => category.id == _selectedCategoryId,
+                              orElse: () => NewsCategory(name: 'Latest'),
+                            );
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CategoryBasedNewsScreen(
+                                  categoryId: _selectedCategoryId!,
+                                  categoryName: selectedCategory.name ?? 'Latest',
+                                ),
+                              ),
+                            );
+                          }
+                        },
+                        child: Text(
+                          'See all',
+                          style: TextStyle(
+                            color: Theme.of(context).primaryColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                _buildCategoriesSection(),
+                const SizedBox(height: 16),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: _buildLatestNewsSection(),
+                ),
+                const SizedBox(height: 16),
+              ],
+            ),
+          ),
+          if (_showScrollToTopButton)
+            Positioned(
+              right: 16,
+              bottom: 16,
+              child: AnimatedOpacity(
+                opacity: _showScrollToTopButton ? 1.0 : 0.0,
+                duration: const Duration(milliseconds: 200),
+                child: FloatingActionButton(
+                  onPressed: _scrollToTop,
+                  mini: true,
+                  backgroundColor: Theme.of(context).primaryColor,
+                  child: const Icon(Icons.arrow_upward, color: Colors.white),
+                ),
               ),
             ),
-            _buildCategoriesSection(),
-            const SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: _buildLatestNewsSection(),
-            ),
-            const SizedBox(height: 16),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -657,7 +808,7 @@ class _HomeTabState extends State<_HomeTab> {
     );
   }
 
-  Widget _buildLatestNewsItem(BuildContext context, String category, String title, String source, String time, String imageUrl) {
+  Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -685,14 +836,6 @@ class _HomeTabState extends State<_HomeTab> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  category,
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 4),
                 Text(
                   title,
                   style: TextStyle(

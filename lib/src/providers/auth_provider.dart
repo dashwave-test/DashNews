@@ -22,7 +22,7 @@ class AuthProvider with ChangeNotifier {
   bool get isAuthenticated => _user != null;
 
   AuthProvider() {
-    FirebaseService.authStateChanges.listen((User? user) {
+    _auth.authStateChanges().listen((User? user) {
       _user = user;
       notifyListeners();
     });
@@ -32,8 +32,8 @@ class AuthProvider with ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
-      User? user = await FirebaseService.signInWithEmailAndPassword(email, password);
-      return user;
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return userCredential.user;
     } finally {
       _isLoading = false;
       notifyListeners();
@@ -82,7 +82,7 @@ class AuthProvider with ChangeNotifier {
     try {
       _isLoading = true;
       notifyListeners();
-      await FirebaseService.signOut();
+      await _auth.signOut();
     } finally {
       _isLoading = false;
       notifyListeners();

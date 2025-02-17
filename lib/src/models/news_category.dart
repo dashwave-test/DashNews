@@ -14,12 +14,20 @@ class NewsCategory {
   /// Alias or alternative name for the category
   final String? alias;
 
+  /// Description for the category
+  final String? description;
+
+  /// Whether to show it as a category or not
+  final bool? showAsCategory;
+
   /// Creates a new [NewsCategory] instance
   NewsCategory({
     this.id,
     this.name,
     this.icon,
     this.alias,
+    this.description,
+    this.showAsCategory,
   });
 
   /// Creates a [NewsCategory] from a JSON map
@@ -29,6 +37,7 @@ class NewsCategory {
       name: json['name'] as String?,
       icon: json['icon'] as String?,
       alias: json['alias'] as String?,
+      description: json['description'] as String?,
     );
   }
 

@@ -1,98 +1,105 @@
 import 'package:flutter/material.dart';
 import '../article/article_details_screen.dart';
+import '../services/firebase_service.dart';
+import '../models/news_category.dart';
 
-class ExploreScreen extends StatelessWidget {
+class ExploreScreen extends StatefulWidget {
   static const routeName = '/explore';
 
   const ExploreScreen({super.key});
+
+  @override
+  State<ExploreScreen> createState() => _ExploreScreenState();
+}
+
+class _ExploreScreenState extends State<ExploreScreen> {
+  List<NewsCategory> _topics = [];
+  bool _isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    _loadTopics();
+  }
+
+  Future<void> _loadTopics() async {
+    try {
+      final categories = await FirebaseService.getGNewsCategoriesFuture();
+      setState(() {
+        _topics = categories;
+        _isLoading = false;
+      });
+    } catch (e) {
+      print('Error loading topics: $e');
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
-        child: ListView(
-          padding: const EdgeInsets.all(16),
-          children: [
-            Text(
-              'Explore',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).textTheme.titleLarge?.color,
-              ),
-            ),
-            const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  'Topic',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w600,
-                    color: Theme.of(context).textTheme.titleLarge?.color,
-                  ),
-                ),
-                TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'See all',
+        child: _isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : ListView(
+                padding: const EdgeInsets.all(16),
+                children: [
+                  Text(
+                    'Explore',
                     style: TextStyle(
-                      color: Color(0xFF246BFD),
-                      fontWeight: FontWeight.w500,
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).textTheme.titleLarge?.color,
                     ),
                   ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 16),
-            _buildTopicItem(
-              context,
-              'Health',
-              'Get energizing workout moves, healthy recipes...',
-              'assets/images/explore/health.png',
-              false,
-            ),
-            const SizedBox(height: 12),
-            _buildTopicItem(
-              context,
-              'Technology',
-              'The latest tech news about the world\'s best hardware...',
-              'assets/images/explore/technology.png',
-              true,
-            ),
-            const SizedBox(height: 12),
-            _buildTopicItem(
-              context,
-              'Art',
-              'Art is a diverse range of human activity, and result...',
-              'assets/images/explore/art.png',
-              true,
-            ),
-            const SizedBox(height: 24),
-            Text(
-              'Popular Topic',
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w600,
-                color: Theme.of(context).textTheme.titleLarge?.color,
+                  const SizedBox(height: 16),
+                  Text(
+                    'Topics',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).textTheme.titleLarge?.color,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  ..._topics.map((topic) => Column(
+                    children: [
+                      _buildTopicItem(
+                        context,
+                        topic.name ?? '',
+                        topic.description ?? 'No description available',
+                        topic.icon ?? 'assets/images/explore/default.png',
+                        false,
+                      ),
+                      const SizedBox(height: 12),
+                    ],
+                  )).toList(),
+                  const SizedBox(height: 24),
+                  Text(
+                    'Popular Topic',
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Theme.of(context).textTheme.titleLarge?.color,
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, ArticleDetailsScreen.routeName),
+                    child: _buildPopularNewsItem(
+                      context,
+                      'Europe',
+                      'Russian warship: Moskva sinks in Black Sea',
+                      'BBC News',
+                      '4h ago',
+                      'assets/images/news1.jpg',
+                    ),
+                  ),
+                ],
               ),
-            ),
-            const SizedBox(height: 16),
-            GestureDetector(
-              onTap: () => Navigator.pushNamed(context, ArticleDetailsScreen.routeName),
-              child: _buildPopularNewsItem(
-                context,
-                'Europe',
-                'Russian warship: Moskva sinks in Black Sea',
-                'BBC News',
-                '4h ago',
-                'assets/images/news1.jpg',
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
@@ -116,11 +123,19 @@ class ExploreScreen extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
+              child: Image.network(
                 imageUrl,
                 width: 48,
                 height: 48,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) {
+                  return Image.asset(
+                    'assets/images/explore/default.png',
+                    width: 48,
+                    height: 48,
+                    fit: BoxFit.cover,
+                  );
+                },
               ),
             ),
           ),

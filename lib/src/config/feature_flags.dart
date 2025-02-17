@@ -5,6 +5,9 @@ class FeatureFlags {
   static const String SIGNUP_REMEMBER_ME = 'signup_remember_me';
   static const String SOCIAL_SIGNUP = 'social_signup';
   static const String DISABLE_NEWS_SOURCES = 'disable_news_sources';
+  static const String HOME_SCREEN_TRENDING = 'home_screen_trending';
+  static const String HOME_SCREEN_NOTIFICATIONS = 'home_screen_notifications';
+  static const String HOME_SCREEN_SEARCH = 'home_screen_search';
 
   static final List<String> _disabledFeatures = [
     EMAIL_VERIFICATION,
@@ -13,6 +16,9 @@ class FeatureFlags {
     SOCIAL_SIGNUP,
     SIGNUP_REMEMBER_ME,
     DISABLE_NEWS_SOURCES,
+    HOME_SCREEN_TRENDING,
+    HOME_SCREEN_NOTIFICATIONS,
+    HOME_SCREEN_SEARCH,
   ];
 
   static void disableFeature(String feature) {
