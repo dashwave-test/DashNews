@@ -83,7 +83,7 @@ class FirebaseService {
       print("Number of documents returned: ${querySnapshot.docs.length}");
 
       final List<NewsArticle> articles = querySnapshot.docs
-          .map((doc) => NewsArticle.fromJson(doc.data() as Map<String, dynamic>))
+          .map((doc) => NewsArticleFirestore.fromFirestore(doc))
           .toList();
 
       final DocumentSnapshot? lastDocument = querySnapshot.docs.isNotEmpty ? querySnapshot.docs.last : null;
@@ -163,6 +163,82 @@ class FirebaseService {
           .toList();
     } catch (e, stack) {
       FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error searching news');
+      rethrow;
+    }
+  }
+
+  static Future<void> addBookmark({
+    required String userID,
+    required String newsID,
+  }) async {
+    try {
+      await _firestore.collection('bookmarks').add({
+        'userID': userID,
+        'newsID': newsID,
+        'bookmarkedAt': FieldValue.serverTimestamp(),
+      });
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error adding bookmark');
+      rethrow;
+    }
+  }
+
+  static Future<void> removeBookmark({
+    required String userID,
+    required String newsID,
+  }) async {
+    try {
+      final QuerySnapshot querySnapshot = await _firestore
+          .collection('bookmarks')
+          .where('userID', isEqualTo: userID)
+          .where('newsID', isEqualTo: newsID)
+          .limit(1)
+          .get();
+
+      if (querySnapshot.docs.isNotEmpty) {
+        await querySnapshot.docs.first.reference.delete();
+      }
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error removing bookmark');
+      rethrow;
+    }
+  }
+
+  static Future<List<NewsArticle>> getAllBookmarks({
+    required String userID,
+  }) async {
+    try {
+      final QuerySnapshot bookmarkSnapshot = await _firestore
+          .collection('bookmarks')
+          .where('userID', isEqualTo: userID)
+          .orderBy('bookmarkedAt', descending: true)
+          .get();
+
+      final List<String> bookmarkedNewsIDs = bookmarkSnapshot.docs
+          .map((doc) => (doc.data() as Map<String, dynamic>)['newsID'] as String)
+          .toList();
+
+      if (bookmarkedNewsIDs.isEmpty) {
+        return [];
+      }
+
+      final QuerySnapshot newsSnapshot = await _firestore
+          .collection('news_articles')
+          .where(FieldPath.documentId, whereIn: bookmarkedNewsIDs)
+          .get();
+
+      final Map<String, NewsArticle> newsMap = {
+        for (var doc in newsSnapshot.docs)
+          doc.id: NewsArticle.fromJson(doc.data() as Map<String, dynamic>)
+      };
+
+      // Preserve the order of bookmarks
+      return bookmarkedNewsIDs
+          .map((id) => newsMap[id])
+          .whereType<NewsArticle>()
+          .toList();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching all bookmarks');
       rethrow;
     }
   }
