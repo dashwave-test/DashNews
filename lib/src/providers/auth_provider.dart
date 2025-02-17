@@ -21,6 +21,9 @@ class AuthProvider with ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isAuthenticated => _user != null;
 
+  // Add the new getter for userID
+  String? get userID => _user?.uid;
+
   AuthProvider() {
     _auth.authStateChanges().listen((User? user) {
       _user = user;

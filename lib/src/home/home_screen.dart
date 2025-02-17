@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:provider/provider.dart';
 import '../trending/trending_screen.dart';
 import '../notifications/notification_screen.dart';
 import '../search/search_screen.dart';
@@ -13,6 +14,7 @@ import '../models/news_category.dart';
 import '../models/news_article.dart';
 import '../services/network_service.dart';
 import '../config/feature_flags.dart';
+import '../providers/auth_provider.dart';
 import 'category_based_news_screen.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -239,7 +241,7 @@ class _HomeTabState extends State<_HomeTab> {
       final result = await FirebaseService.getPaginatedNews(
         categoryID: 'trending',
         startPage: 0,
-        count:30,
+        count: 30,
       );
       setState(() {
         _trendingNewsItems = result.articles;
@@ -272,10 +274,10 @@ class _HomeTabState extends State<_HomeTab> {
       final result = await FirebaseService.getPaginatedNews(
         categoryID: categoryId,
         startPage: 0,
-        count: 10, // Load 10 articles at a time
+        count: 10,
         lastDoc: _lastDocuments[categoryId],
       );
-      print("Latest news count = ${result.articles.length}");
+
       setState(() {
         _latestNewsItems = result.articles;
         _lastDocuments[categoryId] = result.lastDocument;
@@ -312,7 +314,7 @@ class _HomeTabState extends State<_HomeTab> {
       final result = await FirebaseService.getPaginatedNews(
         categoryID: _selectedCategoryId!,
         startPage: 0,
-        count: 10, // Load 10 articles at a time
+        count: 10,
         lastDoc: lastDoc,
       );
 
@@ -406,12 +408,11 @@ class _HomeTabState extends State<_HomeTab> {
         children: _categories.map((category) {
           final categoryLabel = category.alias?.isNotEmpty == true ? category.alias : category.name;
           if (categoryLabel == null || categoryLabel.isEmpty) {
-            return const SizedBox.shrink(); // Skip this category
+            return const SizedBox.shrink();
           }
           return _CategoryChip(
             label: categoryLabel,
             isSelected: category.id == _selectedCategoryId,
-            context: context,
             onSelected: (selected) {
               setState(() {
                 _selectedCategoryId = category.id;
@@ -484,10 +485,9 @@ class _HomeTabState extends State<_HomeTab> {
       );
     }
 
-    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ??[]) : _latestNewsItems;
-
-    return Column(
-      children: [...newsItems.map((newsItem) {
+    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ?? []) : _latestNewsItems;return Column(
+      children: [
+        ...newsItems.map((newsItem) {
           return GestureDetector(
             onTap: () {
               Navigator.push(
@@ -495,7 +495,7 @@ class _HomeTabState extends State<_HomeTab> {
                 MaterialPageRoute(
                   builder: (context) => ArticleWebViewScreen(
                     url: newsItem.newsUrl ?? '',
-                    title:newsItem.title ?? '',
+                    title: newsItem.title ?? '',
                   ),
                 ),
               );
@@ -507,11 +507,13 @@ class _HomeTabState extends State<_HomeTab> {
               newsItem.timestamp ?? '',
               newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
               newsItem.newsUrl ?? '',
+              newsItem,
             ),
           );
         }).toList(),
         if (_isLoadingMoreNews)
-          const Padding(padding: EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Center(child: CircularProgressIndicator()),
           ),
       ],
@@ -646,6 +648,7 @@ class _HomeTabState extends State<_HomeTab> {
                           _trendingNewsItems[0].timestamp ?? '',
                           _trendingNewsItems[0].images?['thumbnailProxied'] ?? _trendingNewsItems[0].images?['thumbnail'] ?? 'assets/images/news1.jpg',
                           _trendingNewsItems[0].newsUrl ?? '',
+                          _trendingNewsItems[0],
                         ),
                       ),
                     ),
@@ -722,7 +725,8 @@ class _HomeTabState extends State<_HomeTab> {
     );
   }
 
-  Widget _buildNewsCard(BuildContext context, String category, String title, String source, String time, String imageUrl, String newsUrl) {
+  Widget _buildNewsCard(BuildContext context, String category, String title, String source, String time, String imageUrl, String newsUrl, NewsArticle article) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
     return Card(
       elevation: 0,
       color: Theme.of(context).cardColor,
@@ -799,11 +803,24 @@ class _HomeTabState extends State<_HomeTab> {
                         Icons.bookmark_outline,
                         color: Theme.of(context).iconTheme.color,
                       ),
-                      onPressed: () {
-                        // Add bookmark functionality
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Article bookmarked')),
-                        );
+                      onPressed: () async {
+                        try {
+                          final userID = authProvider.userID;
+                          if (userID != null) {
+                            await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Article bookmarked')),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Please log in to bookmark articles')),
+                            );
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Failed to bookmark article: $e')),
+                          );
+                        }
                       },
                     ),
                     IconButton(
@@ -825,7 +842,8 @@ class _HomeTabState extends State<_HomeTab> {
     );
   }
 
-  Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl, String newsUrl) {
+  Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl, String newsUrl, NewsArticle article) {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -903,17 +921,29 @@ class _HomeTabState extends State<_HomeTab> {
                         size: 20,
                         color: Theme.of(context).iconTheme.color,
                       ),
-                      onPressed: () {
-                        // Add bookmark functionality
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Article bookmarked')),
-                        );
+                      onPressed: () async {
+                        try {
+                          final userID = authProvider.userID;
+                          if (userID != null) {
+                            await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Article bookmarked')),
+                            );
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Please log in to bookmark articles')),
+                            );
+                          }
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Failed to bookmark article: $e')),
+                          );
+                        }
                       },
                     ),
                     IconButton(
                       icon: Icon(
-                        Icons.share,
-                        size: 20,
+                        Icons.share,size: 20,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onPressed: () {
@@ -934,29 +964,32 @@ class _HomeTabState extends State<_HomeTab> {
 Widget _CategoryChip({
   required String label,
   bool isSelected = false,
-  required BuildContext context,
   required Function(bool) onSelected,
 }) {
-  return Container(
-    margin: const EdgeInsets.only(right: 8),
-    child: FilterChip(
-      label: Text(label),
-      selected: isSelected,
-      onSelected: onSelected,
-      showCheckmark: true,
-      checkmarkColor: Colors.white,
-      backgroundColor: Theme.of(context).cardColor,
-      selectedColor: Theme.of(context).primaryColor,
-      labelStyle: TextStyle(
-        color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
-        fontWeight: FontWeight.w500,
-      ),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(20),
-        side: BorderSide(
-          color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
+  return Builder(
+    builder: (BuildContext context) {
+      return Container(
+        margin: const EdgeInsets.only(right: 8),
+        child: FilterChip(
+          label: Text(label),
+          selected: isSelected,
+          onSelected: onSelected,
+          showCheckmark: true,
+          checkmarkColor: Colors.white,
+          backgroundColor: Theme.of(context).cardColor,
+          selectedColor: Theme.of(context).primaryColor,
+          labelStyle: TextStyle(
+            color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
+            fontWeight: FontWeight.w500,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+            side: BorderSide(
+              color: isSelected ? Theme.of(context).primaryColor : Theme.of(context).dividerColor,
+            ),
+          ),
         ),
-      ),
-    ),
+      );
+    },
   );
 }

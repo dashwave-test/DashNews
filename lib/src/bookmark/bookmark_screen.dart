@@ -1,10 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../article/article_details_screen.dart';
+import '../services/firebase_service.dart';
+import '../models/news_article.dart';
+import '../providers/auth_provider.dart';
 
-class BookmarkScreen extends StatelessWidget {
+class BookmarkScreen extends StatefulWidget {
   static const routeName = '/bookmark';
 
   const BookmarkScreen({super.key});
+
+  @override
+  _BookmarkScreenState createState() => _BookmarkScreenState();
+}
+
+class _BookmarkScreenState extends State<BookmarkScreen> {
+  late Future<List<NewsArticle>> _bookmarkedArticles;
+
+  @override
+  void initState() {
+    super.initState();
+    _bookmarkedArticles = _loadBookmarkedArticles();
+  }
+
+  Future<List<NewsArticle>> _loadBookmarkedArticles() async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final userID = authProvider.userID;
+    if (userID != null) {
+      return FirebaseService.getAllBookmarks(userID: userID);
+    } else {
+      // Handle the case when the user is not logged in
+      return [];
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,55 +80,64 @@ class BookmarkScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: ListView(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildBookmarkItem(
-                      context,
-                      'Business',
-                      'Global stock markets hit record highs as tech sector soars',
-                      'Financial Times',
-                      '2h ago',
-                      'assets/images/bookmarks/business.png',
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildBookmarkItem(
-                      context,
-                      'Technology',
-                      'New breakthrough in quantum computing promises faster processing',
-                      'TechCrunch',
-                      '4h ago',
-                      'assets/images/bookmarks/tech.png',
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, ArticleDetailsScreen.routeName);
-                    },
-                    child: _buildBookmarkItem(
-                      context,
-                      'Travel',
-                      'Hidden gems: Discovering untouched paradise islands in Southeast Asia',
-                      'Travel + Leisure',
-                      '6h ago',
-                      'assets/images/bookmarks/travel.png',
-                    ),
-                  ),
-                ],
+              child: FutureBuilder<List<NewsArticle>>(
+                future: _bookmarkedArticles,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return const Center(child: Text('No bookmarked articles'));
+                  } else {
+                    return ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        final article = snapshot.data![index];
+                        return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              ArticleDetailsScreen.routeName,
+                              arguments: article,
+                            );
+                          },
+                          child: _buildBookmarkItem(
+                            context,
+                            article.category ?? 'Uncategorized',
+                            article.title ?? 'No Title',
+                            article.publisher ?? 'Unknown Source',
+                            _formatTimestamp(article.timestamp ?? ''),
+                            article.images?['thumbnail'] ?? '',
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
               ),
             ),
           ],
         ),
       ),
     );
+  }
+
+  String _formatTimestamp(String timestamp) {
+    final now = DateTime.now();
+    final articleDate = DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp));
+    final difference = now.difference(articleDate);
+
+    if (difference.inDays > 0) {
+      return '${difference.inDays}d ago';
+    } else if (difference.inHours > 0) {
+      return '${difference.inHours}h ago';
+    } else if (difference.inMinutes > 0) {
+      return '${difference.inMinutes}m ago';
+    } else {
+      return 'Just now';
+    }
   }
 
   Widget _buildBookmarkItem(
@@ -125,7 +162,7 @@ class BookmarkScreen extends StatelessWidget {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.asset(
+              child: Image.network(
                 imageUrl,
                 width: 96,
                 height: 96,
