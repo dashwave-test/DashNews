@@ -14,6 +14,7 @@ import '../models/news_article.dart';
 import '../services/network_service.dart';
 import '../config/feature_flags.dart';
 import 'category_based_news_screen.dart';
+import 'package:share_plus/share_plus.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -483,7 +484,7 @@ class _HomeTabState extends State<_HomeTab> {
       );
     }
 
-    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ?? []) : _latestNewsItems;
+    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ??[]) : _latestNewsItems;
 
     return Column(
       children: [...newsItems.map((newsItem) {
@@ -505,6 +506,7 @@ class _HomeTabState extends State<_HomeTab> {
               newsItem.publisher ?? '',
               newsItem.timestamp ?? '',
               newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
+              newsItem.newsUrl ?? '',
             ),
           );
         }).toList(),
@@ -643,6 +645,7 @@ class _HomeTabState extends State<_HomeTab> {
                           _trendingNewsItems[0].publisher ?? '',
                           _trendingNewsItems[0].timestamp ?? '',
                           _trendingNewsItems[0].images?['thumbnailProxied'] ?? _trendingNewsItems[0].images?['thumbnail'] ?? 'assets/images/news1.jpg',
+                          _trendingNewsItems[0].newsUrl ?? '',
                         ),
                       ),
                     ),
@@ -719,7 +722,7 @@ class _HomeTabState extends State<_HomeTab> {
     );
   }
 
-  Widget _buildNewsCard(BuildContext context, String category, String title, String source, String time, String imageUrl) {
+  Widget _buildNewsCard(BuildContext context, String category, String title, String source, String time, String imageUrl, String newsUrl) {
     return Card(
       elevation: 0,
       color: Theme.of(context).cardColor,
@@ -793,10 +796,24 @@ class _HomeTabState extends State<_HomeTab> {
                     const Spacer(),
                     IconButton(
                       icon: Icon(
-                        Icons.more_horiz,
+                        Icons.bookmark_outline,
                         color: Theme.of(context).iconTheme.color,
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        // Add bookmark functionality
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Article bookmarked')),
+                        );
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.share,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      onPressed: () {
+                        Share.share('Check out this article: $newsUrl');
+                      },
                     ),
                   ],
                 ),
@@ -808,7 +825,7 @@ class _HomeTabState extends State<_HomeTab> {
     );
   }
 
-  Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl) {
+  Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl, String newsUrl) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -880,14 +897,33 @@ class _HomeTabState extends State<_HomeTab> {
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                       ),
                     ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.bookmark_outline,
+                        size: 20,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      onPressed: () {
+                        // Add bookmark functionality
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(content: Text('Article bookmarked')),
+                        );
+                      },
+                    ),
+                    IconButton(
+                      icon: Icon(
+                        Icons.share,
+                        size: 20,
+                        color: Theme.of(context).iconTheme.color,
+                      ),
+                      onPressed: () {
+                        Share.share('Check out this article: $newsUrl');
+                      },
+                    ),
                   ],
                 ),
               ],
             ),
-          ),
-          IconButton(
-            icon: Icon(Icons.more_vert, color: Theme.of(context).iconTheme.color),
-            onPressed: () {},
           ),
         ],
       ),

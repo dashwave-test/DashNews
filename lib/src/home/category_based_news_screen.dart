@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:share_plus/share_plus.dart';
 import '../models/news_article.dart';
 import '../services/firebase_service.dart';
 import '../article/article_webview_screen.dart';
@@ -233,11 +234,25 @@ class _CategoryBasedNewsScreenState extends State<CategoryBasedNewsScreen> {
                         ),
                         IconButton(
                           icon: Icon(
-                            Icons.more_horiz,
+                            Icons.bookmark_outline,
                             color: Theme.of(context).iconTheme.color,
                           ),
-                          onPressed: () {},
-                          tooltip: 'More options',
+                          onPressed: () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text('Article bookmarked')),
+                            );
+                          },
+                          tooltip: 'Bookmark',
+                        ),
+                        IconButton(
+                          icon: Icon(
+                            Icons.share,
+                            color: Theme.of(context).iconTheme.color,
+                          ),
+                          onPressed: () {
+                            Share.share('Check out this article: ${newsItem.newsUrl}');
+                          },
+                          tooltip: 'Share',
                         ),
                       ],
                     ),
