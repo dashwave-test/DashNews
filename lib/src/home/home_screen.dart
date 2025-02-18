@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           NavigationDestination(
             icon: Icon(Icons.bookmark_outline),
             selectedIcon: Icon(Icons.bookmark),
-            label: 'Bookmark',
+            label: 'Bookmarks',
           ),
           NavigationDestination(
             icon: Icon(Icons.person_outline),
@@ -564,7 +564,7 @@ class _HomeTabState extends State<_HomeTab> {
                 fontFamily: 'Montserrat',
                 color: Colors.black,
               ),
-            ),
+      ),
           ],
         ),
         actions: [

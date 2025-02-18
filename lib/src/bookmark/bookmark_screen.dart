@@ -4,6 +4,7 @@ import '../article/article_details_screen.dart';
 import '../services/firebase_service.dart';
 import '../models/news_article.dart';
 import '../providers/auth_provider.dart';
+import '../config/feature_flags.dart';
 
 class BookmarkScreen extends StatefulWidget {
   static const routeName = '/bookmark';
@@ -48,34 +49,36 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Bookmark',
+                    'Bookmarks',
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).textTheme.titleLarge?.color,
                     ),
                   ),
-                  const SizedBox(height: 16),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).cardColor,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: TextField(
-                      style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
-                      decoration: InputDecoration(
-                        hintText: 'Search',
-                        hintStyle: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6)),
-                        prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
-                        suffixIcon: Icon(Icons.tune, color: Theme.of(context).iconTheme.color),
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
-                          horizontal: 16,
-                          vertical: 12,
+                  if (!FeatureFlags.isFeatureDisabled(FeatureFlags.BOOKMARKS_SCREEN_SEARCH)) ...[
+                    const SizedBox(height: 16),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: TextField(
+                        style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                          hintStyle: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6)),
+                          prefixIcon: Icon(Icons.search, color: Theme.of(context).iconTheme.color),
+                          suffixIcon: Icon(Icons.tune, color: Theme.of(context).iconTheme.color),
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16,
+                            vertical: 12,
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                  ],
                 ],
               ),
             ),
