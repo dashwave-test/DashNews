@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import '../services/firebase_service.dart';
 import '../services/shared_preferences_manager.dart';
+import '../models/news_article.dart';
+import '../models/news_category.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -27,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // Load data if user is logged in
     final dataFuture = Future(() async {
       if (authProvider.isAuthenticated) {
-        await _loadGNewsCategories();
+    await _loadGNewsCategories();
         await _loadBookmarkedNewsIDs();
       }
     });
@@ -42,9 +44,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _loadGNewsCategories() async {
     try {
-      final categories = await FirebaseService.getGNewsCategoriesFuture();
-      // Save categories locally for global use
-      await SharedPreferencesManager.saveGNewsCategories(categories.map((c) => c.toString()).toList());
+      final List<NewsCategory> categories = await FirebaseService.getGNewsCategoriesFuture();
+      await SharedPreferencesManager.saveGNewsCategories(categories);
     } catch (e) {
       print('Error loading GNews categories: $e');
     }
