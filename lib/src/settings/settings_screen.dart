@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../providers/auth_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../auth/edit_profile_screen.dart';
+import '../services/shared_preferences_manager.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings';
@@ -25,6 +26,13 @@ class SettingsScreen extends StatelessWidget {
     if (!await launchUrl(url, mode: LaunchMode.externalApplication)) {
       throw Exception('Could not launch $url');
     }
+  }
+
+  Future<void> _logout(BuildContext context) async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    await SharedPreferencesManager.clearAll();
+    await authProvider.signOut();
+    Navigator.of(context).pushReplacementNamed('/login');
   }
 
   @override
@@ -176,9 +184,7 @@ class SettingsScreen extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.exit_to_app),
             title: Text('Logout'),
-            onTap: () {
-              // Implement logout functionality
-            },
+            onTap: () => _logout(context),
           ),
         ],
       ),

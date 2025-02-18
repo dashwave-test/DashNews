@@ -60,4 +60,9 @@ class SharedPreferencesManager {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setBool(_isFirstLaunchKey, value);
   }
+
+  static Future<void> clearAll() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
+  }
 }
