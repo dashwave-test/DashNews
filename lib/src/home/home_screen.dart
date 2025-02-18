@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const _HomeTab(),
     const ExploreScreen(),
     const BookmarkScreen(),
-    const ProfileScreen(),
+    //const ProfileScreen(),
     const SettingsScreen(),
   ];
 
@@ -75,11 +75,11 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.bookmark),
             label: 'Bookmarks',
           ),
-          NavigationDestination(
+          /*NavigationDestination(
             icon: Icon(Icons.person_outline),
             selectedIcon: Icon(Icons.person),
             label: 'Profile',
-          ),
+          ),*/
           NavigationDestination(
             icon: Icon(Icons.settings_outlined),
             selectedIcon: Icon(Icons.settings),
