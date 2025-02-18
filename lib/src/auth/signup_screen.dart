@@ -4,6 +4,9 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart' as app_provider;
 import '../config/feature_flags.dart';
 import 'email_verification_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
+import '../config/app_constants.dart';
 
 class SignupScreen extends StatefulWidget {
   static const routeName = '/signup';
@@ -122,6 +125,16 @@ class _SignupScreenState extends State<SignupScreen> {
           });
         }
       }
+    }
+  }
+
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
     }
   }
 
@@ -317,6 +330,38 @@ class _SignupScreenState extends State<SignupScreen> {
                       ],
                     ),
                   ),
+                const SizedBox(height: 16),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: const TextStyle(
+                      fontSize: 12,
+                      color: Color(0xFF666666),
+                    ),
+                    children: [
+                      const TextSpan(text: 'By signing up you accept the '),
+                      TextSpan(
+                        text: 'Terms and Conditions',
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(AppConstants.termsAndConditionsUrl),
+                      ),
+                      const TextSpan(text: ' and '),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: const TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(AppConstants.privacyPolicyUrl),
+                      ),
+                    ],
+                  ),
+                ),
                 const SizedBox(height: 32),
                 SizedBox(
                   width: double.infinity,

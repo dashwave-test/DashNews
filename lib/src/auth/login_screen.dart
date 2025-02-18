@@ -7,6 +7,9 @@ import 'package:provider/provider.dart';
 import '../config/feature_flags.dart';
 import 'email_verification_screen.dart';
 import 'auth_service.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/gestures.dart';
+import '../config/app_constants.dart';
 
 class LoginScreen extends StatefulWidget {
   static const routeName = '/login';
@@ -116,6 +119,16 @@ class _LoginScreenState extends State<LoginScreen> {
       } else if (_passwordError != null) {
         _showErrorSnackBar(_passwordError!);
       }
+    }
+  }
+
+  Future<void> _launchURL(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(
+      uri,
+      mode: LaunchMode.externalApplication,
+    )) {
+      throw 'Could not launch $url';
     }
   }
 
@@ -383,6 +396,38 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                   ),
                 ),
+                const SizedBox(height: 16),
+                RichText(
+                  textAlign: TextAlign.center,
+                  text: TextSpan(
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Theme.of(context).textTheme.bodySmall?.color,
+                    ),
+                    children: [
+                      const TextSpan(text: 'By signing in you accept the '),
+                      TextSpan(
+                        text: 'Terms and Conditions',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(AppConstants.termsAndConditionsUrl),
+                      ),
+                      const TextSpan(text: ' and '),
+                      TextSpan(
+                        text: 'Privacy Policy',
+                        style: TextStyle(
+                          color: Colors.blue,
+                          decoration: TextDecoration.underline,
+                        ),
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => _launchURL(AppConstants.privacyPolicyUrl),
+                      ),
+                    ],
+                  ),
+                ),
                 if (FeatureFlags.isFeatureEnabled(FeatureFlags.SOCIAL_LOGIN)) ...[
                   const SizedBox(height: 24),
                   Row(
@@ -402,9 +447,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                           ),
                         ),
-                      ),
-                      Expanded(
-                        child: Container(
+                      ),Expanded(child: Container(
                           height: 1,
                           color: Theme.of(context).dividerColor,
                         ),
@@ -471,7 +514,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "don't have an account ? ",
+                      "Don't have an account ? ",
                       style: TextStyle(
                         fontSize:14,
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
