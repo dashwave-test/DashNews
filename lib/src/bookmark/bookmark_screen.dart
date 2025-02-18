@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import '../article/article_details_screen.dart';
 import '../services/firebase_service.dart';
 import '../models/news_article.dart';
+import '../models/news_category.dart';
 import '../providers/auth_provider.dart';
 import '../config/feature_flags.dart';
+import '../services/shared_preferences_manager.dart';
 
 class BookmarkScreen extends StatefulWidget {
   static const routeName = '/bookmark';
@@ -17,11 +19,23 @@ class BookmarkScreen extends StatefulWidget {
 
 class _BookmarkScreenState extends State<BookmarkScreen> {
   late Future<List<NewsArticle>> _bookmarkedArticles;
+  Map<String, String> _categoryMap = {};
 
   @override
   void initState() {
     super.initState();
+    _loadCategories();
     _bookmarkedArticles = _loadBookmarkedArticles();
+  }
+
+  Future<void> _loadCategories() async {
+    final categories = await SharedPreferencesManager.getGNewsCategories();
+    setState(() {
+      _categoryMap = {
+        for (var category in categories)
+          category.id ?? '': category.name ?? ''
+      };
+    });
   }
 
   Future<List<NewsArticle>> _loadBookmarkedArticles() async {
@@ -33,6 +47,11 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
       // Handle the case when the user is not logged in
       return [];
     }
+  }
+
+  String _getCategoryName(String? categoryId) {
+    if (categoryId == null) return 'Uncategorized';
+    return _categoryMap[categoryId] ?? categoryId;
   }
 
   @override
@@ -108,7 +127,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                           },
                           child: _buildBookmarkItem(
                             context,
-                            article.category ?? 'Uncategorized',
+                            _getCategoryName(article.category),
                             article.title ?? 'No Title',
                             article.publisher ?? 'Unknown Source',
                             _formatTimestamp(article.timestamp ?? ''),
