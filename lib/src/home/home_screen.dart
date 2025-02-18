@@ -17,6 +17,7 @@ import '../config/feature_flags.dart';
 import '../providers/auth_provider.dart';
 import 'category_based_news_screen.dart';
 import 'package:share_plus/share_plus.dart';
+import '../services/shared_preferences_manager.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -106,6 +107,7 @@ class _HomeTabState extends State<_HomeTab> {
   Map<String, List<NewsArticle>> _categoryNewsItems = {};
   final ScrollController _scrollController = ScrollController();
   bool _showScrollToTopButton = false;
+  Set<String> _bookmarkedArticles = {};
 
   @override
   void initState() {
@@ -115,6 +117,7 @@ class _HomeTabState extends State<_HomeTab> {
       _loadTrendingNews();
     }
     _scrollController.addListener(_scrollListener);
+    _loadBookmarkedArticles();
   }
 
   @override
@@ -122,6 +125,22 @@ class _HomeTabState extends State<_HomeTab> {
     _scrollController.removeListener(_scrollListener);
     _scrollController.dispose();
     super.dispose();
+  }
+
+  Future<void> _loadBookmarkedArticles() async {
+    final bookmarkedArticles = await SharedPreferencesManager.getBookmarkedNewsID();
+    setState(() {
+      _bookmarkedArticles = bookmarkedArticles.toSet();
+    });
+  }
+
+  Future<void> _updateBookmarkedArticles(String articleId, bool isBookmarked) async {
+    if (isBookmarked) {
+      await SharedPreferencesManager.addBookmarkedNewsID(articleId);
+    } else {
+      await SharedPreferencesManager.removeBookmarkedNewsID(articleId);
+    }
+    await _loadBookmarkedArticles();
   }
 
   void _scrollListener() {
@@ -485,7 +504,8 @@ class _HomeTabState extends State<_HomeTab> {
       );
     }
 
-    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ?? []) : _latestNewsItems;return Column(
+    final newsItems = _selectedCategoryId != null ? (_categoryNewsItems[_selectedCategoryId] ?? []) : _latestNewsItems;
+    return Column(
       children: [
         ...newsItems.map((newsItem) {
           return GestureDetector(
@@ -505,7 +525,7 @@ class _HomeTabState extends State<_HomeTab> {
               newsItem.title ?? '',
               newsItem.publisher ?? '',
               newsItem.timestamp ?? '',
-              newsItem.images?['thumbnailProxied'] ?? newsItem.images?['thumbnail'] ?? 'assets/images/news1.jpg',
+              newsItem.images?['thumbnail'] ?? newsItem.images?['thumbnailProxied'] ?? 'assets/images/news1.jpg',
               newsItem.newsUrl ?? '',
               newsItem,
             ),
@@ -530,28 +550,19 @@ class _HomeTabState extends State<_HomeTab> {
         automaticallyImplyLeading: false,
         title: Row(
           children: [
-            Text(
-              'Ka',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
-              ),
+            Image.asset(
+              'assets/images/app_logo.png',
+              width: 40,
+              height: 40,
             ),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 2),
-              child: Icon(
-                Icons.article_outlined,
-                size: 24,
-                color: Theme.of(context).primaryColor,
-              ),
-            ),
+            const SizedBox(width: 8),
             Text(
-              'bar',
+              'DashNews',
               style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Theme.of(context).primaryColor,
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                fontFamily: 'Montserrat',
+                color: Colors.black,
               ),
             ),
           ],
@@ -727,6 +738,7 @@ class _HomeTabState extends State<_HomeTab> {
 
   Widget _buildNewsCard(BuildContext context, String category, String title, String source, String time, String imageUrl, String newsUrl, NewsArticle article) {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final isBookmarked = _bookmarkedArticles.contains(article.docID);
     return Card(
       elevation: 0,
       color: Theme.of(context).cardColor,
@@ -800,17 +812,26 @@ class _HomeTabState extends State<_HomeTab> {
                     const Spacer(),
                     IconButton(
                       icon: Icon(
-                        Icons.bookmark_outline,
+                        isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onPressed: () async {
                         try {
                           final userID = authProvider.userID;
                           if (userID != null) {
-                            await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Article bookmarked')),
-                            );
+                            if (isBookmarked) {
+                              await FirebaseService.removeBookmark(userID: userID, newsID: article.docID ?? '');
+                              await _updateBookmarkedArticles(article.docID ?? '', false);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Article removed from bookmarks')),
+                              );
+                            } else {
+                              await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
+                              await _updateBookmarkedArticles(article.docID ?? '', true);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Article bookmarked')),
+                              );
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Please log in to bookmark articles')),
@@ -818,7 +839,7 @@ class _HomeTabState extends State<_HomeTab> {
                           }
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Failed to bookmark article: $e')),
+                            SnackBar(content: Text('Failed to update bookmark: $e')),
                           );
                         }
                       },
@@ -844,6 +865,9 @@ class _HomeTabState extends State<_HomeTab> {
 
   Widget _buildLatestNewsItem(BuildContext context, String title, String source, String time, String imageUrl, String newsUrl, NewsArticle article) {
     final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    print("Bookmarked Articles: $_bookmarkedArticles");
+    print("Current Article document ID: ${article.docID}");
+    final isBookmarked = _bookmarkedArticles.contains(article.docID);
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Row(
@@ -917,7 +941,7 @@ class _HomeTabState extends State<_HomeTab> {
                     ),
                     IconButton(
                       icon: Icon(
-                        Icons.bookmark_outline,
+                        isBookmarked ? Icons.bookmark : Icons.bookmark_outline,
                         size: 20,
                         color: Theme.of(context).iconTheme.color,
                       ),
@@ -925,10 +949,19 @@ class _HomeTabState extends State<_HomeTab> {
                         try {
                           final userID = authProvider.userID;
                           if (userID != null) {
-                            await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(content: Text('Article bookmarked')),
-                            );
+                            if (isBookmarked) {
+                              await FirebaseService.removeBookmark(userID: userID, newsID: article.docID ?? '');
+                              await _updateBookmarkedArticles(article.docID ?? '', false);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Article removed from bookmarks')),
+                              );
+                            } else {
+                              await FirebaseService.addBookmark(userID: userID, newsID: article.docID ?? '');
+                              await _updateBookmarkedArticles(article.docID ?? '', true);
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(content: Text('Article bookmarked')),
+                              );
+                            }
                           } else {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Please log in to bookmark articles')),
@@ -936,14 +969,15 @@ class _HomeTabState extends State<_HomeTab> {
                           }
                         } catch (e) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Failed to bookmark article: $e')),
+                            SnackBar(content: Text('Failed to update bookmark: $e')),
                           );
                         }
                       },
                     ),
                     IconButton(
                       icon: Icon(
-                        Icons.share,size: 20,
+                        Icons.share,
+                        size: 20,
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onPressed: () {

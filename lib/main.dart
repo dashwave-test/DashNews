@@ -29,13 +29,10 @@ void main() async {
     // Initialize Firebase Crashlytics
     await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
     
-    // Pass all uncaught errors to Crashlytics
-    //FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterError;
-
     FlutterError.onError = (errorDetails) {
       FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     };
-    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+    
     WidgetsBinding.instance.platformDispatcher.onError = (error, stack) {
       FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
       return true;
@@ -59,67 +56,15 @@ class MyApp extends StatelessWidget {
         Provider<FeatureFlags>.value(value: FeatureFlags()),
       ],
       child: MaterialApp(
-        title: 'DashWave News',
+        title: 'DashNews',
         theme: ThemeData(
           primarySwatch: Colors.blue,
           scaffoldBackgroundColor: Colors.white,
-          fontFamily: 'Roboto',
+          fontFamily: 'Montserrat',
         ),
-        home: Consumer<AuthProvider>(
-          builder: (context, authProvider, _) {
-            if (authProvider.isLoading) {
-              return const Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator(),
-                ),
-              );
-            }
-            
-            if (authProvider.isAuthenticated) {
-              return FutureBuilder<String?>(
-                future: authProvider.getNextScreen(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Scaffold(
-                      body: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }
-
-                  if (snapshot.hasData && snapshot.data != null) {
-                    switch (snapshot.data) {
-                      case EmailVerificationScreen.routeName:
-                        return const EmailVerificationScreen();
-                      case '/country-select':
-                        return const CountrySelectScreen();
-                      case '/topics':
-                        return const TopicsScreen();
-                      case '/news-sources':
-                        return const NewsSourcesScreen();
-                      case '/edit-profile':
-                        return EditProfileScreen(
-                          currentUsername: '',
-                          currentFullName: '',
-                          currentEmail: '',
-                          currentPhoneNumber: '',
-                        );
-                      case '/home':
-                        return const HomeScreen();
-                      default:
-                        return const HomeScreen();
-                    }
-                  }
-
-                  return const HomeScreen();
-                },
-              );
-            }
-            
-            return const SplashScreen();
-          },
-        ),
+        initialRoute: '/',
         routes: {
+          '/': (context) => const SplashScreen(),
           '/onboarding': (context) => const OnboardingScreen(),
           '/signup': (context) => const SignupScreen(),
           '/login': (context) => const LoginScreen(),

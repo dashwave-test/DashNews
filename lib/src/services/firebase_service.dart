@@ -204,7 +204,7 @@ class FirebaseService {
     }
   }
 
-  static Future<List<NewsArticle>> getAllBookmarks({
+  static Future<List<String>> getAllBookmarkIDs({
     required String userID,
   }) async {
     try {
@@ -214,9 +214,20 @@ class FirebaseService {
           .orderBy('bookmarkedAt', descending: true)
           .get();
 
-      final List<String> bookmarkedNewsIDs = bookmarkSnapshot.docs
+      return bookmarkSnapshot.docs
           .map((doc) => (doc.data() as Map<String, dynamic>)['newsID'] as String)
           .toList();
+    } catch (e, stack) {
+      FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error fetching bookmark IDs');
+      rethrow;
+    }
+  }
+
+  static Future<List<NewsArticle>> getAllBookmarks({
+    required String userID,
+  }) async {
+    try {
+      final List<String> bookmarkedNewsIDs = await getAllBookmarkIDs(userID: userID);
 
       if (bookmarkedNewsIDs.isEmpty) {
         return [];
