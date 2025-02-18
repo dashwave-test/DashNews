@@ -18,6 +18,7 @@ import '../providers/auth_provider.dart';
 import 'category_based_news_screen.dart';
 import 'package:share_plus/share_plus.dart';
 import '../services/shared_preferences_manager.dart';
+import '../settings/settings_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static const routeName = '/home';
@@ -37,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
     const ExploreScreen(),
     const BookmarkScreen(),
     const ProfileScreen(),
+    const SettingsScreen(),
   ];
 
   @override
@@ -78,12 +80,18 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.person),
             label: 'Profile',
           ),
+          NavigationDestination(
+            icon: Icon(Icons.settings_outlined),
+            selectedIcon: Icon(Icons.settings),
+            label: 'Settings',
+          ),
         ],
       ),
     );
   }
 }
 
+// Rest of the file remains unchanged
 class _HomeTab extends StatefulWidget {
   const _HomeTab({Key? key}) : super(key: key);
 
@@ -920,7 +928,7 @@ class _HomeTabState extends State<_HomeTab> {
                           Flexible(
                             child: Text(
                               source,
-                              style: TextStyle(
+                style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 color: Theme.of(context).textTheme.bodyMedium?.color,
