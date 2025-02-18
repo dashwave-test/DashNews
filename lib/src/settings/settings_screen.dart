@@ -5,6 +5,7 @@ import '../providers/auth_provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../auth/edit_profile_screen.dart';
 import '../services/shared_preferences_manager.dart';
+import '../config/app_constants.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = '/settings';
@@ -157,14 +158,14 @@ class SettingsScreen extends StatelessWidget {
             leading: Icon(Icons.policy),
             title: Text('Privacy Policy'),
             onTap: () {
-              _launchURL('https://studio.dashwave.io/privacy-policy');
+              _launchURL(AppConstants.privacyPolicyUrl);
             },
           ),
           ListTile(
             leading: Icon(Icons.description),
             title: Text('Terms and Conditions'),
             onTap: () {
-              _launchURL('https://studio.dashwave.io/terms-and-conditions');
+              _launchURL(AppConstants.termsAndConditionsUrl);
             },
           ),
           /*ListTile(

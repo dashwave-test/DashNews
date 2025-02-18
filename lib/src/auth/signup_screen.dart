@@ -362,7 +362,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 32),
+                const SizedBox(height: 8), // Reduced space from 32 to 8
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
