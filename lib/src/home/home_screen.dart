@@ -858,7 +858,7 @@ class _HomeTabState extends State<_HomeTab> {
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onPressed: () {
-                        Share.share('Check out this article: $newsUrl');
+                        Share.share('Check out this article: $title - $newsUrl');
                       },
                     ),
                   ],
@@ -989,7 +989,7 @@ class _HomeTabState extends State<_HomeTab> {
                         color: Theme.of(context).iconTheme.color,
                       ),
                       onPressed: () {
-                        Share.share('Check out this article: $newsUrl');
+                        Share.share('Check out this article: $title - $newsUrl');
                       },
                     ),
                   ],

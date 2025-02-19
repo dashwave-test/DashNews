@@ -250,7 +250,7 @@ class _CategoryBasedNewsScreenState extends State<CategoryBasedNewsScreen> {
                             color: Theme.of(context).iconTheme.color,
                           ),
                           onPressed: () {
-                            Share.share('Check out this article: ${newsItem.newsUrl}');
+                            Share.share('Check out this article: ${newsItem.title} - ${newsItem.newsUrl}');
                           },
                           tooltip: 'Share',
                         ),
