@@ -20,10 +20,15 @@ class ArticleWebViewScreen extends StatefulWidget {
 class _ArticleWebViewScreenState extends State<ArticleWebViewScreen> {
   late final WebViewController _controller;
   bool _isLoading = true;
+  String? _errorMessage;
 
   @override
   void initState() {
     super.initState();
+    _initializeWebView();
+  }
+
+  void _initializeWebView() {
     _controller = WebViewController()
       ..setJavaScriptMode(JavaScriptMode.unrestricted)
       ..setNavigationDelegate(
@@ -31,6 +36,7 @@ class _ArticleWebViewScreenState extends State<ArticleWebViewScreen> {
           onPageStarted: (String url) {
             setState(() {
               _isLoading = true;
+              _errorMessage = null;
             });
           },
           onPageFinished: (String url) {
@@ -38,14 +44,37 @@ class _ArticleWebViewScreenState extends State<ArticleWebViewScreen> {
               _isLoading = false;
             });
           },
+          onWebResourceError: (WebResourceError error) {
+            setState(() {
+              _isLoading = false;
+              _errorMessage = 'Failed to load the article: ${error.description}';
+            });
+          },
         ),
-      )
-      ..loadRequest(Uri.parse(_ensureValidUrl(widget.url)));
+      );
+
+    _loadUrl();
   }
 
-  String _ensureValidUrl(String url) {
+  void _loadUrl() {
+    print("News Url" + widget.url);
+    final validUrl = _ensureValidUrl(widget.url);
+    if (validUrl != null) {
+      _controller.loadRequest(Uri.parse(validUrl));
+    } else {
+      setState(() {
+        _isLoading = false;
+        _errorMessage = 'Invalid URL provided';
+      });
+    }
+  }
+
+  String? _ensureValidUrl(String url) {
     if (url.isEmpty) {
-      return 'about:blank';
+      return null;
+    }
+    if (url.startsWith('//')) {
+      return 'https:$url';
     }
     if (!url.startsWith('http://') && !url.startsWith('https://')) {
       return 'https://$url';
@@ -91,7 +120,19 @@ class _ArticleWebViewScreenState extends State<ArticleWebViewScreen> {
       ),
       body: Stack(
         children: [
-          WebViewWidget(controller: _controller),
+          if (_errorMessage == null)
+            WebViewWidget(controller: _controller)
+          else
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  _errorMessage!,
+                  style: TextStyle(color: Theme.of(context).colorScheme.error),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
           if (_isLoading)
             const Center(
               child: CircularProgressIndicator(),

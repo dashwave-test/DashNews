@@ -60,10 +60,10 @@ class NewsArticle {
       publisher: json['publisher'],
       category: json['category'],
       timestamp: json['timestamp'],
-      newsUrl: json['newsUrl'],
+      newsUrl: json['news_url'],
       images: json['images'] != null ? Map<String, String>.from(json['images']) : null,
       fetchedAt: json['fetched_at'],
-      hasSubnews: json['hasSubnews'],
+      hasSubnews: json['has_subnews'],
       subnews: json['subnews'] != null
           ? List<NewsArticle>.from(json['subnews'].map((x) => NewsArticle.fromJson(x)))
           : null,
@@ -79,10 +79,10 @@ class NewsArticle {
       'publisher': publisher,
       'category': category,
       'timestamp': timestamp,
-      'newsUrl': newsUrl,
+      'news_url': newsUrl,
       'images': images,
       'fetched_at': fetchedAt,
-      'hasSubnews': hasSubnews,
+      'has_subnews': hasSubnews,
       'subnews': subnews?.map((x) => x.toJson()).toList(),
     };
   }
