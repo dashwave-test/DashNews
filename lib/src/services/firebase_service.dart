@@ -188,6 +188,7 @@ class FirebaseService {
     required String newsID,
   }) async {
     try {
+      print("userID: $userID\n newsID: $newsID");
       final QuerySnapshot querySnapshot = await _firestore
           .collection('bookmarks')
           .where('userID', isEqualTo: userID)
@@ -199,6 +200,7 @@ class FirebaseService {
         await querySnapshot.docs.first.reference.delete();
       }
     } catch (e, stack) {
+      print("Remove bookmark error: $e");
       FirebaseCrashlytics.instance.recordError(e, stack, reason: 'Error removing bookmark');
       rethrow;
     }
@@ -240,7 +242,7 @@ class FirebaseService {
 
       final Map<String, NewsArticle> newsMap = {
         for (var doc in newsSnapshot.docs)
-          doc.id: NewsArticle.fromJson(doc.data() as Map<String, dynamic>)
+          doc.id: NewsArticleFirestore.fromFirestore(doc)
       };
 
       // Preserve the order of bookmarks

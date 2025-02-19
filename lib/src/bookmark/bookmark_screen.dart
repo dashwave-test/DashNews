@@ -54,6 +54,54 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     return _categoryMap[categoryId] ?? categoryId;
   }
 
+  Future<void> _removeBookmark(BuildContext context, NewsArticle article) async {
+    final authProvider = Provider.of<AuthProvider>(context, listen: false);
+    final userID = authProvider.userID;
+    if (userID == null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('You need to be logged in to remove bookmarks')),
+      );
+      return;
+    }
+
+    final confirmed = await showDialog<bool>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Remove Bookmark'),
+          content: const Text('Are you sure you want to remove this bookmark?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () => Navigator.of(context).pop(false),
+            ),
+            TextButton(
+              child: const Text('Remove'),
+              onPressed: () => Navigator.of(context).pop(true),
+            ),
+          ],
+        );
+      },
+    );
+
+    if (confirmed == true) {
+      try {
+        await FirebaseService.removeBookmark(userID: userID, newsID: article.docID!);
+        setState(() {
+          _bookmarkedArticles = _loadBookmarkedArticles();
+        });
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Bookmark removed successfully')),
+        );
+      } catch (e) {
+        print('Failed to remove bookmark. Error: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Failed to remove bookmark')),
+        );
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,6 +180,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                             article.publisher ?? 'Unknown Source',
                             _formatTimestamp(article.timestamp ?? ''),
                             article.images?['thumbnail'] ?? '',
+                            article,
                           ),
                         );
                       },
@@ -169,6 +218,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
     String source,
     String time,
     String imageUrl,
+    NewsArticle article,
   ) {
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
@@ -235,12 +285,15 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                       ),
                     ),
                     const SizedBox(width: 4),
-                    Text(
-                      source,
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        color: Theme.of(context).textTheme.bodyMedium?.color,
+                    Expanded(
+                      child: Text(
+                        source,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          color: Theme.of(context).textTheme.bodyMedium?.color,
+                        ),
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                     const SizedBox(width: 8),
@@ -251,16 +304,37 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                         color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
                       ),
                     ),
-                    const Spacer(),
-                    IconButton(
-                      icon: Icon(
-                        Icons.more_vert,
-                        size: 20,
-                        color: Theme.of(context).iconTheme.color,
+                    const SizedBox(width: 8),
+                    SizedBox(
+                      width: 60,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            icon: Icon(
+                              Icons.bookmark,
+                              size: 20,
+                              color: Theme.of(context).iconTheme.color,
+                            ),
+                            onPressed: () => _removeBookmark(context, article),
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                          const SizedBox(width: 8),
+                          IconButton(
+                            icon: Icon(
+                              Icons.share,
+                              size: 20,
+                              color: Theme.of(context).iconTheme.color,
+                            ),
+                            onPressed: () {
+                              // Implement share functionality
+                            },
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ],
                       ),
-                      onPressed: () {},
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
                     ),
                   ],
                 ),
