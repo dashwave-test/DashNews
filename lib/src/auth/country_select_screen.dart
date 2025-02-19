@@ -17,7 +17,7 @@ class _CountrySelectScreenState extends State<CountrySelectScreen> {
   String _searchQuery = '';
   bool _isLoading = false;
   final List<Country> _countries = [
-    Country(name: 'Afghanistan', flag: '🇦🇫'),
+    /*Country(name: 'Afghanistan', flag: '🇦🇫'),
     Country(name: 'Albania', flag: '🇦🇱'),
     Country(name: 'Algeria', flag: '🇩🇿'),
     Country(name: 'Andorra', flag: '🇦🇩'),
@@ -27,14 +27,14 @@ class _CountrySelectScreenState extends State<CountrySelectScreen> {
     Country(name: 'Australia', flag: '🇦🇺'),
     Country(name: 'Austria', flag: '🇦🇹'),
     Country(name: 'Azerbaijan', flag: '🇦🇿'),
-    Country(name: 'Iceland', flag: '🇮🇸'),
+    Country(name: 'Iceland', flag: '🇮🇸'),*/
     Country(name: 'India', flag: '🇮🇳'),
-    Country(name: 'Indonesia', flag: '🇮🇩'),
+    /*Country(name: 'Indonesia', flag: '🇮🇩'),
     Country(name: 'Iran', flag: '🇮🇷'),
     Country(name: 'Iraq', flag: '🇮🇶'),
     Country(name: 'Ireland', flag: '🇮🇪'),
     Country(name: 'Israel', flag: '🇮🇱'),
-    Country(name: 'Italy', flag: '🇮🇹'),
+    Country(name: 'Italy', flag: '🇮🇹'),*/
   ];
 
   List<Country> get _filteredCountries => _countries

@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import '../services/firebase_service.dart';
 import '../providers/auth_provider.dart' as app_auth_provider;
+import '../models/news_category.dart';
 
 class TopicsScreen extends StatefulWidget {
   static const routeName = '/topics';
@@ -20,11 +21,11 @@ class _TopicsScreenState extends State<TopicsScreen> {
   String _searchQuery = '';
   bool _isLoading = false;
   bool _isLoadingTopics = true;
-  List<String> _topics = [];
+  List<NewsCategory> _topics = [];
 
-  List<String> get _filteredTopics => _topics
+  List<NewsCategory> get _filteredTopics => _topics
       .where((topic) =>
-          topic.toLowerCase().contains(_searchQuery.toLowerCase()))
+          topic.name?.toLowerCase().contains(_searchQuery.toLowerCase()) ?? false)
       .toList();
 
   @override
@@ -41,8 +42,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
       final categories = await FirebaseService.getGNewsCategoriesFuture();
       setState(() {
         _topics = categories
-            .map((category) => category.name ?? '')
-            .where((name) => name.isNotEmpty && name.toLowerCase() != 'latest')
+            .where((category) => category.name?.isNotEmpty == true && category.name?.toLowerCase() != 'latest')
             .toList();
         _isLoadingTopics = false;
       });
@@ -151,14 +151,14 @@ class _TopicsScreenState extends State<TopicsScreen> {
                       spacing: 8.0,
                       runSpacing: 8.0,
                       children: _filteredTopics.map((topic) {
-                        final isSelected = _selectedTopics.contains(topic);
+                        final isSelected = _selectedTopics.contains(topic.id);
                         return InkWell(
                           onTap: () {
                             setState(() {
                               if (isSelected) {
-                                _selectedTopics.remove(topic);
+                                _selectedTopics.remove(topic.id);
                               } else {
-                                _selectedTopics.add(topic);
+                                _selectedTopics.add(topic.id ?? '');
                               }
                             });
                           },
@@ -177,7 +177,7 @@ class _TopicsScreenState extends State<TopicsScreen> {
                               ),
                             ),
                             child: Text(
-                              topic,
+                              topic.name ?? '',
                               style: TextStyle(
                                 color: isSelected ? Colors.white : Theme.of(context).textTheme.bodyMedium?.color,
                                 fontSize: 14,

@@ -31,6 +31,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
   bool _isLoading = false;
   String _errorMessage = '';
   final _formKey = GlobalKey<FormState>();
+  String? _profilePicture;
 
   @override
   void initState() {
@@ -63,6 +64,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
             _fullNameController.text = userData['fullName'] ?? widget.currentFullName;
             _emailController.text = userData['email'] ?? widget.currentEmail;
             _phoneNumberController.text = userData['phoneNumber'] ?? widget.currentPhoneNumber;
+            _profilePicture = userData['profilePicture'];
           });
         }
       }
@@ -128,6 +130,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
     super.dispose();
   }
 
+  Widget _buildProfileImage() {
+    if (_profilePicture != null && _profilePicture!.isNotEmpty) {
+      return CircleAvatar(
+        radius: 50,
+        backgroundImage: NetworkImage(_profilePicture!),
+      );
+    } else if (_fullNameController.text.isNotEmpty) {
+      final initials = _fullNameController.text
+          .split(' ')
+          .take(2)
+          .map((name) => name[0])
+          .join('')
+          .toUpperCase();
+      return CircleAvatar(
+        radius: 50,
+        backgroundColor: Colors.blue,
+        child: Text(
+          initials,
+          style: const TextStyle(fontSize: 24, color: Colors.white),
+        ),
+      );
+    } else {
+      return const CircleAvatar(
+        radius: 50,
+        backgroundColor: Colors.grey,
+        child: Icon(Icons.person, size: 50, color: Colors.white),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -172,11 +204,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Center(
                         child: Stack(
                           children: [
-                            const CircleAvatar(
-                              radius: 50,
-                              backgroundImage:
-                                  AssetImage('assets/images/profile_pic.png'),
-                            ),
+                            _buildProfileImage(),
                             Positioned(
                               bottom: 0,
                               right: 0,
