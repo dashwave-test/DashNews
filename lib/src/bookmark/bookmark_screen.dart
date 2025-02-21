@@ -7,6 +7,7 @@ import '../models/news_category.dart';
 import '../providers/auth_provider.dart';
 import '../config/feature_flags.dart';
 import '../services/shared_preferences_manager.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BookmarkScreen extends StatefulWidget {
   static const routeName = '/bookmark';
@@ -328,7 +329,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                               color: Theme.of(context).iconTheme.color,
                             ),
                             onPressed: () {
-                              // Implement share functionality
+                              Share.share('Check out this article: ${article.title} - ${article.newsUrl}');
                             },
                             padding: EdgeInsets.zero,
                             constraints: const BoxConstraints(),
