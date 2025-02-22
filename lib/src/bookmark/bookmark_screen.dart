@@ -255,15 +255,6 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  category,
-                  style: const TextStyle(
-                    color: Color(0xFF246BFD),
-                    fontSize: 14,
-                    fontWeight: FontWeight.w500,
-                  ),
-                ),
-                const SizedBox(height: 4),
-                Text(
                   title,
                   style: TextStyle(
                     fontSize: 16,
@@ -314,28 +305,47 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                               ],
                             ),
                           ),
-                          IconButton(
-                            icon: Icon(
-                              Icons.bookmark,
-                              size: 20,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
-                            onPressed: () => _removeBookmark(context, article),
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
-                          ),
-                          const SizedBox(width: 8),
-                          IconButton(
-                            icon: Icon(
-                              Icons.share,
-                              size: 20,
-                              color: Theme.of(context).iconTheme.color,
-                            ),
-                            onPressed: () {
-                              Share.share('Check out this article: ${article.title} - ${article.newsUrl}');
-                            },
-                            padding: EdgeInsets.zero,
-                            constraints: const BoxConstraints(),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                category,
+                                style: const TextStyle(
+                                  color: Color(0xFF246BFD),
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                                textAlign: TextAlign.right,
+                              ),
+                              const SizedBox(height: 4),
+                              Row(
+                                children: [
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.bookmark,
+                                      size: 20,
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                    onPressed: () => _removeBookmark(context, article),
+                                    padding: EdgeInsets.zero,
+                                    constraints: const BoxConstraints(),
+                                  ),
+                                  const SizedBox(width: 8),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.share,
+                                      size: 20,
+                                      color: Theme.of(context).iconTheme.color,
+                                    ),
+                                    onPressed: () {
+                                      Share.share('Check out this article: ${article.title} - ${article.newsUrl}');
+                                    },
+                                    padding: EdgeInsets.zero,
+                                    constraints: const BoxConstraints(),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                         ],
                       ),
