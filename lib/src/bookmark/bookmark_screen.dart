@@ -275,6 +275,7 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                 ),
                 const SizedBox(height: 8),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     CircleAvatar(
                       radius: 10,
@@ -287,30 +288,32 @@ class _BookmarkScreenState extends State<BookmarkScreen> {
                     ),
                     const SizedBox(width: 4),
                     Expanded(
-                      child: Text(
-                        source,
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          color: Theme.of(context).textTheme.bodyMedium?.color,
-                        ),
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    Text(
-                      time,
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
-                    SizedBox(
-                      width: 60,
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  source,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w500,
+                                    color: Theme.of(context).textTheme.bodyMedium?.color,
+                                  ),
+                                  maxLines: 2,
+                                ),
+                                Text(
+                                  time,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: Theme.of(context).textTheme.bodyMedium?.color?.withOpacity(0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                           IconButton(
                             icon: Icon(
                               Icons.bookmark,
