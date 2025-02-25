@@ -31,7 +31,7 @@ android {
         versionName "1.0"
     }
 
-    signingConfig {
+    signingConfigs {
         release {
             keyAlias System.getenv("KEYSTORE_ALIAS")
             keyPassword System.getenv("KEYSTORE_KEY_PASSWORD")
