@@ -42,7 +42,7 @@ android {
 
     buildTypes {
         release {
-            gisigningConfig signingConfigs.release
+            signingConfig signingConfigs.release
         }
     }
 }
